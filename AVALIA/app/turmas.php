@@ -63,17 +63,18 @@
                 <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                      <th>ID</th>
-                      <th>tipo usuario</th>
-                      <th>Nome</th>
-                      <th>Login</th>
-                      <th>Ativo</th>                
+                      <th>Turma</th>
+                      <th>Curso</th>
+                      <th>Matrícula</th>
                       <th>Ações</th>
                   </tr>
                   </thead>
                   <tbody>
 
-                  <?php echo listaUsuario(); ?>
+                  <?php echo listaTurmas(); ?>
+                  <?php echo listaCursos(); ?>
+                  <?php echo listaMatricula(); ?>
+
                   
                   </tbody>
                   
