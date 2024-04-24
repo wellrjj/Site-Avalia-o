@@ -1,10 +1,9 @@
 <?php
-//função para listar todos os usuários
-function lista_usuario(){
-   
-    include("conexao.php");
 
-    $sql = "SELECT * FROM usuarios;";
+//função para listar todos os usuários
+function lista_usuario(){   
+    include("conexao.php");
+    $sql = "SELECT * FROM usuarios where idEscola = ".$_SESSION['idEscola'].";";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -89,7 +88,7 @@ function lista_usuario(){
                                         .'<div class="form-group">'
                                             .'<label for="iNome">Tipo de Usuário:</label>'
                                             .'<select name="nTipoUsuario" class="form-control" required>'
-                                               .tipoDeAcesso($coluna["idUsuario"])
+                                               .tipoDeAcesso($coluna["idTipoUsuario"])
                                             .'</select>'
                                         .'</div>'
                                     .'</div>'
@@ -126,7 +125,7 @@ function lista_usuario(){
                 
                                 .'<div class="modal-footer">'
                                     .'<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>'
-                                    .'<button type="submit" class="btn btn-success">Salvar</button>'
+                                    .'<button type="submit" class="btn btn-success">Alterar</button>'
                                 .'</div>'
                                 
                             .'</form>'
@@ -305,7 +304,7 @@ function lista_usuario(){
 function tipoDeAcesso($id){
 
     include("conexao.php");
-    $sql = "SELECT tp.idTipoUsuario, tp.Descricao FROM tipousuario tp inner join usuarios usu on usu.idTipoUsuario = tp.idTipoUsuario where idUsuario = $id;";        
+    $sql = "SELECT * FROM tipousuario WHERE idTipoUsuario = $id";        
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
     $resp = "";
@@ -321,7 +320,7 @@ function tipoDeAcesso($id){
         
         foreach ($array as $coluna) {            
             //***Verificar os dados da consulta SQL
-            $resp = '<option value="'.$coluna["idTipoUsuario"].'">'.$coluna["Descricao"].'</option>';
+            $resp .= '<option value="'.$coluna["idTipoUsuario"].'">'.$coluna["Descricao"].'</option>';
              $resp .= faltantes($coluna["idTipoUsuario"]);
         }        
     }
@@ -330,10 +329,21 @@ function tipoDeAcesso($id){
     return $resp;
 }
 
+//função para trazer os dados faltantes do tipo de usuário.
 function faltantes($id){
 
     include("conexao.php");
-    $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id;";        
+    if($id == 2){
+
+       $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1;"; 
+
+    }elseif ($id == 3) {
+        $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1 and idTipoUsuario != 2;"; 
+    }else{
+
+        $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1 and idTipoUsuario != 2;"; 
+    }
+           
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
     $resp = "";
@@ -416,7 +426,7 @@ function tipoAcessoUsuario($id){
 function optionAcessoUsuario(){
 
     include("conexao.php");
-    $sql = "SELECT * FROM  tipousuario";        
+    $sql = "SELECT * FROM  tipousuario where idTipoUsuario != 1 AND idTipoUsuario != ".$_SESSION['idTipoUsuario']."; ";        
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
 

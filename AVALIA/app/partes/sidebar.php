@@ -40,6 +40,15 @@
                 </a>
               </li>              
             </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./usuarios.php" class="nav-link active">
+                  <i class="fas fa-users nav-icon"></i>
+                  <p>Turmas</p>
+                </a>
+              </li>              
+            </ul>
           
         
       </nav>
