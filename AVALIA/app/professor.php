@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Usuários</title>
+  <title>Projeto Modelo - Professor</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -25,9 +25,8 @@
   <!-- Sidebar -->
   <?php include('partes/sidebar.php'); 
         $_SESSION['menu-n1'] = 'administrador';
-        $_SESSION['menu-n2'] = 'usuarios';
+        $_SESSION['menu-n2'] = 'Professor';
         montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']);
-
   ?>
   <!-- Fim Sidebar -->
 

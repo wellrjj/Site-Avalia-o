@@ -32,45 +32,78 @@ function montaMenu($n1,$n2){
                                 Administrador
                                 <i class="right fas fa-angle-left"></i>
                             </p>
-                        </a>
+                        </a>';
 
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./usuarios.php" class="nav-link">
-                                <i class="far fa-user nav-icon"></i>
-                                <p>Usuários</p>
-                                </a>
-                            </li>              
-                        </ul>
+                      if($_SESSION["idTipoUsuario"] == 2){
+                         
+                        $html .= '<ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="./usuarios.php" class="nav-link">
+                                            <i class="far fa-user nav-icon"></i>
+                                            <p>Usuários</p>
+                                            </a>
+                                        </li>              
+                                    </ul>
 
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./usuarios.php" class="nav-link">
-                                <i class="fas fa-users nav-icon"></i>
-                                <p>Turmas</p>
-                                </a>
-                            </li>              
-                        </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="./usuarios.php" class="nav-link">
+                                            <i class="fas fa-users nav-icon"></i>
+                                            <p>Turmas</p>
+                                            </a>
+                                        </li>              
+                                    </ul>
 
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./curso.php" class="nav-link">
-                                <i class="fas fa-book nav-icon"></i>
-                                <p>Cursos</p>
-                                </a>
-                            </li>              
-                        </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="./curso.php" class="nav-link">
+                                            <i class="fas fa-book nav-icon"></i>
+                                            <p>Cursos</p>
+                                            </a>
+                                        </li>              
+                                    </ul>
 
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./usuarios.php" class="nav-link">
-                                <i class="fas fa-graduation-cap nav-icon"></i>
-                                <p>Disciplinas</p>
-                                </a>
-                            </li>              
-                        </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="./usuarios.php" class="nav-link">
+                                            <i class="fas fa-graduation-cap nav-icon"></i>
+                                            <p>Disciplinas</p>
+                                            </a>
+                                        </li>              
+                                    </ul>';
+
+                      }elseif ($_SESSION["idTipoUsuario"] == 3) {
+                       
+                        $html .= 
+                        '<ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./usuarios.php" class="nav-link">
+                                    <i class="fas fa-pen nav-icon"></i>
+                                    <p>Atividades</p>
+                                    </a>
+                                </li>              
+                            </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./usuarios.php" class="nav-link">
+                                    <i class="fas fa-book-open nav-icon"></i>
+                                    <p>Prova</p>
+                                    </a>
+                                </li>              
+                            </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./usuarios.php" class="nav-link">
+                                    <i class="fas fa-chart-bar nav-icon"></i>
+                                    <p>Desempenho</p>
+                                    </a>
+                                </li>              
+                            </ul>';
+                      } 
                 
-                    </li>
+           $html .= '</li>
                 </ul>  
             </nav>';
 

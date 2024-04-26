@@ -48,10 +48,30 @@
                 $_SESSION['idUsuario'] = $coluna['idUsuario'];
                 $_SESSION['idCurso'] = $coluna['idCurso'];
 
-
-
-                //Acessar a tela inicial
-                header('location: ../usuarios.php');
+                switch ($coluna['idTipoUsuario']) {
+                    case 1:
+                        header('location: ../usuarios.php');
+                        break;
+                       
+                    case 2:
+                        header('location: ../usuarios.php');
+                        break;
+                    
+                    case 3:
+                        header('location: ../professor.php');
+                        break;
+                        
+                    case 4:
+                        header('location: ../aluno.php');
+                        break;
+                            
+                                            
+                    default:
+                        # code...
+                        break;
+                }
+                
+                
             }    
 
         }else{

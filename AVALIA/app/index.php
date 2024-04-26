@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TecAvaliação - Entrar</title>
-    <?php include('partes/css.php'); ?>
-
     <style>
-        body{
-            background-color: rgb(234, 234, 234);
-        }
+        
         #iTabela{
 
-            padding-left: 18%;   
+            padding-left: 30%;   
 
         }
         #iH101{
@@ -48,7 +44,7 @@
         }
         #iCampo{
             margin-top: 15%;
-            margin-left: 36%;
+            margin-left: 40%;
             margin-right: 38%;
 
             border-radius: 10px;
@@ -72,6 +68,9 @@
 
         }
     </style>
+    <!-- CSS -->
+       <?php include('partes/css.php'); ?>
+    <!-- Fim CSS -->
 
 </head>
 <body class="tela-login">

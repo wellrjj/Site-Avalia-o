@@ -1,4 +1,3 @@
-
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -18,11 +17,14 @@
         <div class="info">
           <a href="#" class="d-block"><?php echo nomeUsuario($_SESSION['idUsuario']); ?></a>
         </div>
+
+        
       </div>
 
       <!-- Sidebar Menu -->
       <?php echo montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']); ?>      
-      <!-- /.sidebar-menu -->
+      <!-- /.sidebar-menu -->     
+
     </div>
     <!-- /.sidebar -->
   </aside>
