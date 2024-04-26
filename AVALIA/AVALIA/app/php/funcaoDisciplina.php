@@ -1,0 +1,131 @@
+<?php
+
+//função para listar todas as disciplinas
+function lista_disciplinas(){   
+
+    include("conexao.php");
+    
+    $sql = "SELECT 
+    dis.idDisciplina as idDisciplina, 
+    dis.Descricao as DescDIS, 
+    cur.Descricao as DescCUR
+    from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso;";
+            
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+
+    //Validar se tem retorno do BD
+    if (mysqli_num_rows($result) > 0) {
+        $lista = '';
+        $array = array();
+        
+
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        
+        foreach ($array as $coluna) {
+            
+
+            //***Verificar os dados da consulta SQL
+            
+            $lista .= 
+
+            "<tr>"
+                ."<td align='center'>".$coluna["idDisciplina"]."</td>"
+                ."<td align='center'>".$coluna["DescDIS"]."</td>"                
+                ."<td>".$coluna["DescCUR"]."</td>"         
+                .'<td>'
+                    .'<div class="row" align="center">'
+                        .'<div class="col-6">'
+                            .'<a href="#modalEditDisciplina'.$coluna["idDisciplina"].'" data-toggle="modal">'
+                                .'<h6><i class="fas fa-edit text-info" data-toggle="tooltip" title="Alterar Disciplina"></i></h6>'
+                            .'</a>'
+                        .'</div>'
+                        
+                        .'<div class="col-6">'
+                            .'<a href="#modalDeleteDisciplina'.$coluna["idDisciplina"].'" data-toggle="modal">'
+                                .'<h6><i class="fas fa-trash text-danger" data-toggle="tooltip" title="Excluir Disciplina"></i></h6>'
+                            .'</a>'
+                        .'</div>'
+                    .'</div>'
+                .'</td>'
+            .'</tr>'
+            
+            .'<div class="modal fade" id="modalEditDisciplina'.$coluna["idDisciplina"].'">'
+                    .'<div class="modal-dialog modal-lg">'
+                        .'<div class="modal-content">'
+                            .'<div class="modal-header bg-info">'
+                                .'<h4 class="modal-title">Alterar Curso</h4>'
+                                .'<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">'
+                                    .'<span aria-hidden="true">&times;</span>'
+                                .'</button>'
+                            .'</div>'
+                            .'<div class="modal-body">'
+
+                                .'<form method="POST" action="php/salvarDisciplina.php?funcao=A&codigo='.$coluna["idDisciplina"].'" enctype="multipart/form-data">'              
+                    
+                                    .'<div class="row">'
+                                        .'<div class="col-8">'
+                                            .'<div class="form-group">'
+                                                .'<label for="iNome">Descricao:</label>'
+                                                .'<input type="text" value="'.$coluna["DescDIS"].'" class="form-control" id="iNome" name="ndescricao" maxlength="50">'
+                                            .'</div>'
+                                        .'</div>'
+                    
+                                    .'</div>'
+                    
+                                    .'<div class="modal-footer">'
+                                        .'<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>'
+                                        .'<button type="submit" class="btn btn-success">Alterar</button>'
+                                    .'</div>'
+                                    
+                                .'</form>'
+                                
+                            .'</div>'
+                        .'</div>'
+                    .'</div>'
+                .'</div>'
+                
+
+                .'<div class="modal fade" id="modalDeleteDisciplina'.$coluna["idDisciplina"].'">'
+                    .'<div class="modal-dialog modal-lg">'
+                        .'<div class="modal-content">'
+                            .'<div class="modal-header bg-danger">'
+                                .'<h4 class="modal-title">Cancelar Curso</h4>'
+                                .'<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">'
+                                    .'<span aria-hidden="true">&times;</span>'
+                                .'</button>'
+                            .'</div>'
+                            .'<div class="modal-body">'
+
+                                .'<form method="POST" action="php/salvarDisciplina.php?funcao=D&codigo='.$coluna["idDisciplina"].'" enctype="multipart/form-data">'              
+                    
+                                    .'<div class="row">'
+                                        .'<div class="col-12">'
+                                            .'<h4>Deseja CANCELAR a Disciplina '.$coluna["DescDIS"].'?</h4>'
+                                        .'</div>'
+                                    .'</div>'
+
+                                    .'<div class="modal-footer">'
+                                        .'<button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>'
+                                        .'<button type="submit" class="btn btn-success">Sim</button>'
+                                    .'</div>'
+                                    
+                                .'</form>'
+                                
+                            .'</div>'
+                        .'</div>'
+                    .'</div>'
+                .'</div>';
+
+            
+           
+
+        }    
+    }
+    
+    return $lista;
+}
+
+?>
