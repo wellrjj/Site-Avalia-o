@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TecAvaliação - Entrar</title>
+    <?php include('partes/css.php'); ?>
 
     <style>
         body{
@@ -73,7 +74,7 @@
     </style>
 
 </head>
-<body>
+<body class="tela-login">
 
     <form method="POST" action="php/validaLogin.php">
         <fieldset id="iCampo">

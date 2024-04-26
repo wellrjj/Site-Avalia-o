@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     include('funcoes.php');
 
     $idtipoUsuario = $_POST["nTipoUsuario"];
@@ -20,14 +20,10 @@
         $idUsuario = proxIdUsuario();
 
         //INSERT
-        $sql = "INSERT INTO usuarios (idUsuario,idTipoUsuario,Nome,Email,Senha,FlgAtivo) "
-                ." VALUES (".$idUsuario.","
-                .$idtipoUsuario.","
-                ."'$nome',"
-                ."'$Email',"
-                ."md5('$senha'),"
-                ."'$ativo');";
-    }else{
+        $sql = "INSERT INTO usuarios (idUsuario, idTipoUsuario, Nome, Email, Senha, FlgAtivo, idEscola) "
+        ."VALUES ('$idUsuario', '$idtipoUsuario', '$nome', '$Email', MD5('$senha'), '$ativo', ".$_SESSION['idEscola'].");";
+
+    }elseif($funcao == "A"){
 
         if($senha != ""){
             $senha = ", Senha = MD5('$senha')";
@@ -40,7 +36,14 @@
                     ." Email = '$Email', "
                     ." FlgAtivo = '$ativo' "
                 ." WHERE idUsuario = $idUsuario;";
+    }elseif($funcao == "D"){
+   
+        $sql = "UPDATE usuarios "
+                ." SET FlgAtivo = 'N' "
+                ." WHERE idUsuario = $idUsuario;";
+
     }
+
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
 

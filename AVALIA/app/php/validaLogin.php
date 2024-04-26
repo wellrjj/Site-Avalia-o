@@ -46,6 +46,8 @@
                 $_SESSION['idTipoUsuario'] = $coluna['idTipoUsuario'];
                 $_SESSION['idEscola'] = $coluna['idEscola'];
                 $_SESSION['idUsuario'] = $coluna['idUsuario'];
+                $_SESSION['idCurso'] = $coluna['idCurso'];
+
 
 
                 //Acessar a tela inicial

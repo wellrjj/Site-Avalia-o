@@ -1,82 +1,9 @@
-
 <?php
 
-//Função criada para consultar turmas da escola. 
-function listaTurmas(){
-
-    include("conexao.php");
-
-    $lista = '';
-    $sql = "SELECT Descricao FROM turma ORDER BY idTurma;";
-            
-    $result = mysqli_query($conn,$sql);
-    mysqli_close($conn);
-
-    if (mysqli_num_rows($result) > 0) {
-        
-        $array = array();
-        
-
-        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            array_push($array,$linha);
-        }
-        
-        foreach ($array as $coluna) {
-
-            $lista .= 
-
-            "<tr>"
-                ."<td align='center'>".$coluna["Descricao"]."</td>"
-            ."</tr>";
-
-        }
-    }
-
-    return $lista;
-
-}
-
-//Função criada para consultar os nomes dos cursos criados pela escola.
-function listaCursos(){
-
-    include("conexao.php");
-
-    $lista = '';
-    $sql = "SELECT Descricao FROM curso ORDER BY idCurso;";
-            
-    $result = mysqli_query($conn,$sql);
-    mysqli_close($conn);
-
-    if (mysqli_num_rows($result) > 0) {
-        
-        $array = array();
-        
-
-        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            array_push($array,$linha);
-        }
-        
-        foreach ($array as $coluna) {
-
-            $lista .= 
-
-            "<tr>"
-                ."<td align='center'>".$coluna["Descricao"]."</td>"
-            ."</tr>";
-
-        }
-    }
-
-    return $lista;
-
-}
-
 //função para listar todos os usuários
-function listaUsuario(){
-   
+function lista_usuario(){   
     include("conexao.php");
-
-    $sql = "SELECT * FROM usuarios;";
+    $sql = "SELECT * FROM usuarios where idEscola = ".$_SESSION['idEscola'].";";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -161,7 +88,7 @@ function listaUsuario(){
                                         .'<div class="form-group">'
                                             .'<label for="iNome">Tipo de Usuário:</label>'
                                             .'<select name="nTipoUsuario" class="form-control" required>'
-                                               .tipoDeAcesso($coluna["idUsuario"])
+                                               .tipoDeAcesso($coluna["idTipoUsuario"])
                                             .'</select>'
                                         .'</div>'
                                     .'</div>'
@@ -198,7 +125,7 @@ function listaUsuario(){
                 
                                 .'<div class="modal-footer">'
                                     .'<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>'
-                                    .'<button type="submit" class="btn btn-success">Salvar</button>'
+                                    .'<button type="submit" class="btn btn-success">Alterar</button>'
                                 .'</div>'
                                 
                             .'</form>'
@@ -236,59 +163,18 @@ function listaUsuario(){
                     .'</div>'
                 .'</div>'
             .'</div>';
-        }    
-    }
-    
-    return $lista;
 
-}
-/*
-function listaTurmas(){
-
-    include("conexao.php");
-
-    $sql = "SELECT * FROM usuarios;";
-            
-    $result = mysqli_query($conn,$sql);
-    mysqli_close($conn);
-     
-    $lista = '';
-    $ativo = '';
-    $icone = '';
-
-    //Validar se tem retorno do BD
-    if (mysqli_num_rows($result) > 0) {
-        
-        $array = array();
-        
-
-        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            array_push($array,$linha);
-        }
-        
-        foreach ($array as $coluna) {
-
-             
-            if($coluna["FlgAtivo"] == 'S'){  
-                $ativo = 'checked';
-                $icone = '<h6><i class="fas fa-check-circle text-success"></i></h6>'; 
-            }else{
-                $ativo = '';
-                $icone = '<h6><i class="fas fa-times-circle text-danger"></i></h6>';
-            } 
+            //die();
             
 
-            //***Verificar os dados da consulta SQL
-            
+            /*
             $lista .= 
-
-            "<tr>"
-                ."<td align='center'>".$coluna["idUsuario"]."</td>"
-                ."<td align='center'>".tipoAcessoUsuario($coluna["idTipoUsuario"])."</td>"                
-                ."<td>".$coluna["Nome"]."</td>"
-                ."<td>".$coluna["Email"]."</td>"
+            '<tr>'
+                .'<td align="center">'.$coluna["idUsuario"].'</td>'
+                .'<td align="center">'.descrTipoUsuario($coluna["idTipoUsuario"]).'</td>'
+                .'<td>'.$coluna["Nome"].'</td>'
+                .'<td>'.$coluna["Login"].'</td>'
                 .'<td align="center">'.$icone.'</td>'
-            
                 .'<td>'
                     .'<div class="row" align="center">'
                         .'<div class="col-6">'
@@ -304,7 +190,6 @@ function listaTurmas(){
                         .'</div>'
                     .'</div>'
                 .'</td>'
-            
             .'</tr>'
             
             .'<div class="modal fade" id="modalEditUsuario'.$coluna["idUsuario"].'">'
@@ -332,7 +217,8 @@ function listaTurmas(){
                                         .'<div class="form-group">'
                                             .'<label for="iNome">Tipo de Usuário:</label>'
                                             .'<select name="nTipoUsuario" class="form-control" required>'
-                                               .tipoDeAcesso($coluna["idUsuario"])
+                                                .'<option value="'.$coluna["idTipoUsuario"].'">'.descrTipoUsuario($coluna["idTipoUsuario"]).'</option>'
+                                                .optionTipoUsuario()
                                             .'</select>'
                                         .'</div>'
                                     .'</div>'
@@ -340,7 +226,7 @@ function listaTurmas(){
                                     .'<div class="col-8">'
                                         .'<div class="form-group">'
                                             .'<label for="iLogin">Login:</label>'
-                                            .'<input type="email" value="'.$coluna["Email"].'" class="form-control" id="iLogin" name="nEmail" maxlength="50">'
+                                            .'<input type="email" value="'.$coluna["Login"].'" class="form-control" id="iLogin" name="nLogin" maxlength="50">'
                                         .'</div>'
                                     .'</div>'
                     
@@ -407,18 +293,18 @@ function listaTurmas(){
                     .'</div>'
                 .'</div>'
             .'</div>';
+            */
+
         }    
     }
     
     return $lista;
-
 }
-*/
 
 function tipoDeAcesso($id){
 
     include("conexao.php");
-    $sql = "SELECT tp.idTipoUsuario, tp.Descricao FROM tipousuario tp inner join usuarios usu on usu.idTipoUsuario = tp.idTipoUsuario where idUsuario = $id;";        
+    $sql = "SELECT * FROM tipousuario WHERE idTipoUsuario = $id";        
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
     $resp = "";
@@ -434,7 +320,7 @@ function tipoDeAcesso($id){
         
         foreach ($array as $coluna) {            
             //***Verificar os dados da consulta SQL
-            $resp = '<option value="'.$coluna["idTipoUsuario"].'">'.$coluna["Descricao"].'</option>';
+            $resp .= '<option value="'.$coluna["idTipoUsuario"].'">'.$coluna["Descricao"].'</option>';
              $resp .= faltantes($coluna["idTipoUsuario"]);
         }        
     }
@@ -443,10 +329,21 @@ function tipoDeAcesso($id){
     return $resp;
 }
 
+//função para trazer os dados faltantes do tipo de usuário.
 function faltantes($id){
 
     include("conexao.php");
-    $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id;";        
+    if($id == 2){
+
+       $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1;"; 
+
+    }elseif ($id == 3) {
+        $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1 and idTipoUsuario != 2;"; 
+    }else{
+
+        $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1 and idTipoUsuario != 2;"; 
+    }
+           
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
     $resp = "";
@@ -529,7 +426,7 @@ function tipoAcessoUsuario($id){
 function optionAcessoUsuario(){
 
     include("conexao.php");
-    $sql = "SELECT * FROM  tipousuario";        
+    $sql = "SELECT * FROM  tipousuario where idTipoUsuario != 1 AND idTipoUsuario != ".$_SESSION['idTipoUsuario']."; ";        
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
 
