@@ -23,8 +23,15 @@
 
       <!-- Sidebar Menu -->
       <?php echo montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']); ?>      
-      <!-- /.sidebar-menu -->     
-
+      <!-- /.sidebar-menu -->  
+      
+       <!-- Ícone de saída -->
+  <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+    <div class="info">
+      <a href="php/validaLogoff.php">Sair <i class="fas fa-door-open nav-icon"></i></a>
+    </div>        
+  </div>
+      
     </div>
     <!-- /.sidebar -->
   </aside>

@@ -89,7 +89,9 @@ function lista_usuario(){
                                         '<div class="col-4">'
                                             .'<div class="form-group">'
                                                 .'<label for="iNome">Tipo de Usuário:</label>'
-                                                .'<input name="nTipoUsuario" value="Escola" class="form-control" readonly>'                                               
+                                                .'<select name="nTipoUsuario" class="form-control">'
+                                                     .'<option value ="2">Escola</option>'
+                                                .'</select>'                                               
                                             .'</div>'
                                         .'</div>';
                                     }else{
@@ -99,7 +101,7 @@ function lista_usuario(){
                                             .'<div class="form-group">'
                                                 .'<label for="iNome">Tipo de Usuário:</label>'
                                                 .'<select name="nTipoUsuario" class="form-control">'
-                                                .tipoDeAcesso($coluna["idTipoUsuario"])
+                                                     .tipoDeAcesso($coluna["idTipoUsuario"])
                                                 .'</select>'
                                             .'</div>'
                                         .'</div>';

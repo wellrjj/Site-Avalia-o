@@ -65,7 +65,7 @@ function montaMenu($n1,$n2){
 
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="./usuarios.php" class="nav-link">
+                                            <a href="./disciplinas.php" class="nav-link">
                                             <i class="fas fa-graduation-cap nav-icon"></i>
                                             <p>Disciplinas</p>
                                             </a>

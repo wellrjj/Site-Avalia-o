@@ -31,11 +31,13 @@
 
         //UPDATE
         $sql = "UPDATE usuarios "
-                ." SET idTipoUsuario = $idtipoUsuario, "
+                ." SET idTipoUsuario = '$idtipoUsuario', "
                     ." Nome = '$nome', "
                     ." Email = '$Email', "
                     ." FlgAtivo = '$ativo' "
+                    ."'$senha'"
                 ." WHERE idUsuario = $idUsuario;";
+
     }elseif($funcao == "D"){
    
         $sql = "UPDATE usuarios "

@@ -40,7 +40,7 @@ function lista_curso(){
 
             "<tr>"
                 ."<td align='center'>".$coluna["idCurso"]."</td>"
-                ."<td>".$coluna["descricao"]."</td>"             
+                ."<td>".$coluna["Descricao"]."</td>"             
                 ."<td>".decricaoEscola($coluna["idEscola"])."</td>"
 
                 .'<td align="center">'.$icone.'</td>'
@@ -80,7 +80,7 @@ function lista_curso(){
                                     .'<div class="col-8">'
                                         .'<div class="form-group">'
                                             .'<label for="iNome">Descricao:</label>'
-                                            .'<input type="text" value="'.$coluna["descricao"].'" class="form-control" id="iNome" name="ndescricao" maxlength="50">'
+                                            .'<input type="text" value="'.$coluna["Descricao"].'" class="form-control" id="iNome" name="ndescricao" maxlength="50">'
                                         .'</div>'
                                     .'</div>'
                                     
@@ -121,7 +121,7 @@ function lista_curso(){
                 
                                  .'<div class="row">'
                                     .'<div class="col-12">'
-                                        .'<h4>Deseja CANCELAR o usuário '.$coluna["descricao"].'?</h4>'
+                                        .'<h4>Deseja CANCELAR o usuário '.$coluna["Descricao"].'?</h4>'
                                     .'</div>'
                                 .'</div>'
 
