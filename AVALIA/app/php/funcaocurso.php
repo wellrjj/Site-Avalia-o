@@ -168,6 +168,30 @@ function decricaoEscola($id){
     return $resp;
 }
 
+function optionCurso(){
+
+    include("conexao.php");
+    $sql = "SELECT * FROM curso WHERE FlgAtivo = 'S';";
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+    $resp = "";
+
+    //Validar se tem retorno do BD
+    if (mysqli_num_rows($result) > 0) {
+                
+        $array = array();
+        
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        
+        foreach ($array as $coluna) {            
+            $resp .= '<option value="'.$coluna["idCurso"].'">'.$coluna["Descricao"].'</option>';
+        } 
+    }
+    return $resp;  
+}
+
 
 function proximoidCurso(){
     $id = "";
@@ -193,6 +217,31 @@ function proximoidCurso(){
     } 
 
     return $id;
+
+}
+
+function optionCursoDisciplina($id){
+ 
+    include("conexao.php");
+    $sql = "SELECT * FROM curso WHERE idCurso = '$id';";
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+    $resp = "";
+
+    //Validar se tem retorno do BD
+    if (mysqli_num_rows($result) > 0) {
+                
+        $array = array();
+        
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        
+        foreach ($array as $coluna) {            
+            $resp = '<option value="'.$coluna["idCurso"].'">'.$coluna["Descricao"].'</option>';
+        } 
+    }
+    return $resp; 
 
 }
 

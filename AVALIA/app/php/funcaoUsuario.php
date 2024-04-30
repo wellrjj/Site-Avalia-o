@@ -334,6 +334,32 @@ function optionAcessoUsuario(){
     return $resp;
 }
 
+
+function optionProfessor(){
+
+    include("conexao.php");
+    $sql = "SELECT * FROM  usuarios where idTipoUsuario = 3 AND idEscola = ".$_SESSION['idEscola']."; ";        
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+
+    //Validar se tem retorno do BD
+    if (mysqli_num_rows($result) > 0) {
+                
+        $array = array();
+        
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        
+        foreach ($array as $coluna) {            
+            //***Verificar os dados da consulta SQL
+            $resp .= '<option value="'.$coluna["idUsuario"].'">'.$coluna["Nome"].'</option>';
+        }        
+    } 
+
+    return $resp;
+}
+
 //Função para buscar a foto do usuário
 function fotoUsuario($id){
 

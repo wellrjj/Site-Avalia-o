@@ -70,6 +70,15 @@ function montaMenu($n1,$n2){
                                             <p>Disciplinas</p>
                                             </a>
                                         </li>              
+                                    </ul>
+                                    
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="./lecionadores.php" class="nav-link">
+                                            <i class="fas fa-chalkboard-teacher nav-icon"></i>
+                                            <p>Lecionadores</p>
+                                            </a>
+                                        </li>              
                                     </ul>';
 
                       }elseif ($_SESSION["idTipoUsuario"] == 3) {

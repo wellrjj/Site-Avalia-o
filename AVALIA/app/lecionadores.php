@@ -25,7 +25,7 @@
   <!-- Sidebar -->
   <?php include('partes/sidebar.php'); 
         $_SESSION['menu-n1'] = 'administrador';
-        $_SESSION['menu-n2'] = 'Disciplina';
+        $_SESSION['menu-n2'] = 'lecionadores';
         montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']);
   ?>
   <!-- Fim Sidebar -->
@@ -48,12 +48,12 @@
                 <div class="row">
                   
                   <div class="col-9">
-                    <h3 class="card-title">Disciplinas</h3>
+                    <h3 class="card-title">Lecionador</h3>
                   </div>
                   
                   <div class="col-3" align="right">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novaDisciplinaModal">
-                      Nova Disciplina
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novoLecionadorModal">
+                      Novo Lecionador
                     </button>
                   </div>
 
@@ -69,13 +69,14 @@
                   <tr>
                       <th>ID Disciplina</th>
                       <th>Descrição</th>
-                      <th>Curso</th>
+                      <th>ID Professor</th>
+                      <th>Professor</th>
                       <th>Ações</th>                      
                   </tr>
                   </thead>
                   <tbody>
 
-                  <?php echo lista_disciplinas(); ?>
+                  <?php echo lista_lecionadores(); ?>
                   
                   </tbody>
                   
@@ -92,32 +93,37 @@
       </div>
       <!-- /.container-fluid -->
 
-      <div class="modal fade" id="novaDisciplinaModal">
+      <div class="modal fade" id="novoLecionadorModal">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header bg-success">
-              <h4 class="modal-title">Novo Usuário</h4>
+              <h4 class="modal-title">Novo Lecionador</h4>
               <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="php/salvarDisciplina.php?funcao=I" enctype="multipart/form-data">              
+              <form method="POST" action="php/salvarLecionador.php?funcao=I" enctype="multipart/form-data">              
                 
                 <div class="row">
-                  <div class="col-8">
+                  
+
+                <div class="col-6">
                     <div class="form-group">
-                      <label for="iNome">Descrição:</label>
-                      <input type="text" class="form-control" id="iNome" name="nDescricao" maxlength="50">
+                      <label for="iNome">Disciplina:</label>
+                      <select name="nDisciplina" class="form-control" required>
+                        <option value="">Selecione...</option>
+                        <?php echo optionDisciplinas();?>
+                      </select>
                     </div>
                   </div>
 
-                  <div class="col-4">
+                  <div class="col-6">
                     <div class="form-group">
-                      <label for="iNome">Curso:</label>
-                      <select name="nCurso" class="form-control" required>
+                      <label for="iNome">Professor:</label>
+                      <select name="nProfessor" class="form-control" required>
                         <option value="">Selecione...</option>
-                        <?php echo optionCurso();?>
+                        <?php echo optionProfessor();?>
                       </select>
                     </div>
                   </div>

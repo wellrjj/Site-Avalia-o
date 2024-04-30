@@ -2,12 +2,10 @@
     session_start();
     include('funcoes.php');
 
-    $descricao = $_POST["ndescricao"];
-    $idCurso = isset($_GET["codigo"]) ? $_GET["codigo"] : null;
+    $descricao = $_POST["nDescricao"];
+    $idDisciplina = isset($_GET["codigo"]) ? $_GET["codigo"] : null;
+    $idCurso = $_POST["nCurso"];
     $funcao = $_GET["funcao"];
-
-    
-    $ativo = isset($_POST["nAtivo"]) && $_POST["nAtivo"] == "on" ? "S" : "N";
 
     
     include("conexao.php");
@@ -16,32 +14,31 @@
     if($funcao == "I"){
 
         //Busca o próximo ID na tabela
-        $idCurso = proximoidCurso();
+        $idDisciplina = proximoidDisciplina();
 
         //INSERT
-        $sql = "INSERT INTO curso (idCurso, idEscola, descricao, FlgAtivo) "
-        ."VALUES ($idCurso,".$_SESSION['idEscola'].",'$descricao', '$ativo');";
+        $sql = "INSERT INTO disciplina (idDisciplina, idCurso, Descricao) "
+        ."VALUES ('$idDisciplina','$idCurso','$descricao');";
        
 
 
     }elseif($funcao == "A"){
 
         //UPDATE
-        $sql = "UPDATE curso"
-                ." SET descricao = '$descricao',"
-                    ." FlgAtivo = '$ativo'"
-                ." WHERE idCurso = '$idCurso';";
+        $sql = "UPDATE disciplina"
+                ." SET Descricao = '$descricao'"
+                ." WHERE idDisciplina = '$idDisciplina';";
+                
     }elseif($funcao == "D"){
-   
-        $sql = "UPDATE curso "
-                ." SET FlgAtivo = 'N' "
-                ." WHERE idCurso = '$idCurso';";
+
+        //DELETE
+        $sql = "DELETE FROM disciplina WHERE idDisciplina = '$idDisciplina';";
 
     }
 
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
 
-    header("location: ../curso.php");
+    header("location: ../disciplinas.php");
 
 ?>
