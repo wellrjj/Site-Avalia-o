@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -25,13 +25,14 @@
       <?php echo montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']); ?>      
       <!-- /.sidebar-menu -->  
       
-       <!-- Ícone de saída -->
-  <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
-    <div class="info">
-      <a href="php/validaLogoff.php">Sair <i class="fas fa-door-open nav-icon"></i></a>
-    </div>        
-  </div>
+     
       
     </div>
     <!-- /.sidebar -->
+
+      <div class="sidebar-custom">
+        <a href="php/validaLogoff.php" class="btn btn-danger"><i class="fas fa-door-open nav-icon"></i></a>
+        <a href="php/validaLogoff.php" class="btn btn-secondary hide-on-collapse pos-right">SAIR</a>
+      </div>
+      <!-- /.sidebar-custom -->
   </aside>

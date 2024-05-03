@@ -9,10 +9,10 @@ function lista_lecionadores(){
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
-
+    $lista = '';
     //Validar se tem retorno do BD
     if (mysqli_num_rows($result) > 0) {
-        $lista = '';
+        
         $array = array();
         
 

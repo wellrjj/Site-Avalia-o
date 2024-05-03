@@ -15,9 +15,10 @@ function lista_disciplinas(){
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
 
+    $lista = '';
     //Validar se tem retorno do BD
     if (mysqli_num_rows($result) > 0) {
-        $lista = '';
+        
         $array = array();
         
 
@@ -133,6 +134,9 @@ function lista_disciplinas(){
            
 
         }    
+    }else{
+
+        $lista = "<tr><td>NULL</td><td>NULL</td><td>NULL</td><td>NULL</td><td>NULL</td></tr>";
     }
     
     return $lista;

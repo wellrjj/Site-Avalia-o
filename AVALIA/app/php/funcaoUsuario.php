@@ -382,8 +382,12 @@ function fotoUsuario($id){
         foreach ($array as $coluna) {            
             //***Verificar os dados da consulta SQL
             $resp = $coluna["Foto"];
-        }        
-    } 
+        } 
+        
+        if($resp == ''){
+             $resp = "dist\img\user.png";
+        }
+    }
 
     return $resp;
 }

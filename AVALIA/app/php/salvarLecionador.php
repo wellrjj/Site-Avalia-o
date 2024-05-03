@@ -6,8 +6,7 @@
     $idProfessorDisciplina = isset($_GET["codigo"]) ? $_GET["codigo"] : null;
     $idDisciplina = $_POST["nDisciplina"];
     $funcao = $_GET["funcao"];
-    var_dump($idProfessorDisciplina);
-    die();
+    
     
     include("conexao.php");
 
@@ -26,7 +25,7 @@
     }else{
 
         //UPDATE
-        $sql = "DELETE FROM professor_has_disciplina WHERE idProfessorDisciplina = $idProfessorDisciplina;";
+        $sql = "DELETE FROM professor_has_disciplina WHERE idProfessorDisciplina = '$idProfessorDisciplina';";
                 
     }
 
