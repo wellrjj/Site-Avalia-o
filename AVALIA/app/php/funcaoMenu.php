@@ -115,7 +115,7 @@ function montaMenu($n1,$n2){
                         $html .= 
                             '<ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./atividade.php" class="nav-link">
+                                    <a href="./atividades.php" class="nav-link">
                                         <i class="nav-icon fas fa-th"></i>
                                         <p>
                                             Atividades

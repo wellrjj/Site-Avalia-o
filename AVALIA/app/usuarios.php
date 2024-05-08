@@ -24,7 +24,7 @@
 
   <!-- Sidebar -->
   <?php include('partes/sidebar.php'); 
-        $_SESSION['menu-n1'] = 'administrador';
+        $_SESSION['menu-n1'] = 'escola';
         $_SESSION['menu-n2'] = 'usuarios';
         montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']);
 

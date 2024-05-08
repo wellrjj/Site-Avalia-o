@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Aluno</title>
+  <title>Projeto Modelo - atividades</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -24,14 +24,14 @@
 
   <!-- Sidebar -->
   <?php include('partes/sidebar.php'); 
-        $_SESSION['menu-n1'] = 'administrador';
-        $_SESSION['menu-n2'] = 'aluno';
+        $_SESSION['menu-n1'] = 'aluno';
+        $_SESSION['menu-n2'] = 'Atividades';
         montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']);
   ?>
   <!-- Fim Sidebar -->
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <!-- Espaço -->
@@ -48,7 +48,7 @@
                 <div class="row">
                   
                   <div class="col-12">
-                    <h3 class="card-title">sujiro</h3>
+                    <h3 class="card-title">Atividades Pendentes</h3>
                   </div>
 
                 </div>
@@ -61,17 +61,18 @@
                 <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                      <th>ID</th>
-                      <th>tipo usuario</th>
-                      <th>Nome</th>
-                      <th>Login</th>
-                      <th>Ativo</th>                
+                      <th>título da atividade</th>
+                      <th>Descricao</th>
+                      <th>Curso</th>
+                      <th>Turma</th>
+                      <th>Professor</th> 
+                      <th>data da Aplicação</th>                                      
                       <th>Ações</th>
                   </tr>
                   </thead>
                   <tbody>
 
-                  <?php echo lista_usuario(); ?>
+                  <?php echo lista_atividade(); ?>
                   
                   </tbody>
                   
