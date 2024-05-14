@@ -113,17 +113,26 @@ function montaMenu($n1,$n2){
                       }elseif ($_SESSION["idTipoUsuario"] == 4) {
                         
                         $html .= 
-                            '<ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./atividades.php" class="nav-link">
-                                        <i class="nav-icon fas fa-th"></i>
-                                        <p>
-                                            Atividades
-                                            <span class="right badge badge-danger">'.temAtividade().'</span>
-                                        </p>
-                                    </a>
-                                </li>              
-                            </ul>';
+                                    '<ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="./atividades.php" class="nav-link">
+                                                <i class="nav-icon fas fa-th"></i>
+                                                <p>
+                                                    Atividades
+                                                    <span class="right badge badge-danger">'.temAtividade().'</span>
+                                                </p>
+                                            </a>
+                                        </li>              
+                                    </ul>
+                                
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="./desempenho.php" class="nav-link">
+                                                <i class="fas fa-chart-pie nav-icon"></i>
+                                                Desempenho
+                                            </a>
+                                        </li>              
+                                    </ul>';
 
                       } 
                 
