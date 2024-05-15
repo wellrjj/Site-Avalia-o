@@ -13,10 +13,10 @@ function listaQuestao(){
 
     //Validar se tem retorno do BD
     if (mysqli_num_rows($result) > 0) {
-       
+    
         $array = array();
         
-
+    
         while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             array_push($array,$linha);
         }
@@ -25,13 +25,13 @@ function listaQuestao(){
             if($coluna["FlgLiberada"] == 'S'){  
                 $ativo = 'checked';
                 $icone = '<h6><i class="fas fa-check-circle text-success"></i></h6>'; 
-            }else if ($coluna["FlgLiberada"] == 'N'){
-                $ativo = 'nao';
+            }else if ($coluna["FlgLiberada"] == 'C'){
+                $ativo = 'unchecked';
                 $icone = '<h6><i class="fas fa-times-circle text-danger"></i></h6>';
             } 
-
+        
             //***Verificar os dados da consulta SQL
-
+        
             $lista .= 
             "<tr>"
             ."<td align='center'>".$coluna["idQuestao"]."</td>"
@@ -58,18 +58,18 @@ function listaQuestao(){
                     .'<a href="#liberarQuestao'.$coluna["idQuestao"].'" data-toggle="modal">';
                     if($ativo == 'checked' ){
                         $lista.= '<h6><i class="fas fas fa-thumbs-down text-danger" data-toggle="tooltip" title="Cancelar Disciplina"></i></h6>';
-                     } elseif ($ativo !='checked' ){
+                     } elseif ($ativo =='unchecked' ){
                         $lista.= '<h6><i class="fas fas fa-thumbs-up text-infoz " data-toggle="tooltip" title="Liberar Disciplina"></i></h6>';
                      }
                 $lista.='</a>'
                 .'</div>'
-
-
+                    
+                    
             .'</div>'
             .'</div>'
             ."</td>"
             ."</tr>"
-            
+                    
             .'<div class="modal fade" id="visualizarQuestoes'.$coluna["idQuestao"].'">'
                 .'<div class="modal-dialog modal-lg">'
                     .'<div class="modal-content">'
@@ -80,9 +80,9 @@ function listaQuestao(){
                             .'</button>'
                         .'</div>'
                         .'<div class="modal-body">'
-
+                    
                             .'<form method="POST" enctype="multipart/form-data">'              
-                
+                    
                                 .'<div class="row">'
                                     .'<div class="col-4">'
                                         .'<div class="form-group">'
@@ -130,18 +130,18 @@ function listaQuestao(){
                                             .'<input type="text" value="'.respostaCorretaDescricao($coluna["idQuestao"]).'" class="form-control" id="iresp4" name="nrespostacorreta" maxlength="50" readonly>'
                                         .'</div>'
                                     .'</div>'
-
+                    
                                     .'<div class="col-12">'
                                         .'<div class="form-group">'
                                         .'<input type="checkbox" id="iAtivo" name="nAtivo">'
                                           .'<label for="iAtivo">Liberado </label>'
                                          .'</div>'
                                     .'</div>'
-
-
-
+                    
+                    
+                    
                                 .'</div>'
-                
+                    
                                 .'<div class="modal-footer">'
                                     .'<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>'
                                 .'</div>'
@@ -152,9 +152,9 @@ function listaQuestao(){
                     .'</div>'
                 .'</div>'
             .'</div>'
-            
-
-            .'<div class="modal fade" id="liberarQuestao'.$coluna["idQuestao"].'">'
+                    
+                    
+        .'<div class="modal fade" id="liberarQuestao'.$coluna["idQuestao"].'">'
             .'<div class="modal-dialog modal-m">'
                 .'<div class="modal-content">'
                     .'<div class="modal-header '.liberadoCanceladoIcone($coluna['idQuestao']).'">'
@@ -164,19 +164,19 @@ function listaQuestao(){
                         .'</button>'
                     .'</div>'
                     .'<div class="modal-body">'
-
-                        .'<form method="POST" action="php/salvarQuestao.php?funcao=D&codigo='.$coluna["idQuestao"].'" enctype="multipart/form-data">'              
-            
+                    
+                        .'<form method="POST" action="php/salvarQuestao.php?funcao=D&codigo='.$coluna["idQuestao"].'&teste='.verificaLiberacao($coluna["idQuestao"]).'" enctype="multipart/form-data">'              
+                    
                             .'<div class="row">'
                                 .'<div class="col-12">';
                                 if($ativo == 'checked'){
                                     $lista.='<h4>Realmente deseja Cancelar Questão  '.$coluna["idQuestao"].' ?</h4>';
-                                    $_SESSION['LIBERADO'] = 'N';
+                                
                                 }
-                                if($ativo != ''){
+                                elseif($ativo == 'unchecked'){
                                     $lista.='<h4>Realmente deseja Liberar Questão  '.$coluna["idQuestao"].' ?</h4>';
-                                    $_SESSION['LIBERADO'] = 'S';
-
+                                
+                                
                                 }
                                 $lista.='</div>'
                             .'</div>'
@@ -185,17 +185,130 @@ function listaQuestao(){
                                 .'<button type="submit" class="btn btn-success">Sim</button>'
                             .'</div>'
                         .'</form>'
-            
-            
-            
-            
-            ;
+                    .'</div>'
+                .'</div>'
+            .'</div>'
+        .'</div>'
+                            
+        .'<div class="modal fade" id="modalAlterarQuestoes'.$coluna["idQuestao"].'">'
+        .'<div class="modal-dialog modal-lg">'
+            .'<div class="modal-content">'
+                .'<div class="modal-header bg-info ">'
+                    .'<h4 class="modal-title">Editar Questão</h4>'
+                    .'<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">'
+                        .'<span aria-hidden="true">&times;</span>'
+                    .'</button>'
+                .'</div>'
+                .'<div class="modal-body">'
+                            
+                    .'<form method="POST" action="php/salvarQuestao.php?funcao=A&codigo='.$coluna["idQuestao"].'" enctype="multipart/form-data">'              
+                            
+                        .'<div class="row">'
+                            .'<div class="col-4">'
+                                .'<div class="form-group">'
+                                    .'<label for=iAssunto>Assunto:</label>'
+                                    .'<input type="text" value="'.$coluna["Assunto"].'" class="form-control" id="iAssunto" name="nAssunto" maxlength="50" >'
+                                .'</div>'
+                            .'</div>'
+                            .'<div class="col-8">'
+                                .'<div class="form-group">'
+                                    .'<label for=ipergunta>Pergunta:</label>'
+                                    .'<input type="text" value="'.$coluna["Pergunta"].'" class="form-control" id="ipergunta" name="npergunta" maxlength="50" >'
+                                .'</div>'
+                            .'</div>'
+                            .'<div class="image" style="text-align: center;" >'
+                                .'<label for="idFoto"> Imagem :'
+                                .'<input type="file" class="form-control" id="iFoto" name="Foto" accept="image/*">'
+                                .'</label>'
+                            .'</div>'
+                            .'<div class="col-12">'
+                                .'<div class="form-group">'
+                                    .'<label for=iresp1> Primeira Aleternativa:</label>'
+                                    .'<input type="text" value="'.$coluna["Resp1"].'" class="form-control" id="iresp1" name="nresposta1" maxlength="50" >'
+                                .'</div>'
+                            .'</div>'
+                            .'<div class="col-12">'
+                                .'<div class="form-group">'
+                                    .'<label for=iresp1> Segunda Aleternativa:</label>'
+                                    .'<input type="text" value="'.$coluna["Resp2"].'" class="form-control" id="iresp2" name="nresposta2" maxlength="50" >'
+                                .'</div>'
+                            .'</div>'
+                            .'<div class="col-12">'
+                                .'<div class="form-group">'
+                                    .'<label for=iresp1> Terceira Aleternativa:</label>'
+                                    .'<input type="text" value="'.$coluna["Resp3"].'" class="form-control" id="iresp3" name="nresposta3" maxlength="50" >'
+                                .'</div>'
+                            .'</div>'
+                            .'<div class="col-12">'
+                                .'<div class="form-group">'
+                                    .'<label for=iresp1> Quarta Aleternativa:</label>'
+                                    .'<input type="text" value="'.$coluna["Resp4"].'" class="form-control" id="iresp4" name="nresposta4" maxlength="50" >'
+                                .'</div>'
+                            .'</div>'
+                            
+                            .'<div class="col-12">'
+                                .'<div class="form-group">'
+                                    .'<select name="nrespostacorreta" class="form-control" id="iresp5" required>'
+                                        .retornarResposta($coluna["idQuestao"])
+                                        .mostrarOpcaoResposta($coluna["ResCorreta"])
+                                        .'</select>'
+                                .'</div>'
+                            .'</div>'
+                            
+                            
+                            
+                            .'<div class="modal-footer">'
+                                .'<button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>'
+                                .'<button type="submit" class="btn btn-success">Sim</button>'
+                             .'</div>'
+                            
+                        .'</div>'
+                            
+                            
+                            
+                    .'</form>'
+                .'</div>'
+            .'</div>'
+        .'</div>'
+    .'</div>'
+                            
+                            
+    ;
+
+
         }    
     }
     
     return $lista;
 }
 
+function retornarResposta($id){
+
+    include("conexao.php");
+    $sql = "SELECT * FROM questao WHERE idQuestao = $id";        
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+    $resp = "";
+
+    //Validar se tem retorno do BD
+    if (mysqli_num_rows($result) > 0) {
+                
+        $array = array();
+        
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        
+        foreach ($array as $coluna) {            
+            //***Verificar os dados da consulta SQL
+            $resp .= '<option value="'.$coluna["RespCorreta"].'">'.respostaCorretaDescricao($coluna["idQuestao"]).'</option>';
+            
+        }        
+    }
+
+
+    return $resp;
+}
 
 
 
@@ -203,7 +316,7 @@ function listaQuestao(){
 
 function descDisciplina($id){
     include("conexao.php");
-    $sql = "SELECT Descricao from disciplina where idDisciplina=$id";
+    $sql = "SELECT Descricao from disciplina where idDisciplina=$id ;";
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
     if (mysqli_num_rows($result) > 0) {
@@ -328,6 +441,49 @@ function selectQuestao($id){
             $resp .= '<option value="'.$coluna["idid"].'">'.$coluna["DESCS"].'</option>';
         }        
     } 
+    return $resp;
+}
+function mostrarOpcaoResposta($id){
+    include("conexao.php");
+    $sql = "SELECT * FROM questao ;";        
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+	if (mysqli_num_rows($result) >0){
+        $array = array();
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        foreach ($array as $coluna) {            
+            //***Verificar os dados da consulta SQL
+            $resp = $coluna["RespCorreta"];
+
+            if($resp != $id){
+                $resp2 .= '<option value="'.$coluna["RespCorreta"].'">'.respostaCorretaDescricao($coluna["idQuestao"]).'</option>';
+
+            }
+        } 
+    }
+    return $resp2;
+
+
+
+}
+function verificaLiberacao($id){
+
+    include("conexao.php");
+    $sql= "SELECT FlgLiberada from questao where idQuestao =$id;";
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    if (mysqli_num_rows($result) >0){
+        $array = array();
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        foreach ($array as $coluna) {            
+            //***Verificar os dados da consulta SQL
+            $resp = $coluna["FlgLiberada"];
+        }   
+    }
     return $resp;
 }
 function proxIdQeustao(){

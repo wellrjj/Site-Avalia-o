@@ -29,10 +29,16 @@ if($funcao == "I"){
 
 }elseif($funcao == "A"){
     $idQuestao     = $_GET["codigo"];
+    
 }elseif($funcao == "D"){
-    $idQuestao     = $_GET["codigo"];
-
-    $sql=" UPDATE questao set FlgLiberada = '".$_SESSION['LIBERADO']."' WHERE idQuestao=$idQuestao ;"; 
+    include("conexao.php");
+    $idQuestao  = $_GET["codigo"];
+    $TESTE = $_GET['teste'];
+    if($TESTE =="S"){
+    $sql=" UPDATE questao set FlgLiberada = 'C' WHERE idQuestao= $idQuestao ;";
+    } elseif($TESTE =="C") {
+    $sql=" UPDATE questao set FlgLiberada = 'S' WHERE idQuestao=$idQuestao ;";
+    }
 }
 
 $result = mysqli_query($conn,$sql);
