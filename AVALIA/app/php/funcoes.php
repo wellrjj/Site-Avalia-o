@@ -6,6 +6,7 @@ include("funcaocurso.php");
 include("funcaoDisciplina.php");
 include("funcaoLecionadores.php");
 include("funcaoAluno.php");
-include("funcaoAtividade.php");
+include("funcaoAtividadeAluno.php");
+include("funcaoQuestao.php");
 
 ?>

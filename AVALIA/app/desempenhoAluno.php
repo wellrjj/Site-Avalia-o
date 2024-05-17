@@ -31,36 +31,50 @@
   ?>
   <!-- Fim Sidebar -->
 
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
+      <!-- Espaço -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-6">
-            
-               <?php echo montaDesempenho();
-                                                                    
-                  $acertos = acertou(); // Número de respostas corretas
-                  $erros = errou();   // Número de respostas erradas
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                 <h4> Desempenho das Atividades</h4>
+              </div>
+              <table id="tabela" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                      <th>Id disciplina</th>
+                      <th>Descrição</th>
+                      <th>Resultado da atividade</th>
+                  </tr>
+                  </thead>
+                  <tbody>
 
-                  // Calcula a porcentagem de acertos e erros
-                  $total = $acertos + $erros;
-                  $porcentagemAcertos = ($acertos / $total) * 100;
-                  $porcentagemErros = ($erros / $total) * 100;
+                     <?php echo disciplinasDoAluno();  ?>
                   
-                ?>
+                  </tbody>
+                  
+                </table>
+               
+
+            </div>
+            <!-- /.card -->
+            
           </div>
-          <!-- /.col (RIGHT) -->
+          <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    </div>
- 
-    
   </div>
 
   <!-- Control Sidebar -->
@@ -76,22 +90,21 @@
 <!-- Fim JS -->
 
  <script>
-        var ctx = document.getElementById('graficoPizza').getContext('2d');
 
-        // Cria o gráfico de pizza
-        var graficoPizza = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Acertos', 'Erros'],
-                datasets: [{
-                    data: [<?php echo $porcentagemAcertos; ?>, <?php echo $porcentagemErros; ?>],
-                    backgroundColor: [
-                        'green', // Cor para os acertos
-                        'red'    // Cor para os erros
-                    ]
-                }]
-            }
+       $(function () {
+          $('#tabela').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+          });
         });
+    
+       <?php echo montaScriptDesempenho();?>               
+
     </script>
 
 

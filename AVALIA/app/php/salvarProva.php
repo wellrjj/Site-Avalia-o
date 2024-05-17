@@ -49,10 +49,11 @@
                         ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao10', '$Resposta10');";
     
     //Função de correção de atividade                    
-    correcao($id);                    
+                       
     
     $result = mysqli_query($conn,$sql);
-    mysqli_close($conn);    
+    mysqli_close($conn);
+    correcao($idAtividade);     
 
     header("location: ../aluno.php");
 
