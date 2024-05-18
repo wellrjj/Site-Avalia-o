@@ -35,7 +35,7 @@ function Atividade($id){
     
     include("conexao.php");
     
-    $sql = "select atique.idAtividadeQuestao,que.idQuestao,que.Imagem, que.Pergunta, que.Resp1, que.Resp2, que.Resp3, que.Resp4, que.RespCorreta from questao que inner join atividade_has_questao atique on atique.idQuestao = que.idQuestao inner join atividade_has_aluno atilu on atilu.idAtividade = atique.idAtividade where atique.idAtividade = '$id';";
+    $sql = "select atique.idAtividadeQuestao,que.idQuestao,que.Imagem, que.Pergunta, que.Resp1, que.Resp2, que.Resp3, que.Resp4, que.RespCorreta from questao que inner join atividade_has_questao atique on atique.idQuestao = que.idQuestao where atique.idAtividade = '$id';";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -213,10 +213,13 @@ function notaAluno($id){
             array_push($array,$linha);
         }
         foreach ($array as $coluna) {
-              $acertos = $acertos + $coluna["Acertou"];  
+            if ($coluna["Acertou"] == 1) {
+                $acertos = $acertos + 1;  
+            }
+              
         }
     }
-    return $acertos;
+    return strval($acertos);;
 }
 
 function revisaoAluno(){

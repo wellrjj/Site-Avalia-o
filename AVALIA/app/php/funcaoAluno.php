@@ -5,7 +5,7 @@ function temAtividade(){
     
     include("conexao.php");
     
-    $sql = "SELECT ati.idAtividade from atividade ati inner join disciplina dis on dis.idDisciplina = ati.idDisciplina inner join curso cur on cur.idCurso = dis.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma LEFT join atividade_has_aluno atilu on atilu.idAluno = usu.idUsuario where usu.idEscola = ".$_SESSION["idEscola"]." and ati.FlgLiberada = 'S' and atilu.Resposta = '';";
+    $sql = "SELECT * from atividade_has_aluno atilu where atilu.idAluno = ".$_SESSION["idUsuario"]." and atilu.Resposta = '';";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -36,8 +36,7 @@ function lista_atividade(){
 
     include("conexao.php");
     
-    $sql = "SELECT ati.idAtividade,ati.Titulo, ati.Descricao,cur.Descricao as 'descCur',tur.Descricao as 'descTur', usu.Nome as 'professor', ati.DataAplicacao from atividade ati inner join disciplina dis on dis.idDisciplina = ati.idDisciplina inner join curso cur on cur.idCurso = dis.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma LEFT join atividade_has_aluno atilu on atilu.idAluno = usu.idUsuario where usu.idEscola = ".$_SESSION["idEscola"]." and ati.FlgLiberada = 'S' and atilu.Resposta = '';";
-            
+    $sql = "SELECT ati.idAtividade,ati.Titulo, ati.Descricao, cur.Descricao AS desCur, tur.Descricao AS desTur,ati.idProfessor, ati.DataAplicacao from atividade_has_aluno atilu inner join atividade ati on ati.idAtividade = atilu.idAtividade inner join professor_has_disciplina prodis on prodis.idDisciplina = ati.idDisciplina inner join usuarios usu on usu.idUsuario = prodis.idProfessor inner join disciplina dis on dis.idDisciplina = prodis.idDisciplina inner join curso cur on cur.idCurso = dis.idCurso inner join turma tur on tur.idCurso = cur.idCurso where atilu.idAluno = ".$_SESSION["idUsuario"]." and atilu.Resposta = '';";
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
     $lista = '';
@@ -60,9 +59,9 @@ function lista_atividade(){
             $lista .= "<tr>"
                             ."<td align='center'>".$coluna["Titulo"]."</td>"
                             ."<td align='center'>".$coluna["Descricao"]."</td>"                
-                            ."<td>".$coluna["descCur"]."</td>"    
-                            ."<td>".$coluna["descTur"]."</td>"  
-                            ."<td>".$coluna["professor"]."</td>"  
+                            ."<td>".$coluna["desCur"]."</td>"    
+                            ."<td>".$coluna["desTur"]."</td>"  
+                            ."<td>".nomeProfessor($coluna["idProfessor"])."</td>"  
                             ."<td>".$coluna["DataAplicacao"]."</td>"  
                                             
                             .'<td>'

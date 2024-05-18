@@ -23,10 +23,12 @@
   <!-- Fim Navbar -->
 
   <!-- Sidebar -->
-  <?php include('partes/sidebar.php'); 
+  <?php 
         $_SESSION['menu-n1'] = 'aluno';
-        $_SESSION['menu-n2'] = 'Atividades';
+        $_SESSION['menu-n2'] = 'atividade';
         montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']);
+        include('partes/sidebar.php'); 
+        
   ?>
   <!-- Fim Sidebar -->
 

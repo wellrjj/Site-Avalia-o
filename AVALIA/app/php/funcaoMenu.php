@@ -10,6 +10,10 @@ function montaMenu($n1,$n2){
     $menuProfessor = '';
     $menuAluno = '';
 
+    $desempenho = '';
+    $revisao = '';
+    $atividade = '';
+
     switch ($n1) {
         case 'administrador':
             $menuAdmin = 'menu-open';
@@ -31,10 +35,27 @@ function montaMenu($n1,$n2){
             break;
     }
 
+    switch ($n2) {
+        case 'desempenho':
+            $desempenho = 'active';
+            break;
+        case 'revisao':
+            $revisao = 'active';
+            break;
+        
+        case 'atividade':
+            $atividade = 'active';
+            break;      
+                        
+        default:
+            # code...
+            break;
+    }
+
     $html = '<nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                    <li class="nav-item '.$menuAdmin.'">
+                    <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">';
                         if($_SESSION["idTipoUsuario"] == 3 ){
                             $html .=
@@ -159,7 +180,7 @@ function montaMenu($n1,$n2){
                             $html .= 
                             '<ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./atividadeAluno.php" class="nav-link">
+                                <a href="./atividadeAluno.php" class="nav-link '.$atividade.'" >
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
                                         Atividades
@@ -171,7 +192,7 @@ function montaMenu($n1,$n2){
                     
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./desempenhoAluno.php" class="nav-link">
+                                <a href="./desempenhoAluno.php" class="nav-link '.$desempenho.'" >
                                     <i class="fas fa-chart-pie nav-icon"></i>
                                     Desempenho
                                 </a>
@@ -180,7 +201,7 @@ function montaMenu($n1,$n2){
 
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./revisaoAluno.php" class="nav-link">
+                                <a href="./revisaoAluno.php" class="nav-link '.$revisao.'" >
                                     <i class="fas fa-sync nav-icon"></i>
                                     Revisão
                                 </a>

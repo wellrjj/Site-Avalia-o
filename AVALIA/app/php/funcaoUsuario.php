@@ -392,6 +392,33 @@ function fotoUsuario($id){
     return $resp;
 }
 
+//Função para buscar o nome do professor
+function nomeProfessor($id){
+
+    include("conexao.php");
+    $sql = "SELECT usu.Nome FROM usuarios usu where usu.idUsuario = $id;";        
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+     
+    $resp = '';
+    //Validar se tem retorno do BD
+    if (mysqli_num_rows($result) > 0) {
+                
+        $array = array();
+        
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        
+        foreach ($array as $coluna) {            
+            //***Verificar os dados da consulta SQL
+            $resp = $coluna["Nome"];
+        }        
+    } 
+
+    return $resp;
+}
+
 //Função para buscar o nome do usuário
 function nomeUsuario($id){
 
