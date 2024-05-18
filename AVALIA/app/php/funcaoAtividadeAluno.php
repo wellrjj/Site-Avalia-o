@@ -133,7 +133,7 @@ function montaScriptDesempenho(){
     // Dados do banco de dados
     include("conexao.php");
   
-    $sql = "SELECT atilu.Acertou, dis.idDisciplina from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma inner join atividade ati on ati.idDisciplina = dis.idDisciplina inner join atividade_has_aluno atilu on atilu.idAtividade = ati.idAtividade  where usu.idUsuario = '".$_SESSION["idUsuario"]."' and usu.idEscola = '".$_SESSION["idEscola"]."' and ati.flgMostraNota = 'S';";
+    $sql = "select atilu.Acertou, atilu.idAtividade, ati.idDisciplina from atividade_has_aluno atilu inner join atividade ati on ati.idAtividade = atilu.idAtividade where atilu.idAluno = ".$_SESSION["idUsuario"]." and ati.flgMostraNota = 'S' and atilu.Resposta != '' ORDER BY ati.idDisciplina;";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -197,7 +197,7 @@ function notaAluno($id){
     // Dados do banco de dados
     include("conexao.php");
   
-    $sql = "SELECT atilu.Acertou from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma inner join atividade ati on ati.idDisciplina = dis.idDisciplina inner join atividade_has_aluno atilu on atilu.idAtividade = ati.idAtividade  where usu.idUsuario = '".$_SESSION["idUsuario"]."' and usu.idEscola = '".$_SESSION["idEscola"]."' and ati.flgRevisao = 'S' and ati.idAtividade = '$id';";
+    $sql = "SELECT atilu.Acertou from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join atividade ati on ati.idDisciplina = dis.idDisciplina inner join atividade_has_aluno atilu on atilu.idAtividade = ati.idAtividade  where atilu.idAluno = '".$_SESSION["idUsuario"]."' and ati.flgRevisao = 'S' and ati.idAtividade = '$id';";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);  
@@ -275,7 +275,7 @@ function provaRevisao($id){
    
     include("conexao.php");
     
-    $sql = "select atique.idAtividadeQuestao,que.idQuestao,que.Imagem, que.Pergunta, que.Resp1, que.Resp2, que.Resp3, que.Resp4, que.RespCorreta, atilu.Resposta from questao que inner join atividade_has_questao atique on atique.idQuestao = que.idQuestao inner join atividade_has_aluno atilu on atilu.idAtividadeQuestao = atique.idAtividadeQuestao where atique.idAtividade = '$id';";
+    $sql = "select atique.idAtividadeQuestao,que.idQuestao,que.Imagem, que.Pergunta, que.Resp1, que.Resp2, que.Resp3, que.Resp4, que.RespCorreta, atilu.Resposta from questao que inner join atividade_has_questao atique on atique.idQuestao = que.idQuestao inner join atividade_has_aluno atilu on atilu.idAtividadeQuestao = atique.idAtividadeQuestao where atique.idAtividade = '$id' and atilu.idAluno = '".$_SESSION["idUsuario"]."';";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);

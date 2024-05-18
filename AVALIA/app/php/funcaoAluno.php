@@ -134,15 +134,11 @@ function disciplinasDoAluno(){
                                         .'</div>'
                                         .'<div class="modal-body">'
                                             .'<div class="row">'
-                                                .'<div class="col-9">'
+                                                .'<div class="col-12">'
                                                 
                                                 .'<canvas id="graficoPizza'.$coluna["idDisciplina"].'" width="400" height="400"></canvas>'
                                                                       
-                                                .'</div>'
-                                                .'<div class="col-3">'
-                                                    
-                                                .'</div>'
-                                                 
+                                                .'</div>'                                                 
                                             .'</div>'
                                             
                                         .'</div>'
