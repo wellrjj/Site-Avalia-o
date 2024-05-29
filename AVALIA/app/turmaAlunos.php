@@ -1,6 +1,7 @@
 <?php 
   session_start();
-  include('php/funcoes.php');
+  include('php/funcoes.php'); 
+  
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Turma</title>
+  <title>Projeto Modelo - Alunos</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -49,14 +50,15 @@
                 <div class="row">
                   
                   <div class="col-9">
-                    <h3 class="card-title">Turmas</h3>
+                    <h3 class="card-title"><?php echo($_SESSION['nomeTurma']);?></h3>
                   </div>
                   
                   <div class="col-3" align="right">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novaTurmaModal">
-                      Nova Turma
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novoAlunoModal">
+                      Adicionar Aluno
                     </button>
                   </div>
+
                 </div>
               </div>
 
@@ -67,16 +69,17 @@
                 <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                      <th>Turma</th>
-                      <th>Curso</th>
+                      <th>Nome</th>
+                      <th>E-mail</th>
+                      <th>Ativo</th>
                       <th>Matrícula</th>
-                      <th>Ações</th>
                   </tr>
                   </thead>
                   <tbody>
 
                   <?php 
-                     echo listaTurmas(); 
+                     $idTurma = isset($_GET["codigo"]) ? $_GET["codigo"] : null;
+                     echo listaAlunos($idTurma); 
                   ?>
 
                   </tbody>
@@ -94,34 +97,54 @@
       </div>
       <!-- /.container-fluid -->
 
-      <div class="modal fade" id="novaTurmaModal">
+      <div class="modal fade" id="novoAlunoModal">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header bg-success">
-              <h4 class="modal-title">Nova Turma</h4>
+              <h4 class="modal-title">Adicionar Aluno</h4>
               <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="php/salvarTurma.php?funcao=I" enctype="multipart/form-data">              
+              <form method="POST" action="php/salvarAluno.php?codigo=<?php echo $idTurma; ?>" enctype="multipart/form-data">              
                 
                 <div class="row">
-                  <div class="col-12">
+                  <div class="col-8">
                     <div class="form-group">
-                      <label for="iNome">Nome da Turma:</label>
-                      <input type="text" class="form-control" id="iNome" name="nTurma" maxlength="50">
+                      <label for="iNome">Nome:</label>
+                      <input type="text" class="form-control" id="iNome" name="nNome" maxlength="50">
                     </div>
                   </div>
 
+                  <div class="col-4">
+                    <div class="form-group">
+                      <label for="iNome">Turma:</label>
+                      <select name="nTipoUsuario" class="form-control" required>
+                        <option value="">Selecione...</option>
+                        <?php echo optionTurmas();?>
+                      </select>
+                    </div>
+                  </div>
 
+                  <div class="col-8">
+                    <div class="form-group">
+                      <label for="iLogin">Login:</label>
+                      <input type="email" class="form-control" id="iLogin" name="nEmail" maxlength="50">
+                    </div>
+                  </div>
+
+                  <div class="col-4">
+                    <div class="form-group">
+                      <label for="iSenha">Senha:</label>
+                      <input type="text" class="form-control" id="iSenha" name="nSenha" maxlength="6">
+                    </div>
+                  </div>
+                
                   <div class="col-12">
                     <div class="form-group">
-                      <label for="iNome">Curso:</label>
-                      <select name="nCurso" class="form-control" required>
-                        <option value="">Selecione...</option>
-                        <?php echo optionCurso();?>
-                      </select>
+                      <input type="checkbox" id="iAtivo" name="nAtivo">
+                      <label for="iAtivo">Usuário Ativo</label>
                     </div>
                   </div>
 
@@ -142,6 +165,7 @@
         <!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
+
     </section>
     <!-- /.content -->
   </div>

@@ -12,13 +12,14 @@
  */
 :root {
   --blue: #007bff;
+  --SELVA: #0b9673;  
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
   --red: #dc3545;
   --orange: #fd7e14;
   --yellow: #ffc107;
-  --green: #28a745;
+  --green: #0b9673;
   --teal: #20c997;
   --cyan: #17a2b8;
   --white: #fff;
@@ -40,6 +41,11 @@
   --font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
+.bg-SELVA {
+  background-color: #0b9673 !important;
+}
+
 
 *,
 *::before,
@@ -6853,6 +6859,7 @@ button.bg-success:focus {
 .bg-info {
   background-color: #17a2b8 !important;
 }
+
 
 a.bg-info:hover, a.bg-info:focus,
 button.bg-info:hover,
@@ -46230,7 +46237,7 @@ blockquote.quote-gray-dark h6 {
 }
 
 .bg-green {
-  background-color: #28a745 !important;
+  background-color: #0b9673 !important;
 }
 
 .bg-green,

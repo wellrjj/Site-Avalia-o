@@ -10,9 +10,22 @@ function montaMenu($n1,$n2){
     $menuProfessor = '';
     $menuAluno = '';
 
+    /* Bloco de código utilizado para ativar os botões selecionado pelo usuário. */
+    /* TELA DE ALUNO */ 
     $desempenho = '';
     $revisao = '';
     $atividade = '';
+
+    /* TELA DE ESCOLA */
+    $usuarios = '';
+    $turmas = '';
+    $cursos = '';
+    $disciplinas = '';
+    $lecionadores = '';
+
+    /* PROFESSOR */
+    $prova = '';
+    $questoes = '';
 
     switch ($n1) {
         case 'administrador':
@@ -46,7 +59,35 @@ function montaMenu($n1,$n2){
         case 'atividade':
             $atividade = 'active';
             break;      
-                        
+              
+        case 'usuarios':
+            $usuarios = 'active';
+            break;
+
+        case 'turmas':
+            $turmas = 'active';
+            break;
+
+        case 'cursos':
+            $cursos = 'active';
+            break;
+
+        case 'disciplinas':
+            $disciplinas = 'active';
+            break;
+
+        case 'lecionadores':
+            $lecionadores = 'active';
+            break;
+
+        case 'prova':
+            $prova = 'active';
+            break;
+
+        case 'questoes':
+            $questoes = 'active';
+            break;
+
         default:
             # code...
             break;
@@ -92,7 +133,7 @@ function montaMenu($n1,$n2){
                          
                         $html .= '<ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="./usuarios.php" class="nav-link">
+                                            <a href="./usuarios.php" class="nav-link '.$usuarios.'">
                                             <i class="fas fa-user-alt nav-icon"></i>
                                             <p>Usuários</p>
                                             </a>
@@ -101,7 +142,7 @@ function montaMenu($n1,$n2){
 
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="./usuarios.php" class="nav-link">
+                                            <a href="./turmas.php" class="nav-link '.$turmas.'">
                                             <i class="fas fa-users nav-icon"></i>
                                             <p>Turmas</p>
                                             </a>
@@ -110,7 +151,7 @@ function montaMenu($n1,$n2){
 
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="./curso.php" class="nav-link">
+                                            <a href="./curso.php" class="nav-link '.$cursos.'">
                                             <i class="fas fa-book nav-icon"></i>
                                             <p>Cursos</p>
                                             </a>
@@ -119,7 +160,7 @@ function montaMenu($n1,$n2){
 
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="./disciplinas.php" class="nav-link">
+                                            <a href="./disciplinas.php" class="nav-link '.$disciplinas.'">
                                             <i class="fas fa-graduation-cap nav-icon"></i>
                                             <p>Disciplinas</p>
                                             </a>
@@ -127,7 +168,7 @@ function montaMenu($n1,$n2){
                                     </ul>
                                     <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                    <a href="./lecionadores.php" class="nav-link">
+                                    <a href="./lecionadores.php" class="nav-link '.$lecionadores.'">
                                     <i class="fas fa-chalkboard-teacher nav-icon"></i>
                                     <p>Lecionadores</p>
                                     </a>
@@ -142,7 +183,7 @@ function montaMenu($n1,$n2){
                         $html .= 
                         '<ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./usuarios.php" class="nav-link">
+                                    <a href="./atividadeProfessor.php" class="nav-link '.$atividade.'">
                                     <i class="fas fa-pen nav-icon"></i>
                                     <p>Atividades</p>
                                     </a>
@@ -151,7 +192,7 @@ function montaMenu($n1,$n2){
 
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./usuarios.php" class="nav-link">
+                                    <a href="./prova.php" class="nav-link '.$prova.'">
                                     <i class="fas fa-book-open nav-icon"></i>
                                     <p>Prova</p>
                                     </a>
@@ -160,7 +201,7 @@ function montaMenu($n1,$n2){
 
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./usuarios.php" class="nav-link">
+                                    <a href="./desempenhoProfessor.php" class="nav-link '.$desempenho.'">
                                     <i class="fas fa-chart-bar nav-icon"></i>
                                     <p>Desempenho</p>
                                     </a>
@@ -168,7 +209,7 @@ function montaMenu($n1,$n2){
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./questoes.php" class="nav-link">
+                                    <a href="./questoes.php" class="nav-link '.$questoes.'">
                                     <i class="fas fa-edit nav-icon"></i>
                                     <p>Questões</p>
                                     </a>
@@ -341,25 +382,24 @@ function montaMenu($n1,$n2){
                                     Desempenho
                                 </a>
                             </li>              
-                        </ul>
+                        </ul>';
 
-
-
-
-                                        
-                        ';
-    
-                            
                         }
                 
-           $html .= '</li>
+           $html .= '
+           
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="./painel.php" class="nav-link">
+                                    <i class="fas fa-tv nav-icon"></i>
+                                    Painel
+                                </a>
+                            </li>              
+                       </ul>
+                    </li>
                 </ul>  
             </nav>';
-
-           
           
     return $html;
 }
-
-
 ?>

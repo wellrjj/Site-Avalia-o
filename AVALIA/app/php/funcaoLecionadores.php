@@ -5,7 +5,7 @@ function lista_lecionadores(){
 
     include("conexao.php");
     
-    $sql = "SELECT * FROM disciplina dis inner join professor_has_disciplina pro_dis on dis.idDisciplina = pro_dis.idDisciplina inner join usuarios usu on usu.idUsuario = pro_dis.idProfessor;";
+    $sql = "SELECT * FROM disciplina dis inner join professor_has_disciplina pro_dis on dis.idDisciplina = pro_dis.idDisciplina inner join usuarios usu on usu.idUsuario = pro_dis.idProfessor where usu.idEscola = ".$_SESSION['idEscola'].";";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -111,6 +111,37 @@ function proximoidProfessorDisciplina(){
 
     return $id;
 
+}
+
+function nomeDisciplina($id){
+    $resp = "";
+    $cont = 0;
+    include("conexao.php");
+
+    $sql = "SELECT dis.Descricao FROM professor_has_disciplina prodis inner join disciplina dis on prodis.idProfessorDisciplina = dis.idDisciplina where prodis.idProfessor = $id ;";        
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+
+    //Validar se tem retorno do BD
+    if (mysqli_num_rows($result) > 0) {
+                
+        $array = array();
+        
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        
+        foreach ($array as $coluna) {            
+            //***Verificar os dados da consulta SQL
+            $cont++;
+            if ($cont > 1) {
+                $resp .= ', ';
+            }
+            $resp .= $coluna["Descricao"];
+        }        
+    } 
+
+    return $resp;
 }
 
 

@@ -32,7 +32,7 @@
 
       <div class="sidebar-custom">
         <a href="php/validaLogoff.php" class="btn btn-danger"><i class="fas fa-door-open nav-icon"></i></a>
-        <a href="php/validaLogoff.php" class="btn btn-secondary hide-on-collapse pos-right">SAIR</a>
+        <a href="./painel.php" class="btn btn-secondary hide-on-collapse pos-right">VOLTAR</a>
       </div>
       <!-- /.sidebar-custom -->
   </aside>

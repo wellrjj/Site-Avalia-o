@@ -226,7 +226,7 @@ function revisaoAluno(){
 
     include("conexao.php");
     
-    $sql = "SELECT ati.idAtividade, dis.Descricao from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma inner join atividade ati on ati.idDisciplina = dis.idDisciplina where usu.idUsuario = '".$_SESSION["idUsuario"]."' and usu.idEscola = '".$_SESSION["idEscola"]."' and ati.FlgRevisao = 'S';";
+    $sql = "SELECT ati.idAtividade, dis.Descricao from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma inner join atividade ati on ati.idDisciplina = dis.idDisciplina where usu.idUsuario = '".$_SESSION["idUsuario"]."' and usu.idEscola = '".$_SESSION["idEscola"]."' and ati.FlgRevisao = 'S' and ati.FlgLiberada = 'S';";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);

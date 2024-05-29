@@ -503,4 +503,39 @@ function ativoUsuario($id){
     return $resp;
 }
 
+function mensagemSobre($id){
+ 
+  $resp = '';
+
+    if($id == 1){
+        $resp = " Administrador da aplicação.";
+    }elseif($id == 2){
+        $resp = " Administrador da escola.";
+    }elseif($id == 3){
+        $resp = " Professor da escola.";
+    }else{
+        $resp = " Aluno da escola.";
+    }
+    
+
+    return $resp;
+}
+
+function montaPainel($id,$idUsuario){
+
+ $resp = '';
+ 
+    if($id == 1){
+        $resp = '<li class="small"><span class="fa-li"><i class="fas fa-lg fa-address-card"></i></span> Administrador: Tec Job // Back-end // Front-End </li>';
+    }elseif($id == 2){
+        $resp = '<li class="small"><span class="fa-li"><i class="fas fa-lg fa-school"></i></span> Escola: '.nomeUsuario($idUsuario).'</li>';
+    }elseif($id == 3){
+        $resp = '<li class="small"><span class="fa-li"><i class="fas fa-lg fa-chalkboard-teacher"></i></span> Disciplinas: '.nomeDisciplina($idUsuario).'</li>';
+    }else{
+        $resp = '<li class="small"><span class="fa-li"><i class="fas fa-lg fa-users"></i></span> Turma: FALTA FAZER ESSA FUNÇÃO</li>';
+    }
+
+ return $resp;
+}
+
 ?>

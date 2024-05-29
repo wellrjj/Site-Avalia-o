@@ -10,7 +10,7 @@ function lista_disciplinas(){
     dis.Descricao as DescDIS, 
     cur.Descricao as DescCUR,
     dis.idCurso as idCurso
-    from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso;";
+    from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso where cur.idEscola = ".$_SESSION["idEscola"].";";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);

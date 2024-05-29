@@ -2,14 +2,19 @@
     session_start();
     include('funcoes.php');
 
-    $idtipoUsuario = $_POST["nTipUsu"];
-    $idTurma       = $POST["nTurma"];
+    //--------------------------------------
+    //VERIFICAR COMO INSERIR O IDTIPOUSUARIO
+    //$idtipoUsuario = $_POST["nTipoUsuario"];
+    //--------------------------------------
+
     $nome          = $_POST["nNome"];
     $Email         = $_POST["nEmail"];
     $senha         = $_POST["nSenha"];
     $funcao        = $_GET["funcao"];
     $idUsuario     = isset($_GET["codigo"]) ? $_GET["codigo"] : null;
-    
+    $idTurma       = isset($_GET["codigo"]) ? $_GET["codigo"] : null;
+
+
     if($_POST["nAtivo"] == "on") $ativo = "S"; else $ativo = "N";
     
     include("conexao.php");
@@ -21,11 +26,12 @@
         $idUsuario = proxIdUsuario();
 
         //INSERT
-        $sql = "INSERT INTO usuarios (idUsuario, idTipoUsuario, idTurma, Nome, Email, Senha, FlgAtivo, idEscola) "
-        ."VALUES ('$idUsuario', '$idtipoUsuario', '$idTurma', '$nome', '$Email', MD5('$senha'), '$ativo', ".$_SESSION['idEscola'].");";
 
-        var_dump($sql);
-        die();
+        $sql = "INSERT into usuarios (idUsuario, idTipoUsuario, idEscola, idTurma, Nome, Email, Senha, FlgAtivo) "
+        ."VALUES ('$idUsuario', 4, ".$_SESSION['idEscola'].", '$idTurma', '$nome', '$Email', MD5('$senha'), '$ativo');";
+
+       /* $sql = "INSERT INTO usuarios (idUsuario, Nome, Email, Senha, FlgAtivo, idEscola) "
+        ."VALUES ('$idUsuario', '$nome', '$Email', MD5('$senha'), '$ativo', ".$_SESSION['idEscola'].");"; */ 
 
     }elseif($funcao == "A"){
 
@@ -87,6 +93,6 @@
         mysqli_close($conn);
     }
 
-    header("location: ../usuarios.php");
+    header("location: ../turmaAlunos.php");
 
 ?>

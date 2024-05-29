@@ -1,6 +1,7 @@
 <?php 
   session_start();
   include('php/funcoes.php');
+  
 ?>
 
 <!DOCTYPE html>
@@ -23,16 +24,14 @@
   <!-- Fim Navbar -->
 
   <!-- Sidebar -->
-  <?php 
-         $_SESSION['menu-n1'] = 'aluno';
-         $_SESSION['menu-n2'] = 'aluno';
-         montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']);
-         include('partes/sidebar.php'); 
-       
+  <?php $_SESSION['menu-n1'] = 'professor';
+        $_SESSION['menu-n2'] = 'desempenho';
+        montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']);
+        include('partes/sidebar.php'); 
+        
   ?>
   <!-- Fim Sidebar -->
 
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -47,22 +46,26 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <div class="row">
+                 <h4> Desempenho das Atividades</h4>
+              </div>
+              <table id="tabela" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                      <th>Turma</th>
+                      <th>atividade</th>                      
+                      <th>Desempenho</th>
+                      <th>Ações</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                     <?php echo listaTurmaProfessor();  ?>
                   
-                  <div class="col-12">
-                    <h3 class="card-title">sujiro</h3>
-                  </div>
+                  </tbody>
+                  
+                </table>
+               
 
-                </div>
-              </div>
-
-              
-
-              <!-- /.card-header -->
-              <div class="card-body">
-              
-              </div>
-              <!-- /.card-body -->
             </div>
             <!-- /.card -->
             
@@ -72,7 +75,6 @@
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->
-
     </section>
     <!-- /.content -->
   </div>
@@ -89,19 +91,24 @@
 <?php include('partes/js.php'); ?>
 <!-- Fim JS -->
 
-<script>
-  $(function () {
-    $('#tabela').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+ <script>
+
+       $(function () {
+          $('#tabela').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+          });
+        });            
+
+    </script>
+
+
+
 
 </body>
 </html>
