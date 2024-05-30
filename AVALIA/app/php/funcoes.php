@@ -11,5 +11,6 @@ include("funcaoQuestao.php");
 include("funcaoDesempenhoTurma.php");
 include("funcaoTurma.php");
 include("funcaoOptionTurma.php");
+include("funcaoAtividadeProfessor.php");
 
 ?>

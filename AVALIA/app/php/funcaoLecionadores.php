@@ -118,7 +118,7 @@ function nomeDisciplina($id){
     $cont = 0;
     include("conexao.php");
 
-    $sql = "SELECT dis.Descricao FROM professor_has_disciplina prodis inner join disciplina dis on prodis.idProfessorDisciplina = dis.idDisciplina where prodis.idProfessor = $id ;";        
+    $sql = "SELECT dis.Descricao FROM professor_has_disciplina prodis inner join disciplina dis on prodis.idProfessorDisciplina = dis.idDisciplina where prodis.idProfessor = $id;";        
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
 

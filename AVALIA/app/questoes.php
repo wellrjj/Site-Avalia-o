@@ -72,8 +72,7 @@
                       <th>idProfessor</th>
                       <th>Assunto</th>
                       <th>FlgLiberada</th>
-                      <th>Ações</th>           
-                      
+                      <th>Ações</th>            
                   </tr>
                   </thead>
                   <tbody>

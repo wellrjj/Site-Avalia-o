@@ -131,12 +131,7 @@ function listaQuestao(){
                                         .'</div>'
                                     .'</div>'
                     
-                                    .'<div class="col-12">'
-                                        .'<div class="form-group">'
-                                        .'<input type="checkbox" id="iAtivo" name="nAtivo">'
-                                          .'<label for="iAtivo">Liberado </label>'
-                                         .'</div>'
-                                    .'</div>'
+                                   
                     
                     
                     
@@ -194,7 +189,7 @@ function listaQuestao(){
         .'<div class="modal-dialog modal-lg">'
             .'<div class="modal-content">'
                 .'<div class="modal-header bg-info ">'
-                    .'<h4 class="modal-title">Editar Questão</h4>'
+                    .'<h4 class="modal-title">Editar Questão '.$coluna["idQuestao"].' </h4>'
                     .'<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">'
                         .'<span aria-hidden="true">&times;</span>'
                     .'</button>'
@@ -248,10 +243,12 @@ function listaQuestao(){
                             
                             .'<div class="col-12">'
                                 .'<div class="form-group">'
+                                    .'<label for=irespo5> Resposta:'
                                     .'<select name="nrespostacorreta" class="form-control" id="iresp5" required>'
                                         .retornarResposta($coluna["idQuestao"])
-                                        .mostrarOpcaoResposta($coluna["ResCorreta"])
+                                        .mostrarOpcaoResposta($coluna["idQuestao"])
                                         .'</select>'
+                                    .'</label>'
                                 .'</div>'
                             .'</div>'
                             
@@ -285,7 +282,7 @@ function listaQuestao(){
 function retornarResposta($id){
 
     include("conexao.php");
-    $sql = "SELECT * FROM questao WHERE idQuestao = $id";        
+    $sql = "SELECT RespCorreta,idQuestao FROM questao WHERE idQuestao = $id";        
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
     $resp = "";
@@ -395,6 +392,7 @@ function respostaCorretaDescricao($id){
         {
             array_push($array,$linha);
         }
+        $respostacerta="";
         foreach ($array as $coluna) {
             $descricao = $coluna['RespCorreta'];
             switch ($descricao) {
@@ -445,9 +443,10 @@ function selectQuestao($id){
 }
 function mostrarOpcaoResposta($id){
     include("conexao.php");
-    $sql = "SELECT * FROM questao ;";        
+    $sql = "SELECT * FROM questao where idQuestao = $id ;";        
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
+    $resp2="";
 	if (mysqli_num_rows($result) >0){
         $array = array();
         while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -456,17 +455,29 @@ function mostrarOpcaoResposta($id){
         foreach ($array as $coluna) {            
             //***Verificar os dados da consulta SQL
             $resp = $coluna["RespCorreta"];
-
-            if($resp != $id){
-                $resp2 .= '<option value="'.$coluna["RespCorreta"].'">'.respostaCorretaDescricao($coluna["idQuestao"]).'</option>';
-
+            if($resp != 1){
+                $respostacerta = $coluna['Resp1'];
+                $valorresposta = '1';
+                $resp2 .= '<option value="'.$valorresposta.'">'.$respostacerta.'</option>';
+            }if ($resp !=2){
+                $respostacerta = $coluna['Resp2'];
+                $valorresposta = '2';
+                $resp2 .= '<option value="'.$valorresposta.'">'.$respostacerta.'</option>';
+            }if ($resp !=3){
+                $respostacerta = $coluna['Resp3'];
+                $valorresposta  = '3';
+                $resp2 .= '<option value="'.$valorresposta.'">'.$respostacerta.'</option>';
+            }if ($resp !=4){
+                $respostacerta = $coluna['Resp4'];
+                $valorresposta = '4';
+                $resp2 .= '<option value="'.$valorresposta.'">'.$respostacerta.'</option>';
             }
-        } 
+               
+
+        }
+        
     }
     return $resp2;
-
-
-
 }
 function verificaLiberacao($id){
 
@@ -535,13 +546,8 @@ function filtrarQuest($id){
         }
     } 
 
-    // Convert array to comma-separated string, handle the case where the array is empty
-    if (!empty($idDisciplinas)) {
-        $id = implode(", ", $idDisciplinas);
-    } else {
-        $id = ""; // or you could return null, or handle it as you see fit
-    }
-    
+    $id = implode(", ", $idDisciplinas);
+
     return $id;  
 }
 function liberadoCanceladoIcone($id){
