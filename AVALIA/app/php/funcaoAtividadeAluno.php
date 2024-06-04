@@ -133,7 +133,7 @@ function montaScriptDesempenho(){
     // Dados do banco de dados
     include("conexao.php");
   
-    $sql = "select atilu.Acertou, atilu.idAtividade, ati.idDisciplina from atividade_has_aluno atilu inner join atividade ati on ati.idAtividade = atilu.idAtividade where atilu.idAluno = ".$_SESSION["idUsuario"]." and ati.flgMostraNota = 'S' and atilu.Resposta != '' ORDER BY ati.idDisciplina;";
+    $sql = "select ati.idAtividade,atilu.Acertou, atilu.idAtividade, ati.idDisciplina from atividade_has_aluno atilu inner join atividade ati on ati.idAtividade = atilu.idAtividade where atilu.idAluno = ".$_SESSION["idUsuario"]." and ati.flgMostraNota = 'S' ORDER BY ati.idAtividade;";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -165,7 +165,7 @@ function montaScriptDesempenho(){
           if(($acertos + $erros) == 10){
 
             $lista .= "
-                    var ctx = document.getElementById('graficoPizza".$coluna["idDisciplina"]."').getContext('2d');
+                    var ctx = document.getElementById('graficoPizza".$coluna["idAtividade"]."').getContext('2d');
 
                     // Cria o gráfico de pizza
                     var graficoPizza = new Chart(ctx, {
@@ -226,7 +226,7 @@ function revisaoAluno(){
 
     include("conexao.php");
     
-    $sql = "SELECT ati.idAtividade, dis.Descricao from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma inner join atividade ati on ati.idDisciplina = dis.idDisciplina where usu.idUsuario = '".$_SESSION["idUsuario"]."' and usu.idEscola = '".$_SESSION["idEscola"]."' and ati.FlgRevisao = 'S' and ati.FlgLiberada = 'S';";
+    $sql = "SELECT ati.idAtividade, ati.Titulo from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma inner join atividade ati on ati.idDisciplina = dis.idDisciplina where usu.idUsuario = '".$_SESSION["idUsuario"]."' and usu.idEscola = '".$_SESSION["idEscola"]."' and ati.FlgRevisao = 'S' and ati.FlgLiberada = 'S';";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -249,7 +249,7 @@ function revisaoAluno(){
             
             $lista .= "<tr>"
                             ."<td align='center'>".$coluna["idAtividade"]."</td>"
-                            ."<td align='center'>".$coluna["Descricao"]."</td>"
+                            ."<td align='center'>".$coluna["Titulo"]."</td>"
                             ."<td align='center'>".notaAluno($coluna["idAtividade"])."</td>"
                                                                    
                             .'<td>'

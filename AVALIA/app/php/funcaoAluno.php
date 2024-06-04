@@ -5,7 +5,7 @@ function temAtividade(){
     
     include("conexao.php");
     
-    $sql = "SELECT * from atividade_has_aluno atilu inner join atividade ati on ati.idAtividade = atilu.idAtividade where ati.FlgLiberada = 'S' and  atilu.idAluno = ".$_SESSION["idUsuario"]." and atilu.Resposta = '';";
+    $sql = "SELECT * from atividade_has_aluno atilu inner join atividade ati on ati.idAtividade = atilu.idAtividade where ati.FlgLiberada = 'S' and  atilu.idAluno = ".$_SESSION["idUsuario"]." and atilu.Resposta IS NULL;";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -36,7 +36,7 @@ function lista_atividade(){
 
     include("conexao.php");
     
-    $sql = "SELECT ati.idAtividade,ati.Titulo, ati.Descricao, cur.Descricao AS desCur, tur.Descricao AS desTur,ati.idProfessor, ati.DataAplicacao from atividade_has_aluno atilu inner join atividade ati on ati.idAtividade = atilu.idAtividade inner join professor_has_disciplina prodis on prodis.idDisciplina = ati.idDisciplina inner join usuarios usu on usu.idUsuario = prodis.idProfessor inner join disciplina dis on dis.idDisciplina = prodis.idDisciplina inner join curso cur on cur.idCurso = dis.idCurso inner join turma tur on tur.idCurso = cur.idCurso where atilu.idAluno = ".$_SESSION["idUsuario"]." and atilu.Resposta = NULL and ati.FlgLiberada = 'S';";
+    $sql = "SELECT ati.idAtividade,ati.Titulo, ati.Descricao, cur.Descricao AS desCur, tur.Descricao AS desTur,ati.idProfessor, ati.DataAplicacao from atividade_has_aluno atilu inner join atividade ati on ati.idAtividade = atilu.idAtividade inner join professor_has_disciplina prodis on prodis.idDisciplina = ati.idDisciplina inner join usuarios usu on usu.idUsuario = prodis.idProfessor inner join disciplina dis on dis.idDisciplina = prodis.idDisciplina inner join curso cur on cur.idCurso = dis.idCurso inner join turma tur on tur.idCurso = cur.idCurso where atilu.idAluno = ".$_SESSION["idUsuario"]." and atilu.Resposta IS NULL and ati.FlgLiberada = 'S';";
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
     $lista = '';
@@ -87,7 +87,7 @@ function disciplinasDoAluno(){
 
     include("conexao.php");
     
-    $sql = "SELECT dis.idDisciplina, dis.Descricao from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma inner join atividade ati on ati.idDisciplina = dis.idDisciplina where usu.idUsuario = '".$_SESSION["idUsuario"]."' and usu.idEscola = '".$_SESSION["idEscola"]."' and ati.flgMostraNota = 'S' and ati.FlgLiberada = 'S';";
+    $sql = "SELECT ati.idAtividade,dis.idDisciplina, ati.Titulo from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma inner join atividade ati on ati.idDisciplina = dis.idDisciplina where usu.idUsuario = '".$_SESSION["idUsuario"]."' and usu.idEscola = '".$_SESSION["idEscola"]."' and ati.flgMostraNota = 'S' and ati.FlgLiberada = 'S';";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -109,13 +109,13 @@ function disciplinasDoAluno(){
             //***Verificar os dados da consulta SQL
             
             $lista .= "<tr>"
-                            ."<td align='center'>".$coluna["idDisciplina"]."</td>"
-                            ."<td align='center'>".$coluna["Descricao"]."</td>"                                            
+                            ."<td align='center'>".$coluna["idAtividade"]."</td>"
+                            ."<td align='center'>".$coluna["Titulo"]."</td>"                                            
                             .'<td>'
                                 .'<div class="row" align="center">'
                                     
                                     .'<div class="col-12">'
-                                        .'<a href="#modalDesempenho'.$coluna["idDisciplina"].'" data-toggle="modal">'
+                                        .'<a href="#modalDesempenho'.$coluna["idAtividade"].'" data-toggle="modal">'
                                             .'<h6><i class="fas fa-chart-pie text-info" data-toggle="tooltip" title="Desempenho"></i></h6>'
                                         .'</a>'
                                     .'</div>'
@@ -123,11 +123,11 @@ function disciplinasDoAluno(){
                             .'</td>'
                         .'</tr>'
                         
-                        .'<div class="modal fade" id="modalDesempenho'.$coluna["idDisciplina"].'">'
+                        .'<div class="modal fade" id="modalDesempenho'.$coluna["idAtividade"].'">'
                                 .'<div class="modal-dialog modal-sm">'
                                     .'<div class="modal-content">'
                                         .'<div class="modal-header bg-info">'
-                                            .'<h4 class="modal-title">Desempenho em '.$coluna['Descricao'].'</h4>'
+                                            .'<h4 class="modal-title">Desempenho em '.$coluna['Titulo'].'</h4>'
                                             .'<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">'
                                                 .'<span aria-hidden="true">&times;</span>'
                                             .'</button>'
@@ -136,7 +136,7 @@ function disciplinasDoAluno(){
                                             .'<div class="row">'
                                                 .'<div class="col-12">'
                                                 
-                                                .'<canvas id="graficoPizza'.$coluna["idDisciplina"].'" width="400" height="400"></canvas>'
+                                                .'<canvas id="graficoPizza'.$coluna["idAtividade"].'" width="400" height="400"></canvas>'
                                                                       
                                                 .'</div>'                                                 
                                             .'</div>'
