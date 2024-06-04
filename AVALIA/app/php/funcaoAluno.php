@@ -36,7 +36,7 @@ function lista_atividade(){
 
     include("conexao.php");
     
-    $sql = "SELECT DISTINCT ati.idAtividade,ati.Titulo, ati.Descricao, cur.Descricao AS desCur, tur.Descricao AS desTur,ati.idProfessor, ati.DataAplicacao from atividade_has_aluno atilu inner join atividade ati on ati.idAtividade = atilu.idAtividade inner join professor_has_disciplina prodis on prodis.idDisciplina = ati.idDisciplina inner join usuarios usu on usu.idUsuario = prodis.idProfessor inner join disciplina dis on dis.idDisciplina = prodis.idDisciplina inner join curso cur on cur.idCurso = dis.idCurso inner join turma tur on tur.idCurso = cur.idCurso where atilu.idAluno = ".$_SESSION["idUsuario"]." and atilu.Resposta IS NULL and ati.FlgLiberada = 'S';";
+    $sql = "SELECT ati.idAtividade,ati.Titulo, ati.Descricao, cur.Descricao AS desCur, tur.Descricao AS desTur,ati.idProfessor, ati.DataAplicacao from atividade_has_aluno atilu inner join atividade ati on ati.idAtividade = atilu.idAtividade inner join professor_has_disciplina prodis on prodis.idDisciplina = ati.idDisciplina inner join usuarios usu on usu.idUsuario = prodis.idProfessor inner join disciplina dis on dis.idDisciplina = prodis.idDisciplina inner join curso cur on cur.idCurso = dis.idCurso inner join turma tur on tur.idCurso = cur.idCurso where atilu.idAluno = ".$_SESSION["idUsuario"]." and atilu.Resposta IS NULL and ati.FlgLiberada = 'S';";
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
     $lista = '';
