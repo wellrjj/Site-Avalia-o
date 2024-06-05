@@ -151,7 +151,7 @@
                       <label for=iQuest1> Primeira Questao:</label>
                       <select name="nQuest1" class="form-control" required>
                         <option value="">Selecione...</option>
-                        <?php echo MostrarQuestao();?>
+                        <?php echo MostrarQuestaoNOVO();?>
                       </select>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                         <label for=iQuest2> Segunda Questao:</label>
                         <select name="nQuest2" class="form-control" required>
                           <option value="">Selecione...</option>
-                          <?php echo MostrarQuestao();?>
+                          <?php echo MostrarQuestaoNOVO();?>
                         </select>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                     <label for=iQuest3> Terceira Questao:</label>
                     <select name="nQuest3" class="form-control" required>
                       <option value="">Selecione...</option>
-                      <?php echo MostrarQuestao();?>
+                      <?php echo MostrarQuestaoNOVO();?>
                     </select>
                   </div>
                 </div>
@@ -178,7 +178,7 @@
                     <label for=iQuest4> Quarta Questao:</label>
                     <select name="nQuest4" class="form-control" required>
                       <option value="">Selecione...</option>
-                      <?php echo MostrarQuestao();?>
+                      <?php echo MostrarQuestaoNOVO();?>
                     </select>
                   </div>
                 </div>
@@ -187,7 +187,7 @@
                     <label for=iQuest5> Quinta Questao:</label>
                     <select name="nQuest5" class="form-control" required>
                       <option value="">Selecione...</option>
-                      <?php echo MostrarQuestao();?>
+                      <?php echo MostrarQuestaoNOVO();?>
                     </select>
                   </div>
                 </div>
@@ -196,7 +196,7 @@
                     <label for=iQuest6> Sexta Questao:</label>
                     <select name="nQuest6" class="form-control" required>
                       <option value="">Selecione...</option>
-                      <?php echo MostrarQuestao();?>
+                      <?php echo MostrarQuestaoNOVO();?>
                     </select>
                   </div>
                 </div>
@@ -205,7 +205,7 @@
                     <label for=iQuest7> Sétima Questao:</label>
                     <select name="nQuest7" class="form-control" required>
                      <option value="">Selecione...</option>
-                      <?php echo MostrarQuestao();?>
+                      <?php echo MostrarQuestaoNOVO();?>
                     </select>
                   </div>
                 </div>
@@ -214,7 +214,7 @@
                     <label for=iQuest8> Oitava Questao:</label>
                     <select name="nQuest8" class="form-control" required>
                       <option value="">Selecione...</option>
-                      <?php echo MostrarQuestao();?>
+                      <?php echo MostrarQuestaoNOVO();?>
                     </select>
                   </div>
                 </div>
@@ -223,7 +223,7 @@
                     <label for=iQuest9> Nona Questao:</label>
                     <select name="nQuest9" class="form-control" required>
                       <option value="">Selecione...</option>
-                      <?php echo MostrarQuestao();?>
+                      <?php echo MostrarQuestaoNOVO();?>
                     </select>
                   </div>
                 </div>
@@ -233,7 +233,7 @@
                     <label for=iQuest10> Décima Questao:</label>
                     <select name="nQuest10" class="form-control" required>
                       <option value="">Selecione...</option>
-                      <?php echo MostrarQuestao();?>
+                      <?php echo MostrarQuestaoNOVO();?>
                     </select>
                   </div>
                 </div>

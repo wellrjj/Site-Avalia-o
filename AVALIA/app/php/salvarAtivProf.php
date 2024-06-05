@@ -21,7 +21,6 @@ $quest7         = $_POST["nQuest7"];
 $quest8         = $_POST["nQuest8"];
 $quest9         = $_POST["nQuest9"];
 $quest10        = $_POST["nQuest10"];
-
 $funcao        = $_GET["funcao"];
 $teste = 0;
 //if($_POST["nAtivo"] == "on") $ativo = "S"; else $ativo = "N";
@@ -69,7 +68,35 @@ if($funcao == "I"){
     salvarAtividadeAlunoAtividadeQuestao($Turma);
     $teste = 1;
 }elseif($funcao == "A"){
+
+   $idAtividade = $_GET["codigo"];
+   $sql = "UPDATE atividade set idDisciplina = '$Disciplina ',Titulo = '$Titulo' , Descricao= '$Descricao' , DataAplicacao= '$DataAplicacao'  where idAtividade = $idAtividade ;";
    
+   $sql2 = "UPDATE atividade_has_questao set idQuestao = $quest1 where idAtividade = $idAtividade;";
+   $sql3 = "UPDATE atividade_has_questao set idQuestao = $quest2 where idAtividade = $idAtividade;";
+   $sql4 = "UPDATE atividade_has_questao set idQuestao = $quest3 where idAtividade = $idAtividade;";
+   $sql5 = "UPDATE atividade_has_questao set idQuestao = $quest4 where idAtividade = $idAtividade;";
+   $sql6 = "UPDATE atividade_has_questao set idQuestao = $quest5 where idAtividade = $idAtividade;";
+   $sql7 = "UPDATE atividade_has_questao set idQuestao = $quest6 where idAtividade = $idAtividade;";
+   $sql8 = "UPDATE atividade_has_questao set idQuestao = $quest7 where idAtividade = $idAtividade;";
+   $sql9 = "UPDATE atividade_has_questao set idQuestao = $quest8 where idAtividade = $idAtividade;";
+   $sql10 = "UPDATE atividade_has_questao set idQuestao = $quest9 where idAtividade = $idAtividade;";
+   $sql11 = "UPDATE atividade_has_questao set idQuestao = $quest10 where idAtividade = $idAtividade;";
+
+
+   $result = mysqli_query($conn,$sql);
+   $result = mysqli_query($conn,$sql2);
+   $result = mysqli_query($conn,$sql3);
+   $result = mysqli_query($conn,$sql4);
+   $result = mysqli_query($conn,$sql5);
+   $result = mysqli_query($conn,$sql6);
+   $result = mysqli_query($conn,$sql7);
+   $result = mysqli_query($conn,$sql8);
+   $result = mysqli_query($conn,$sql9);
+   $result = mysqli_query($conn,$sql10);
+   $result = mysqli_query($conn,$sql11);
+
+
 }elseif($funcao == "D"){
     
     

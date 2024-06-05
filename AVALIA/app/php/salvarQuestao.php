@@ -29,7 +29,7 @@ if($funcao == "I"){
 
 }elseif($funcao == "A"){
     $idQuestao     = $_GET["codigo"];
-    $sql = "UPDATE questao SET Pergunta ='$Pergunta', Resp1 = '$resp1', Resp2 = '$resp2', Resp3 = '$resp3', Resp4 = '$resp4', RespCorreta = '$certo' WHERE idQuestao = $idQuestao;";
+    $sql = "UPDATE questao SET Pergunta ='$Pergunta', Resp1 = '$resp1', Resp2 = '$resp2', Resp3 = '$resp3', Resp4 = '$resp4', RespCorreta = '$certo', Assunto = '$Assunto' WHERE idQuestao = $idQuestao;";
 }elseif($funcao == "D"){
     include("conexao.php");
     $idQuestao  = $_GET["codigo"];

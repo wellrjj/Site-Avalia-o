@@ -60,7 +60,7 @@ function listaAtividadeProfessor(){
             .'<div class="row" align="center">'
                 .'<div class="col-4">'
                     .'<a href="#EditarQuestao'.$coluna["idAtividade"].'" data-toggle="modal" >'
-                        .'<h6><i class="fas fa-eye text-yellow" data-toggle="tooltip" title="Alterar Disciplina"></i></h6>'
+                        .'<h6><i class="fas fa-edit text-info" data-toggle="tooltip" title="Alterar Disciplina"></i></h6>'
                     .'</a>'
                 .'</div>'
                       
@@ -82,7 +82,7 @@ function listaAtividadeProfessor(){
                     .'</div>'
                     .'<div class="modal-body">'
                                 
-                        .'<form method="POST" action="php/salvarQuestao.php?funcao=A&codigo='.$coluna["idAtividade"].'" enctype="multipart/form-data">'              
+                        .'<form method="POST" action="php/salvarAtivProf.php?funcao=A&codigo='.$coluna["idAtividade"].'" enctype="multipart/form-data">'              
                                 
                             .'<div class="row">'
                             
@@ -119,97 +119,7 @@ function listaAtividadeProfessor(){
                                     .'</div>'
                                 .'</div>'
 
-                                .'<div class="col-12">'
-                                .'<div class="form-group">'
-                                .'<label for=iQuest1> Primeira Questao:</label>'
-                                  .'<select name="nQuest1" class="form-control" required> '
-                                  .'<option value="">Selecione...</option>'
-                                    .MostrarQuestao()
-                                    .'</select>'
-                                .'</div>'
-                                .'</div>'
-                                .'<div class="col-12">'
-                                .'<div class="form-group">'
-                                .'<label for=iQuest2> Primeira Questao:</label>'
-                                  .'<select name="nQuest1" class="form-control" required> '
-                                  .'<option value="">Selecione...</option>'
-                                    .MostrarQuestao()
-                                    .'</select>'
-                                .'</div>'
-                                .'</div>'
-                                .'<div class="col-12">'
-                                .'<div class="form-group">'
-                                .'<label for=iQuest3> Primeira Questao:</label>'
-                                  .'<select name="nQuest1" class="form-control" required> '
-                                  .'<option value="">Selecione...</option>'
-                                    .MostrarQuestao()
-                                    .'</select>'
-                                .'</div>'
-                                .'</div>'
-                                .'<div class="col-12">'
-                                .'<div class="form-group">'
-                                .'<label for=iQuest4> Primeira Questao:</label>'
-                                  .'<select name="nQuest1" class="form-control" required> '
-                                  .'<option value="">Selecione...</option>'
-                                    .MostrarQuestao()
-                                    .'</select>'
-                                .'</div>'
-                                .'</div>'
-                                .'<div class="col-12">'
-                                .'<div class="form-group">'
-                                .'<label for=iQuest5> Primeira Questao:</label>'
-                                  .'<select name="nQuest1" class="form-control" required> '
-                                  .'<option value="">Selecione...</option>'
-                                    .MostrarQuestao()
-                                    .'</select>'
-                                .'</div>'
-                                .'</div>'
-                                .'<div class="col-12">'
-                                .'<div class="form-group">'
-                                .'<label for=iQuest6> Primeira Questao:</label>'
-                                  .'<select name="nQuest1" class="form-control" required> '
-                                  .'<option value="">Selecione...</option>'
-                                    .MostrarQuestao()
-                                    .'</select>'
-                                .'</div>'
-                                .'</div>'
-                                .'<div class="col-12">'
-                                .'<div class="form-group">'
-                                .'<label for=iQuest7> Primeira Questao:</label>'
-                                  .'<select name="nQuest1" class="form-control" required> '
-                                  .'<option value="">Selecione...</option>'
-                                    .MostrarQuestao()
-                                    .'</select>'
-                                .'</div>'
-                                .'</div>'
-                                .'<div class="col-12">'
-                                .'<div class="form-group">'
-                                .'<label for=iQuest8> Primeira Questao:</label>'
-                                  .'<select name="nQuest1" class="form-control" required> '
-                                  .'<option value="">Selecione...</option>'
-                                    .MostrarQuestao()
-                                    .'</select>'
-                                .'</div>'
-                                .'</div>'
-                                .'<div class="col-12">'
-                                .'<div class="form-group">'
-                                .'<label for=iQuest9> Primeira Questao:</label>'
-                                  .'<select name="nQuest1" class="form-control" required> '
-                                  .'<option value="">Selecione...</option>'
-                                    .MostrarQuestao()
-                                    .'</select>'
-                                .'</div>'
-                                .'</div>'
-                                .'<div class="col-12">'
-                                .'<div class="form-group">'
-                                .'<label for=iQuest10> Primeira Questao:</label>'
-                                  .'<select name="nQuest1" class="form-control" required> '
-                                  .'<option value="">Selecione...</option>'
-                                    .MostrarQuestao()
-                                    .'</select>'
-                                .'</div>'
-                                .'</div>'
-                                
+                                .mostarMestre($coluna['idAtividade'])
                                 
                                 .'<div class="col-12">'
                                 .'<div class="form-group">'
@@ -340,7 +250,50 @@ function optiondaDisciplina(){
     }
     return $resp;
 }
-function MostrarQuestao(){
+function MostrarQuestao($id){
+    include("conexao.php");
+    $filtroDisciplina= filtrarQuest2();
+    $sql = "SELECT * FROM questao where FlgLiberada = 'S' and idDisciplina in ($filtroDisciplina) and idQuestao = $id ;";
+
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+    $resp = ''; // Inicialize a variável $resp
+
+    if (mysqli_num_rows($result) > 0) {
+        $array = array();
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        foreach ($array as $coluna) {
+            $resp .= '<option value="'.$coluna["idQuestao"].'">'.$coluna["Pergunta"].'</option>';
+
+        }
+    }
+    return $resp;
+}
+function MostarAsDEMAISQuestoesEDITAR($id){
+    include("conexao.php");
+    $filtroDisciplina= filtrarQuest2();
+    $sql = "SELECT * FROM questao where FlgLiberada = 'S' and idDisciplina in ($filtroDisciplina) and idQuestao != $id ;";
+
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+    $resp = ''; // Inicialize a variável $resp
+
+    if (mysqli_num_rows($result) > 0) {
+        $array = array();
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        foreach ($array as $coluna) {
+            $resp .= '<option value="'.$coluna["idQuestao"].'">'.$coluna["Pergunta"].'</option>';
+
+        }
+    }
+    return $resp;
+}
+
+function MostrarQuestaoNOVO(){
     include("conexao.php");
     $filtroDisciplina= filtrarQuest2();
     $sql = "SELECT * FROM questao where FlgLiberada = 'S' and idDisciplina in ($filtroDisciplina);";
@@ -361,6 +314,41 @@ function MostrarQuestao(){
     }
     return $resp;
 }
+
+
+
+
+
+function mostarMestre($id){
+    include("conexao.php");
+    $sql = "SELECT * FROM atividade_has_questao where idAtividade = $id ;";
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+    $resp = '';
+    if (mysqli_num_rows($result) > 0) {
+        $array = array();
+
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        $i = 0;
+        foreach ($array as $coluna) {
+            $i= $i + 1; 
+            $resp .= 
+            '<div class="col-12">'
+            .'<div class="form-group">'
+            .'<label for=iQuest'.$i.'> Primeira Questao:</label>'
+              .'<select name="nQuest'.$i.'" class="form-control" required> '
+                .MostrarQuestao($coluna['idQuestao'])
+                .MostarAsDEMAISQuestoesEDITAR($coluna['idQuestao'])
+                .'</select>'
+            .'</div>'
+            .'</div>';
+        }
+    }
+    return $resp;
+}
+
 function proxIDAtividade(){
     $id = "";
     include("conexao.php");
