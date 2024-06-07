@@ -121,6 +121,26 @@ function listaAtividadeProfessor(){
 
                                 .mostarMestre($coluna['idAtividade'])
                                 
+
+                                .'<div class="col-4">'
+                                .'<div class="form-group">'
+                                    .'<input type="checkbox" id="iAtivo" name="nAtivo1" '.$ativo.'>'
+                                    .'<label for="iAtivo">Usuário Ativo</label>'
+                                .'</div>'
+                                .'</div>'
+                                .'<div class="col-4">'
+                                .'<div class="form-group">'
+                                    .'<input type="checkbox" id="iAtivo" name="nAtivo2" '.$ativo.'>'
+                                    .'<label for="iAtivo">Usuário Ativo</label>'
+                                .'</div>'
+                                .'</div>'
+                                .'<div class="col-4">'
+                                .'<div class="form-group">'
+                                    .'<input type="checkbox" id="iAtivo" name="nAtivo3" '.$ativo.'>'
+                                    .'<label for="iAtivo">Usuário Ativo</label>'
+                                .'</div>'
+                                .'</div>'
+                                
                                 .'<div class="col-12">'
                                 .'<div class="form-group">'
                                   .'<label for=idata> Data DataAplicação:</label>'

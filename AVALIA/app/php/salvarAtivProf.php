@@ -23,7 +23,9 @@ $quest9         = $_POST["nQuest9"];
 $quest10        = $_POST["nQuest10"];
 $funcao        = $_GET["funcao"];
 $teste = 0;
-//if($_POST["nAtivo"] == "on") $ativo = "S"; else $ativo = "N";
+if($_POST["nAtivo1"] == "on") $ativo1 = "S"; else $ativo1 = "N";
+if($_POST["nAtivo2"] == "on") $ativo2 = "S"; else $ativo2 = "N";
+if($_POST["nAtivo3"] == "on") $ativo3 = "S"; else $ativo3 = "N";
 
 include("conexao.php");
 
@@ -33,7 +35,7 @@ if($funcao == "I"){
     $idAtividade = proxIDAtividade();
     //INSERT
     $sql = "INSERT INTO atividade (idAtividade, idProfessor, idDisciplina, Titulo, Descricao, DataAplicacao,FlgLiberada,FlgRevisao,flgMostraNota) "
-    ."VALUES ('$idAtividade','$Professor', '$Disciplina', '$Titulo','$Descricao','$DataAplicacao','S','S','S');";
+    ."VALUES ('$idAtividade','$Professor', '$Disciplina', '$Titulo','$Descricao','$DataAplicacao','N','N','N');";
     
     $result = mysqli_query($conn,$sql);
     
@@ -70,31 +72,78 @@ if($funcao == "I"){
 }elseif($funcao == "A"){
 
    $idAtividade = $_GET["codigo"];
-   $sql = "UPDATE atividade set idDisciplina = '$Disciplina ',Titulo = '$Titulo' , Descricao= '$Descricao' , DataAplicacao= '$DataAplicacao'  where idAtividade = $idAtividade ;";
-   
-   $sql2 = "UPDATE atividade_has_questao set idQuestao = $quest1 where idAtividade = $idAtividade;";
-   $sql3 = "UPDATE atividade_has_questao set idQuestao = $quest2 where idAtividade = $idAtividade;";
-   $sql4 = "UPDATE atividade_has_questao set idQuestao = $quest3 where idAtividade = $idAtividade;";
-   $sql5 = "UPDATE atividade_has_questao set idQuestao = $quest4 where idAtividade = $idAtividade;";
-   $sql6 = "UPDATE atividade_has_questao set idQuestao = $quest5 where idAtividade = $idAtividade;";
-   $sql7 = "UPDATE atividade_has_questao set idQuestao = $quest6 where idAtividade = $idAtividade;";
-   $sql8 = "UPDATE atividade_has_questao set idQuestao = $quest7 where idAtividade = $idAtividade;";
-   $sql9 = "UPDATE atividade_has_questao set idQuestao = $quest8 where idAtividade = $idAtividade;";
-   $sql10 = "UPDATE atividade_has_questao set idQuestao = $quest9 where idAtividade = $idAtividade;";
-   $sql11 = "UPDATE atividade_has_questao set idQuestao = $quest10 where idAtividade = $idAtividade;";
+   $sql = "UPDATE atividade set idDisciplina = '$Disciplina' ,Titulo = '$Titulo' , Descricao= '$Descricao' , DataAplicacao= '$DataAplicacao', FlgLiberada='$ativo1' , FlgRevisao='$ativo2' , flgMostraNota='$ativo3'  where idAtividade = $idAtividade ;";
+   $sqlz= "SELECT * FROM atividade_has_questao where idAtividade = $idAtividade ;";
+   $result = mysqli_query($conn,$sqlz);
+   if (mysqli_num_rows($result) > 0) {
+       $descricao = '';
+       $array = array();
+       
+       while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+           array_push($array,$linha);
+       }
+       $i = 0;
+       foreach ($array as $coluna) {
+          $i = $i + 1; 
+          $idativhasquestao = $coluna["idAtividadeQuestao"];
+          switch ($i) {
+              case 1:
+                $sql2 = "UPDATE atividade_has_questao set idQuestao = $quest1 where idAtividadeQuestao = $idativhasquestao ;";
+                break;
+                case 2: 
+                $sql3 = "UPDATE atividade_has_questao set idQuestao = $quest2 where idAtividadeQuestao = $idativhasquestao ;";
+                break;
+                case 3: 
+                $sql4 = "UPDATE atividade_has_questao set idQuestao = $quest3 where idAtividadeQuestao = $idativhasquestao ;";
+                break;
 
+                case 4: 
+                $sql5 = "UPDATE atividade_has_questao set idQuestao = $quest4 where idAtividadeQuestao = $idativhasquestao ;";
+                break;
 
-   $result = mysqli_query($conn,$sql);
-   $result = mysqli_query($conn,$sql2);
-   $result = mysqli_query($conn,$sql3);
-   $result = mysqli_query($conn,$sql4);
-   $result = mysqli_query($conn,$sql5);
-   $result = mysqli_query($conn,$sql6);
-   $result = mysqli_query($conn,$sql7);
-   $result = mysqli_query($conn,$sql8);
-   $result = mysqli_query($conn,$sql9);
-   $result = mysqli_query($conn,$sql10);
-   $result = mysqli_query($conn,$sql11);
+                case 5: 
+                $sql6 = "UPDATE atividade_has_questao set idQuestao = $quest5 where idAtividadeQuestao = $idativhasquestao ;";
+                break;
+
+                case 6: 
+                $sql7 = "UPDATE atividade_has_questao set idQuestao = $quest6 where idAtividadeQuestao = $idativhasquestao ;";
+                break;
+
+                case 7: 
+                $sql8 = "UPDATE atividade_has_questao set idQuestao = $quest7 where idAtividadeQuestao = $idativhasquestao ;";
+                break;
+
+                case 8: 
+                $sql9 = "UPDATE atividade_has_questao set idQuestao = $quest8 where idAtividadeQuestao = $idativhasquestao ;";
+                break;
+
+                case 9: 
+                $sql10 = "UPDATE atividade_has_questao set idQuestao = $quest9 where idAtividadeQuestao = $idativhasquestao ;";
+                break;
+
+                case 10: 
+                $sql11 = "UPDATE atividade_has_questao set idQuestao = $quest10 where idAtividadeQuestao = $idativhasquestao ;";
+                break;
+
+                default:
+                  # code...
+                  break;
+            }
+        }
+        
+        $result = mysqli_query($conn,$sql);
+        $result = mysqli_query($conn,$sql2);
+        $result = mysqli_query($conn,$sql3);
+        $result = mysqli_query($conn,$sql4);
+        $result = mysqli_query($conn,$sql5);
+        $result = mysqli_query($conn,$sql6);
+        $result = mysqli_query($conn,$sql7);
+        $result = mysqli_query($conn,$sql8);
+        $result = mysqli_query($conn,$sql9);
+        $result = mysqli_query($conn,$sql10);
+        $result = mysqli_query($conn,$sql11);
+    }
+
 
 
 }elseif($funcao == "D"){
@@ -162,8 +211,8 @@ function salvarAtividadeAlunoAtividadeQuestao($idTurma) {
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $idAtividade = $row["idAtividade"];
+        $coluna = mysqli_fetch_assoc($result);
+        $idAtividade = $coluna["idAtividade"];
     } else {
         // Se não houver atividades realizadas, não podemos continuar
         die('Nenhuma atividade realizada.');
@@ -174,12 +223,12 @@ function salvarAtividadeAlunoAtividadeQuestao($idTurma) {
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $idAluno = $row["idUsuario"];
+        while ($coluna = mysqli_fetch_assoc($result)) {
+            $idAluno = $coluna["idUsuario"];
 
             // Inserir o aluno na última atividade realizada
-            $sql_insert = "INSERT INTO atividade_has_aluno (idAtividade, idAluno) VALUES ($idAtividade, $idAluno);";
-            $insert_result = mysqli_query($conn, $sql_insert);
+            $sql = "INSERT INTO atividade_has_aluno (idAtividade, idAluno) VALUES ($idAtividade, $idAluno);";
+            $insert_result = mysqli_query($conn, $sql);
 
             if (!$insert_result) {
                 die('Erro na consulta: ' . mysqli_error($conn));
