@@ -24,7 +24,7 @@
 
   <!-- Sidebar -->
   <?php 
-        $_SESSION['menu-n1'] = 'escola';
+        $_SESSION['menu-n1'] = 'admin';
         $_SESSION['menu-n2'] = 'usuarios';
         montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']);
         include('partes/sidebar.php'); 
@@ -58,12 +58,6 @@
                     </button>
                   </div>
 
-                  <div class="col-3" align="right">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#testeAjaxModal">
-                      Teste Ajax
-                    </button>
-                  </div>
-
                 </div>
               </div>
 
@@ -84,7 +78,7 @@
                   </thead>
                   <tbody>
 
-                  <?php echo lista_usuario(); ?>
+                  <?php echo lista_escola(); ?>
                   
                   </tbody>
                   
@@ -125,8 +119,9 @@
                     <div class="form-group">
                       <label for="iNome">Tipo de Usuário:</label>
                       <select name="nTipoUsuario" class="form-control" required>
-                        <option value="">Selecione...</option>
-                        <?php echo optionAcessoUsuario();?>
+                        <option value="">Selecione...</option>                        
+                        <option value="1">Admin</option> 
+                        <option value="2">Escola</option>                         
                       </select>
                     </div>
                   </div>

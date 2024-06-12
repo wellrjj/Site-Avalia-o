@@ -218,4 +218,24 @@ function proxIdTurma(){
     return $id;
 }
 
+function alunoTurma($idUsuario){
+   
+    include("conexao.php");
+    $sql = "select tur.Descricao from turma tur inner join usuarios usu on usu.idTurma = tur.idTurma where usu.idUsuario = $idUsuario;";
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+    $resp = "";
+
+    //Validar se tem retorno do BD
+    if (mysqli_num_rows($result) > 0) {
+        
+        foreach ($result as $coluna) {            
+            $resp = $coluna['Descricao'];
+        } 
+    }
+
+    return $resp; 
+
+}
+
 ?>
