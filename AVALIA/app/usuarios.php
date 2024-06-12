@@ -23,11 +23,11 @@
   <!-- Fim Navbar -->
 
   <!-- Sidebar -->
-  <?php 
+  <?php  
         $_SESSION['menu-n1'] = 'escola';
         $_SESSION['menu-n2'] = 'usuarios';
         montaMenu($_SESSION['menu-n1'],$_SESSION['menu-n2']);
-        include('partes/sidebar.php'); 
+        include('partes/sidebar.php');
   ?>
   <!-- Fim Sidebar -->
 
@@ -51,16 +51,10 @@
                   <div class="col-9">
                     <h3 class="card-title">Usuários</h3>
                   </div>
-                  
+
                   <div class="col-3" align="right">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novoUsuarioModal">
                       Novo Usuário
-                    </button>
-                  </div>
-
-                  <div class="col-3" align="right">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#testeAjaxModal">
-                      Teste Ajax
                     </button>
                   </div>
 
@@ -75,7 +69,7 @@
                   <thead>
                   <tr>
                       <th>ID</th>
-                      <th>tipo usuario</th>
+                      <th>Tipo de Usuário</th>
                       <th>Nome</th>
                       <th>Login</th>
                       <th>Ativo</th>                
@@ -105,75 +99,6 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header bg-success">
-              <h4 class="modal-title">Novo Usuário</h4>
-              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form method="POST" action="php/salvarUsuario.php?funcao=I" enctype="multipart/form-data">              
-                
-                <div class="row">
-                  <div class="col-8">
-                    <div class="form-group">
-                      <label for="iNome">Nome:</label>
-                      <input type="text" class="form-control" id="iNome" name="nNome" maxlength="50">
-                    </div>
-                  </div>
-
-                  <div class="col-4">
-                    <div class="form-group">
-                      <label for="iNome">Tipo de Usuário:</label>
-                      <select name="nTipoUsuario" class="form-control" required>
-                        <option value="">Selecione...</option>
-                        <?php echo optionAcessoUsuario();?>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="col-8">
-                    <div class="form-group">
-                      <label for="iLogin">Login:</label>
-                      <input type="email" class="form-control" id="iLogin" name="nEmail" maxlength="50">
-                    </div>
-                  </div>
-
-                  <div class="col-4">
-                    <div class="form-group">
-                      <label for="iSenha">Senha:</label>
-                      <input type="text" class="form-control" id="iSenha" name="nSenha" maxlength="6">
-                    </div>
-                  </div>
-                
-                  <div class="col-12">
-                    <div class="form-group">
-                      <input type="checkbox" id="iAtivo" name="nAtivo">
-                      <label for="iAtivo">Usuário Ativo</label>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                  <button type="submit" class="btn btn-success">Salvar</button>
-                </div>
-                
-              </form>
-
-            </div>
-            
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-
-      <div class="modal fade" id="testeAjaxModal">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header bg-primary">
               <h4 class="modal-title">Teste Ajax</h4>
               <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -288,7 +213,7 @@ $('#iTipUsu').on('change',function(){
   if(tipoUsu != "" && tipoUsu != "0"){
     
     //Vai no PHP consultar dados para a lista 2
-    $.getJSON('php/carregaProdutoCategoria.php?codigo='+tipoUsu,
+    $.getJSON('php/carregaTurma.php?codigo='+tipoUsu,
     function (dados){  
       
       //Carrega a primeira option
@@ -299,7 +224,7 @@ $('#iTipUsu').on('change',function(){
         
         //Se tem dados, monta a lista 2
         $.each(dados, function(i, obj){
-          optionTurma += '<option value="'+obj./*!!!!!!!! VERIFICAR VARIÁVEL À DIREITA*/idTurma+'">'+obj.Descricao+'</option>';	                            
+          optionTurma += '<option value="'+obj.idTurma+'">'+obj.Descricao+'</option>';	                            
         })
 
         //Marca a lista 2 como required e mostra os dados filtrados

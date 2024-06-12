@@ -120,7 +120,7 @@ function lista_usuario(){
                                     .'<div class="col-4">'
                                         .'<div class="form-group">'
                                             .'<label for="iSenha">Senha:</label>'
-                                            .'<input type="text" value="" class="form-control" id="iSenha" name="nSenha" maxlength="6">'
+                                            .'<input type="password" value="" class="form-control" id="iSenha" name="nSenha" maxlength="20">'
                                         .'</div>'
                                     .'</div>'
                                     

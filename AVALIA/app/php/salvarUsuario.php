@@ -3,7 +3,7 @@
     include('funcoes.php');
 
     $idtipoUsuario = $_POST["nTipUsu"];
-    $idTurma       = $POST["nTurma"];
+    $idTurma       = $_POST["nTurma"];
     $nome          = $_POST["nNome"];
     $Email         = $_POST["nEmail"];
     $senha         = $_POST["nSenha"];
@@ -24,8 +24,7 @@
         $sql = "INSERT INTO usuarios (idUsuario, idTipoUsuario, idTurma, Nome, Email, Senha, FlgAtivo, idEscola) "
         ."VALUES ('$idUsuario', '$idtipoUsuario', '$idTurma', '$nome', '$Email', MD5('$senha'), '$ativo', ".$_SESSION['idEscola'].");";
 
-        var_dump($sql);
-        die();
+        
 
     }elseif($funcao == "A"){
 
