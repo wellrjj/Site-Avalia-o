@@ -51,19 +51,19 @@
 
                 switch ($coluna['idTipoUsuario']) {
                     case 1:
-                        header('location: ../usuarios.php');
+                        header('location: ../painel.php');
                         break;
                        
                     case 2:
-                        header('location: ../usuarios.php');
+                        header('location: ../painel.php');
                         break;
                     
                     case 3:
-                        header('location: ../professor.php');
+                        header('location: ../painel.php');
                         break;
                         
                     case 4:
-                        header('location: ../aluno.php');
+                        header('location: ../painel.php');
                         break;
                             
                                             

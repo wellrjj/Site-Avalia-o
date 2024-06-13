@@ -47,21 +47,11 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                <div class="row">
-                  
-                  <div class="col-12">
-                    <h3 class="card-title">sujiro</h3>
-                  </div>
-
-                </div>
-              </div>
-
-              
-
-              <!-- /.card-header -->
-              <div class="card-body">
-              
+              <div class="card-body" align="center">
+                   <h2>Parabéns por terminar a avaliação!!</h2>
+                   <p>Acesse a aba de "Desempenho" para Verificar seu feedback</p>
+                   <p> ou acesse a aba "Revisão" para verificar os erros e acertos.</p>
+                   <p>Tanto a revisão quanto o desempenho só estarão disponíveis se o professor liberar.</p>
               </div>
               <!-- /.card-body -->
             </div>
