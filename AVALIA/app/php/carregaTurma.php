@@ -30,6 +30,9 @@
              ." AND usu.idTipoUsuario = $idTpUsu  "
              ." ORDER BY tur.Descricao;";
 
+             var_dump($sql);
+             die();
+
         //Executar por PDO
         $stm = $pdo->prepare($sql);
         $stm->execute();

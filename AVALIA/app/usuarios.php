@@ -128,7 +128,7 @@
                   <div class="col-3">
                     <div class="form-group">
                       <label for="iTurma">Turma:</label>
-                      <select name="nTurma" id="iTurma" class="form-control" required>
+                      <select name="nTurma" id="iTurma" class="form-control">
                         <option value="">Selecione...</option>
                       </select>
                     </div>
@@ -209,8 +209,8 @@ $('#iTipUsu').on('change',function(){
   //Prepara a lista 2 filtrada
   var optionTurma = '';
             
-  //Valida se teve seleção na lista 1
-  if(tipoUsu != "" && tipoUsu != "0"){
+  //Valida se teve seleção na lista
+  if(tipoUsu == "4" ){
     
     //Vai no PHP consultar dados para a lista 2
     $.getJSON('php/carregaTurma.php?codigo='+tipoUsu,

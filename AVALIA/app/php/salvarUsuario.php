@@ -38,8 +38,8 @@
                     ." Nome = '$nome', "
                     ." Email = '$Email', "
                     ." FlgAtivo = '$ativo' "
-                    ."'$senha'"
-                ." WHERE idUsuario = $idUsuario;";
+                    ." $senha"
+                    ." WHERE idUsuario = $idUsuario;";
 
     }elseif($funcao == "D"){
    

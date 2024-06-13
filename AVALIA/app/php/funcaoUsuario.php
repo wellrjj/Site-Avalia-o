@@ -89,7 +89,7 @@ function lista_usuario(){
                                         '<div class="col-4">'
                                             .'<div class="form-group">'
                                                 .'<label for="iNome">Tipo de Usuário:</label>'
-                                                .'<select name="nTipoUsuario" class="form-control">'
+                                                .'<select name="nTipUsu" class="form-control">'
                                                      .'<option value ="2">Escola</option>'
                                                 .'</select>'                                               
                                             .'</div>'
@@ -100,7 +100,7 @@ function lista_usuario(){
                                         '<div class="col-4">'
                                             .'<div class="form-group">'
                                                 .'<label for="iNome">Tipo de Usuário:</label>'
-                                                .'<select name="nTipoUsuario" class="form-control">'
+                                                .'<select name="nTipUsu" class="form-control">'
                                                      .tipoDeAcesso($coluna["idTipoUsuario"])
                                                 .'</select>'
                                             .'</div>'
@@ -207,7 +207,7 @@ function tipoDeAcesso($id){
         foreach ($array as $coluna) {            
             //***Verificar os dados da consulta SQL
             $resp .= '<option value="'.$coluna["idTipoUsuario"].'">'.$coluna["Descricao"].'</option>';
-             $resp .= faltantes($coluna["idTipoUsuario"]);
+            $resp .= faltantes($coluna["idTipoUsuario"]);
         }        
     }
 
@@ -538,8 +538,7 @@ function montaPainel($id,$idUsuario){
  return $resp;
 }
 
-function lista_escola(){  
-     
+function lista_escola(){   
     include("conexao.php");
     $sql = "SELECT * FROM usuarios where idTipoUsuario = 2 OR idTipoUsuario = 1;";
             
