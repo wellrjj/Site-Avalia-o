@@ -538,7 +538,8 @@ function montaPainel($id,$idUsuario){
  return $resp;
 }
 
-function lista_escola(){   
+function lista_escola(){  
+     
     include("conexao.php");
     $sql = "SELECT * FROM usuarios where idTipoUsuario = 2 OR idTipoUsuario = 1;";
             

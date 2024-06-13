@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TecAvaliação - Entrar</title>
     <link rel="stylesheet" href="dist/css2/login.css">
+    <?php 
+        session_start();
+        include('php/funcoes.php');        
+        
+    ?>
   
    
 
@@ -33,6 +38,10 @@
             </fieldset>
         </form>
     </div>
+
+    <script>
+        <?php echo $_SESSION['alerta']; ?>
+    </script>
     
 </body>
 </html>

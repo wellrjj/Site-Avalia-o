@@ -117,8 +117,8 @@
 
                   <div class="col-12">
                     <div class="form-group">
-                      <input type="checkbox" id="iAtivo" name="nAtivo" checked disabled>
-                      <label for="iAtivo">Usuário Ativo</label>
+                      <input type="checkbox" id="iAtivo" name="nAtivo">
+                      <label for="iAtivo">Flag liberada</label>
                     </div>
                   </div>
 

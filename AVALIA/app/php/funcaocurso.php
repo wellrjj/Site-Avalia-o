@@ -3,7 +3,7 @@
 //função para listar todos os usuários
 function lista_curso(){   
     include("conexao.php");
-    $sql = "SELECT * FROM curso;";
+    $sql = "SELECT * FROM curso where idEscola = ".$_SESSION['idEscola'].";";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -87,7 +87,7 @@ function lista_curso(){
                                     .'<div class="col-12">'
                                         .'<div class="form-group">'
                                             .'<input type="checkbox" id="iAtivo" name="nAtivo" '.$ativo.'>'
-                                            .'<label for="iAtivo">Usuário Ativo</label>'
+                                            .'<label for="iAtivo">Flag liberada</label>'
                                         .'</div>'
                                     .'</div>'
                 
@@ -121,7 +121,7 @@ function lista_curso(){
                 
                                  .'<div class="row">'
                                     .'<div class="col-12">'
-                                        .'<h4>Deseja CANCELAR o usuário '.$coluna["Descricao"].'?</h4>'
+                                        .'<h4>Deseja CANCELAR o curso '.$coluna["Descricao"].'?</h4>'
                                     .'</div>'
                                 .'</div>'
 
@@ -171,7 +171,7 @@ function decricaoEscola($id){
 function optionCurso(){
 
     include("conexao.php");
-    $sql = "SELECT * FROM curso WHERE FlgAtivo = 'S';";
+    $sql = "SELECT * FROM curso WHERE FlgAtivo = 'S' and idEscola = ".$_SESSION['idEscola'].";";
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
     $resp = "";

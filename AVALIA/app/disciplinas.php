@@ -97,7 +97,7 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header bg-success">
-              <h4 class="modal-title">Novo Usuário</h4>
+              <h4 class="modal-title">Nova Disciplina</h4>
               <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

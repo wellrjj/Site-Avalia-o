@@ -172,7 +172,7 @@ function proximoidDisciplina(){
 function optionDisciplinas(){
 
     include("conexao.php");
-    $sql = "SELECT  DISTINCT idDisciplina, dis.Descricao AS Descricao FROM disciplina dis inner join curso cur on cur.idEscola = ".$_SESSION["idEscola"].";";
+    $sql = "SELECT  DISTINCT idDisciplina, dis.Descricao AS Descricao FROM disciplina dis inner join curso cur on cur.idCurso = dis.idCurso where cur.idEscola = ".$_SESSION["idEscola"].";";
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
     $resp = "";

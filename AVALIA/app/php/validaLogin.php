@@ -47,6 +47,7 @@
                 $_SESSION['idEscola'] = $coluna['idEscola'];
                 $_SESSION['idUsuario'] = $coluna['idUsuario'];
                 $_SESSION['idCurso'] = $coluna['idCurso'];
+                $_SESSION['alerta'] = '';
 
                 switch ($coluna['idTipoUsuario']) {
                     case 1:
@@ -75,12 +76,19 @@
             }    
 
         }else{
-            echo('Senha incorreta.');
+            
+            $_SESSION['alerta'] = "alert('Senha incorreta, tente novamente')";  
+            header('location: ../index.php');  
+           
+           
+                     
         }
 
     }else{
-
-        echo('Usuário não cadastrado.');
+        
+        $_SESSION['alerta'] = "alert('Usuário não encontrado ou não existe')";  
+        header('location: ../index.php');   
+        
 
     }
 

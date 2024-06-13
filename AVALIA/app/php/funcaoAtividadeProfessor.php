@@ -4,7 +4,7 @@
 function listaAtividadeProfessor(){
 
     include("conexao.php");
-    $sql = "SELECT * from atividade;";
+    $sql = "SELECT * from atividade ;";
 
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
