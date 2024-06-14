@@ -52,12 +52,17 @@
                     <h3 class="card-title">Atividade</h3>
                   </div>
                   
-                  <div class="col-3" align="right">
+                  <!--<div class="col-3" align="right">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novaQuestao">
                       Nova Atividade
                     </button>
+                  </div>-->
+                
+                  <div class="col-3" align="right">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novaQuestao2">
+                      Nova Atividade2
+                    </button>
                   </div>
-
                 </div>
               </div>
 
@@ -102,17 +107,19 @@
       </div>
       <!-- /.container-fluid -->
 
-      <div class="modal fade" id="novaQuestao">
+     <!---Novo Antigo-->
+      <!-- /.modal -->
+      <div class="modal fade" id="novaQuestao2">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header bg-success">
-              <h4 class="modal-title">Nova Avaliação</h4>
+              <h4 class="modal-title">Nova Avaliação2</h4>
               <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="php/salvarAtivProf.php?funcao=I" enctype="multipart/form-data">              
+              <form method="POST" action="php/salvarAtivProf.php?funcao=I&parte=1" enctype="multipart/form-data">              
                 
               <div class="row">
                 <div class="col-2">
@@ -146,107 +153,13 @@
                         <input type="text"  class="form-control" id="iresp1" name="nDescricao" maxlength="50" required >
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="form-group">
-                      <label for=iQuest1> Primeira Questao:</label>
-                      <select name="nQuest1" class="form-control" required>
-                        <option value="">Selecione...</option>
-                        <?php echo MostrarQuestaoNOVO();?>
-                      </select>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for=iQuest2> Segunda Questao:</label>
-                        <select name="nQuest2" class="form-control" required>
-                          <option value="">Selecione...</option>
-                          <?php echo MostrarQuestaoNOVO();?>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for=iQuest3> Terceira Questao:</label>
-                    <select name="nQuest3" class="form-control" required>
-                      <option value="">Selecione...</option>
-                      <?php echo MostrarQuestaoNOVO();?>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for=iQuest4> Quarta Questao:</label>
-                    <select name="nQuest4" class="form-control" required>
-                      <option value="">Selecione...</option>
-                      <?php echo MostrarQuestaoNOVO();?>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for=iQuest5> Quinta Questao:</label>
-                    <select name="nQuest5" class="form-control" required>
-                      <option value="">Selecione...</option>
-                      <?php echo MostrarQuestaoNOVO();?>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for=iQuest6> Sexta Questao:</label>
-                    <select name="nQuest6" class="form-control" required>
-                      <option value="">Selecione...</option>
-                      <?php echo MostrarQuestaoNOVO();?>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for=iQuest7> Sétima Questao:</label>
-                    <select name="nQuest7" class="form-control" required>
-                     <option value="">Selecione...</option>
-                      <?php echo MostrarQuestaoNOVO();?>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for=iQuest8> Oitava Questao:</label>
-                    <select name="nQuest8" class="form-control" required>
-                      <option value="">Selecione...</option>
-                      <?php echo MostrarQuestaoNOVO();?>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for=iQuest9> Nona Questao:</label>
-                    <select name="nQuest9" class="form-control" required>
-                      <option value="">Selecione...</option>
-                      <?php echo MostrarQuestaoNOVO();?>
-                    </select>
-                  </div>
-                </div>
 
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for=iQuest10> Décima Questao:</label>
-                    <select name="nQuest10" class="form-control" required>
-                      <option value="">Selecione...</option>
-                      <?php echo MostrarQuestaoNOVO();?>
-                    </select>
-                  </div>
-                </div>
                 <div class="col-12">
                   <div class="form-group">
                     <label for=idata> Data DataAplicação:</label>
                     <input type="date"  class="form-control" id="idata" name="nDataAp">
                   </div>
                 </div>
-
-               
-                
-                
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>

@@ -21,8 +21,8 @@ $quest7         = $_POST["nQuest7"];
 $quest8         = $_POST["nQuest8"];
 $quest9         = $_POST["nQuest9"];
 $quest10        = $_POST["nQuest10"];
-$funcao        = $_GET["funcao"];
-$teste = 0;
+$funcao         = $_GET["funcao"];
+$parte          = $_GET["parte"];
 if($_POST["nAtivo1"] == "on") $ativo1 = "S"; else $ativo1 = "N";
 if($_POST["nAtivo2"] == "on") $ativo2 = "S"; else $ativo2 = "N";
 if($_POST["nAtivo3"] == "on") $ativo3 = "S"; else $ativo3 = "N";
@@ -31,14 +31,21 @@ include("conexao.php");
 
 //Validar se é Inclusão ou Alteração
 if($funcao == "I"){
+    
 //Busca o próximo ID na tabela
+    if($parte==1){
     $idAtividade = proxIDAtividade();
     //INSERT
     $sql = "INSERT INTO atividade (idAtividade, idProfessor, idDisciplina, Titulo, Descricao, DataAplicacao,FlgLiberada,FlgRevisao,flgMostraNota) "
     ."VALUES ('$idAtividade','$Professor', '$Disciplina', '$Titulo','$Descricao','$DataAplicacao','N','N','N');";
-    
     $result = mysqli_query($conn,$sql);
-    
+    salvarAtividadeAlunoAtividadeQuestao($Turma);
+    }else if ($parte==2){
+   
+    $idAtividade = $_GET["codigo"];
+    $del ="DELETE FROM atividade_has_questao where idAtividade = $idAtividade ;";
+    $result = mysqli_query($conn,$del);
+   
     $sql2 = "INSERT INTO atividade_has_questao (idAtividade, idQuestao) "
     ."VALUES ('$idAtividade','$quest1');";
     $sql3 = "INSERT INTO atividade_has_questao (idAtividade, idQuestao) "
@@ -66,103 +73,27 @@ if($funcao == "I"){
     ."VALUES ('$idAtividade','$quest9');";
     $sql11 = "INSERT INTO atividade_has_questao (idAtividade, idQuestao) "
     ."VALUES ('$idAtividade','$quest10');";
-    
-    salvarAtividadeAlunoAtividadeQuestao($Turma);
-    $teste = 1;
+
+    $result = mysqli_query($conn,$sql2);
+    $result = mysqli_query($conn,$sql3);
+    $result = mysqli_query($conn,$sql4);
+    $result = mysqli_query($conn,$sql5);
+    $result = mysqli_query($conn,$sql6);
+    $result = mysqli_query($conn,$sql7);
+    $result = mysqli_query($conn,$sql8);
+    $result = mysqli_query($conn,$sql9);
+    $result = mysqli_query($conn,$sql10);
+    $result = mysqli_query($conn,$sql11);
+    }
+   
+
 }elseif($funcao == "A"){
 
    $idAtividade = $_GET["codigo"];
    $sql = "UPDATE atividade set idDisciplina = '$Disciplina' ,Titulo = '$Titulo' , Descricao= '$Descricao' , DataAplicacao= '$DataAplicacao', FlgLiberada='$ativo1' , FlgRevisao='$ativo2' , flgMostraNota='$ativo3'  where idAtividade = $idAtividade ;";
-   $sqlz= "SELECT * FROM atividade_has_questao where idAtividade = $idAtividade ;";
-   $result = mysqli_query($conn,$sqlz);
-   if (mysqli_num_rows($result) > 0) {
-       $descricao = '';
-       $array = array();
-       
-       while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-           array_push($array,$linha);
-       }
-       $i = 0;
-       foreach ($array as $coluna) {
-          $i = $i + 1; 
-          $idativhasquestao = $coluna["idAtividadeQuestao"];
-          switch ($i) {
-              case 1:
-                $sql2 = "UPDATE atividade_has_questao set idQuestao = $quest1 where idAtividadeQuestao = $idativhasquestao ;";
-                break;
-                case 2: 
-                $sql3 = "UPDATE atividade_has_questao set idQuestao = $quest2 where idAtividadeQuestao = $idativhasquestao ;";
-                break;
-                case 3: 
-                $sql4 = "UPDATE atividade_has_questao set idQuestao = $quest3 where idAtividadeQuestao = $idativhasquestao ;";
-                break;
+   $result = mysqli_query($conn,$sql);
 
-                case 4: 
-                $sql5 = "UPDATE atividade_has_questao set idQuestao = $quest4 where idAtividadeQuestao = $idativhasquestao ;";
-                break;
-
-                case 5: 
-                $sql6 = "UPDATE atividade_has_questao set idQuestao = $quest5 where idAtividadeQuestao = $idativhasquestao ;";
-                break;
-
-                case 6: 
-                $sql7 = "UPDATE atividade_has_questao set idQuestao = $quest6 where idAtividadeQuestao = $idativhasquestao ;";
-                break;
-
-                case 7: 
-                $sql8 = "UPDATE atividade_has_questao set idQuestao = $quest7 where idAtividadeQuestao = $idativhasquestao ;";
-                break;
-
-                case 8: 
-                $sql9 = "UPDATE atividade_has_questao set idQuestao = $quest8 where idAtividadeQuestao = $idativhasquestao ;";
-                break;
-
-                case 9: 
-                $sql10 = "UPDATE atividade_has_questao set idQuestao = $quest9 where idAtividadeQuestao = $idativhasquestao ;";
-                break;
-
-                case 10: 
-                $sql11 = "UPDATE atividade_has_questao set idQuestao = $quest10 where idAtividadeQuestao = $idativhasquestao ;";
-                break;
-
-                default:
-                  # code...
-                  break;
-            }
-        }
-        
-        $result = mysqli_query($conn,$sql);
-        $result = mysqli_query($conn,$sql2);
-        $result = mysqli_query($conn,$sql3);
-        $result = mysqli_query($conn,$sql4);
-        $result = mysqli_query($conn,$sql5);
-        $result = mysqli_query($conn,$sql6);
-        $result = mysqli_query($conn,$sql7);
-        $result = mysqli_query($conn,$sql8);
-        $result = mysqli_query($conn,$sql9);
-        $result = mysqli_query($conn,$sql10);
-        $result = mysqli_query($conn,$sql11);
-    }
-
-
-
-}elseif($funcao == "D"){
-    
-    
 }
-if($teste =0){
-    $result = mysqli_query($conn,$sql);
-}
-$result = mysqli_query($conn,$sql2);
-$result = mysqli_query($conn,$sql3);
-$result = mysqli_query($conn,$sql4);
-$result = mysqli_query($conn,$sql5);
-$result = mysqli_query($conn,$sql6);
-$result = mysqli_query($conn,$sql7);
-$result = mysqli_query($conn,$sql8);
-$result = mysqli_query($conn,$sql9);
-$result = mysqli_query($conn,$sql10);
-$result = mysqli_query($conn,$sql11);
 
 
 mysqli_close($conn);
