@@ -21,17 +21,10 @@
         $pdo = Conectar();
 
         //Consulta SQL
-        $sql = "SELECT DISTINCT tur.idTurma,"
-			 ." tur.Descricao"
-             ." FROM turma tur"
-             ." JOIN usuarios usu"
-             ." ON usu.idTurma = tur.idTurma"
+        $sql = "SELECT DISTINCT tur.idTurma, tur.Descricao FROM turma tur"
              ." WHERE tur.idEscola = '".$_SESSION['idEscola']."'"
-             ." AND usu.idTipoUsuario = $idTpUsu  "
              ." ORDER BY tur.Descricao;";
 
-             var_dump($sql);
-             die();
 
         //Executar por PDO
         $stm = $pdo->prepare($sql);
