@@ -28,13 +28,13 @@
             $lista .= "<tr>"
                             ."<td align='center'>".$coluna["Descricao"]."</td>"
                             ."<td align='center'>".$coluna["Titulo"]."</td>"                            
-                            ."<td align='center'>".notaTurma($coluna["idAtividade"])."%</td>"                                                                   
+                            ."<td align='center'>".notaTurma($coluna["idAtividade"],$coluna["idTurma"])."%</td>"                                                                   
                             .'<td>'
                                 .'<div class="row" align="center">'
                                     
                                     .'<div class="col-12">'
                                             
-                                        .'<h6><a href="./desempenhoAlunoTurma.php?idturma='.$coluna["idTurma"].'&codigo='.$coluna["idAtividade"].'"><i class="fas fa-book-reader text-info" data-toggle="tooltip" title="Dessempenho Turma"></i></a></h6>'
+                                        .'<h6><a href="./desempenhoAlunoTurma.php?idturma='.$coluna["idTurma"].'&codigo='.$coluna["idAtividade"].'"><i class="fas fa-book-reader text-info" data-toggle="tooltip" title="Desempenho Turma"></i></a></h6>'
                                             
                                     .'</div>'
                                 .'</div>'
@@ -48,12 +48,12 @@
 
   }
 
-  function notaTurma($id){
+  function notaTurma($idAti, $idTur){
 
     // Dados do banco de dados
     include("conexao.php");
   
-    $sql = "select * from atividade_has_aluno atilu where atilu.idAtividade = $id;";
+    $sql = "select * from turma tur inner join atividade_has_aluno atilu on atilu.idAtividade = $idAti where tur.idTurma = $idTur;";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);  
