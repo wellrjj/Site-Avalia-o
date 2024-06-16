@@ -1,6 +1,6 @@
 <?php
 
-//função para listar todos os lecionadores
+//Função para listar todos os lecionadores
 function lista_lecionadores(){   
 
     include("conexao.php");
@@ -85,6 +85,7 @@ function lista_lecionadores(){
     return $lista;
 }
 
+//Função que retorna o próximo id da tabela professor_has_disciplina
 function proximoidProfessorDisciplina(){
     
     $id = "";
@@ -113,6 +114,7 @@ function proximoidProfessorDisciplina(){
 
 }
 
+//Função que retorna o nome da Disciplina
 function nomeDisciplina($id){
     $resp = "";
     $cont = 0;

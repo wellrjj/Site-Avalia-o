@@ -142,7 +142,9 @@ function lista_disciplinas(){
     return $lista;
 }
 
+//Função que retorna o próximo id da tabela de disciplina 
 function proximoidDisciplina(){
+
     $id = "";
 
     include("conexao.php");
@@ -169,6 +171,7 @@ function proximoidDisciplina(){
 
 }
 
+//Função que retorna as disciplinas que estão inseridas num curso
 function optionDisciplinas(){
 
     include("conexao.php");
@@ -192,6 +195,5 @@ function optionDisciplinas(){
     }
     return $resp;  
 }
-
 
 ?>

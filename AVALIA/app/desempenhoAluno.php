@@ -58,7 +58,7 @@
                   </thead>
                   <tbody>
 
-                     <?php echo disciplinasDoAluno();  ?>
+                     <?php echo desempenhoPorAtividade();  ?>
                   
                   </tbody>
                   

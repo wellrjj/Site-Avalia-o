@@ -1,6 +1,6 @@
 <?php
 
-//função para saber se tem atividade pra fazer
+//Função para saber se tem atividade pra fazer (se tiver vai aparecer no badge vermelho)
 function temAtividade(){   
     
     include("conexao.php");
@@ -14,8 +14,7 @@ function temAtividade(){
     //Validar se tem retorno do BD
     if (mysqli_num_rows($result) > 0) {
         
-        $array = array();
-        
+        $array = array();        
 
         while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             array_push($array,$linha);
@@ -31,7 +30,7 @@ function temAtividade(){
     return $lista;
 }
 
-
+//Essa função lista as atividades pendentes do aluno
 function lista_atividade(){
 
     include("conexao.php");
@@ -83,7 +82,8 @@ function lista_atividade(){
 
 }
 
-function disciplinasDoAluno(){
+//Lista o desempenho do aluno por atividade
+function desempenhoPorAtividade(){
 
     include("conexao.php");
     

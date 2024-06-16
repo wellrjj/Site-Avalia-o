@@ -1,8 +1,10 @@
 <?php
 
-//função para listar todos os usuários
+//função para listar todos os cursos da escola
 function lista_curso(){   
+
     include("conexao.php");
+    
     $sql = "SELECT * FROM curso where idEscola = ".$_SESSION['idEscola'].";";
             
     $result = mysqli_query($conn,$sql);
@@ -23,7 +25,6 @@ function lista_curso(){
         }
         
         foreach ($array as $coluna) {
-
              
             if($coluna["FlgAtivo"] == 'S'){  
                 $ativo = 'checked';
@@ -145,8 +146,11 @@ function lista_curso(){
     return $lista;
 }
 
+//Função que retorna o nome da escola que o usuário está inserido
 function decricaoEscola($id){
+
     include("conexao.php");
+
     $sql = "SELECT Nome FROM usuarios where idUsuario = $id ";
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -168,6 +172,7 @@ function decricaoEscola($id){
     return $resp;
 }
 
+//Função que retorna os cursos da escola no formato option
 function optionCurso(){
 
     include("conexao.php");
@@ -192,7 +197,7 @@ function optionCurso(){
     return $resp;  
 }
 
-
+//Função que retorna o próximo id da tabela curso
 function proximoidCurso(){
     $id = "";
 
@@ -220,6 +225,7 @@ function proximoidCurso(){
 
 }
 
+//Função para retornar o curso que tem disciplina
 function optionCursoDisciplina($id){
  
     include("conexao.php");
@@ -242,8 +248,5 @@ function optionCursoDisciplina($id){
         } 
     }
     return $resp; 
-
 }
-
-
 ?>

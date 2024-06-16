@@ -1,6 +1,6 @@
 <?php
 
-//função para saber titulo da atividade
+//Função para saber titulo da atividade
 function tituloAtividade($id){   
     
     include("conexao.php");
@@ -30,7 +30,9 @@ function tituloAtividade($id){
     
     return $lista;
 }
-//função para pegar as atividades
+
+
+//Função para preparar a prova do aluno
 function Atividade($id){   
     
     include("conexao.php");
@@ -41,8 +43,7 @@ function Atividade($id){
     mysqli_close($conn);
 
     $lista = "";
-    $cont = 0; 
-      
+    $cont = 0;       
 
     //Validar se tem retorno do BD
     if (mysqli_num_rows($result) > 0) {
@@ -82,6 +83,7 @@ function Atividade($id){
     return $lista;
 }
 
+//Função para corrigir a prova do aluno
 function correcao($id){
 
     include("conexao.php");
@@ -127,7 +129,7 @@ function correcao($id){
 
 }
 
-
+//Monta um script em JAVASCRIPT para montar um gráfico pizza
 function montaScriptDesempenho(){
 
     // Dados do banco de dados
@@ -142,7 +144,7 @@ function montaScriptDesempenho(){
     $lista = ""; // Número de respostas corretas     
     $acertos = 0; // Número de respostas corretas
     $erros = 0;   // Número de respostas erradas
-    $total = 10;
+   
     //Validar se tem retorno do BD
     if (mysqli_num_rows($result) > 0) {
         
@@ -192,6 +194,7 @@ function montaScriptDesempenho(){
     return $lista;
 }
 
+//Função para mostrar a nota do aluno
 function notaAluno($id){
 
     // Dados do banco de dados
@@ -222,6 +225,7 @@ function notaAluno($id){
     return strval($acertos);;
 }
 
+//Função para trazer a lista de revisão do aluno
 function revisaoAluno(){
 
     include("conexao.php");
@@ -271,6 +275,7 @@ function revisaoAluno(){
 
 }
 
+//Função para trazer a prova revisada ao aluno
 function provaRevisao($id){
    
     include("conexao.php");
@@ -297,6 +302,7 @@ function provaRevisao($id){
     if (mysqli_num_rows($result) > 0) {
         $cont = 0;
         while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
             $resp1 = '';
             $resp2 = '';
             $resp3 = '';
@@ -306,7 +312,6 @@ function provaRevisao($id){
             $icone2 = '';
             $icone3 = '';
             $icone4 = '';
-            
 
              $cont++;
             
