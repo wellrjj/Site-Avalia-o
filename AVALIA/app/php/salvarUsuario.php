@@ -19,6 +19,10 @@
 
         //Busca o próximo ID na tabela
         $idUsuario = proxIdUsuario();
+        
+        if($idTurma == ''){
+            $idTurma = NULL;
+        } 
 
         //INSERT
         $sql = "INSERT INTO usuarios (idUsuario, idTipoUsuario, idTurma, Nome, Email, Senha, FlgAtivo, idEscola) "

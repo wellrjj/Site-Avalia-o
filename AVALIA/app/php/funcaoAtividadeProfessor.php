@@ -3,7 +3,7 @@
 function listaAtividadeProfessor(){
 
     include("conexao.php");
-    $sql = "SELECT * from atividade;";
+    $sql = "SELECT * from atividade where idProfessor = ".$_SESSION["idUsuario"].";";
 
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);

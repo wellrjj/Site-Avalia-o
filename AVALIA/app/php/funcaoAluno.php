@@ -87,7 +87,7 @@ function desempenhoPorAtividade(){
 
     include("conexao.php");
     
-    $sql = "SELECT ati.idAtividade,dis.idDisciplina, ati.Titulo from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma inner join atividade ati on ati.idDisciplina = dis.idDisciplina where usu.idUsuario = '".$_SESSION["idUsuario"]."' and usu.idEscola = '".$_SESSION["idEscola"]."' and ati.flgMostraNota = 'S' and ati.FlgLiberada = 'S';";
+    $sql = "SELECT DISTINCT ati.idAtividade,dis.idDisciplina, ati.Titulo from disciplina dis inner join curso cur on dis.idCurso = cur.idCurso inner join turma tur on tur.idCurso = cur.idCurso inner join usuarios usu on usu.idTurma = tur.idTurma inner join atividade ati on ati.idDisciplina = dis.idDisciplina inner join atividade_has_aluno atilu on ati.idAtividade = atilu.idAtividade where usu.idUsuario = '".$_SESSION["idUsuario"]."' and usu.idEscola = '".$_SESSION["idEscola"]."' and ati.flgMostraNota = 'S' and ati.FlgLiberada = 'S' and atilu.idAluno = '".$_SESSION["idUsuario"]."';";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);

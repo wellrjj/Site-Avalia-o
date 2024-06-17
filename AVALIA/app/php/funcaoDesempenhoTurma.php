@@ -4,7 +4,7 @@ function listaTurmaProfessor(){
 
     include("conexao.php");
 
-    $sql = "select tur.Descricao, tur.idTurma, ati.Titulo, ati.idAtividade from turma tur inner join curso cur on cur.idCurso = tur.idCurso inner join disciplina dis on dis.idCurso = cur.idCurso inner join professor_has_disciplina prodis on prodis.idDisciplina = dis.idDisciplina inner join atividade ati on ati.idDisciplina = dis.idDisciplina  where prodis.idProfessor = " . $_SESSION["idUsuario"] . ";";
+    $sql = "select tur.Descricao, tur.idTurma, ati.Titulo, ati.idAtividade from turma tur inner join curso cur on cur.idCurso = tur.idCurso inner join disciplina dis on dis.idCurso = cur.idCurso inner join professor_has_disciplina prodis on prodis.idDisciplina = dis.idDisciplina inner join atividade ati on ati.idDisciplina = dis.idDisciplina  where prodis.idProfessor = ".$_SESSION["idUsuario"].";";
 
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
