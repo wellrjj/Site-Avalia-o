@@ -49,7 +49,7 @@
                 <div class="row">
                   
                   <div class="col-9">
-                    <h3 class="card-title">Turmas</h3>
+                    <h3>Turmas</h3>
                   </div>
                   
                   <div class="col-3" align="right">

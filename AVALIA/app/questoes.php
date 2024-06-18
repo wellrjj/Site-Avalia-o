@@ -49,7 +49,7 @@
                 <div class="row">
                   
                   <div class="col-9">
-                    <h3 class="card-title">Questões</h3>
+                    <h3>Questões</h3>
                   </div>
                   
                   <div class="col-3" align="right">
@@ -68,9 +68,9 @@
                 <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                      <th>ID Questões</th>
-                      <th>ID Disciplina</th>
-                      <th>ID Professor</th>
+                      <th>Id da Questão</th>
+                      <th>Disciplina</th>
+                      <th>Professor</th>
                       <th>Assunto</th>
                       <th>Status</th>
                       <th>Ações</th>            
@@ -175,7 +175,7 @@
                 <div class="col-12">
                     <div class="form-group">
                       <input type="checkbox" id="iAtivo" name="nAtivo">
-                      <label for="iAtivo">Liberado </label>
+                      <label for="iAtivo">Flag Liberado </label>
                     </div>
                   </div>
 

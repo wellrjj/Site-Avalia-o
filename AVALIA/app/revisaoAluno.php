@@ -46,24 +46,27 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                 <h4>Revisão das Atividades</h4>
+                 <h3>Revisão das Atividades</h3>
               </div>
-              <table id="tabela" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                      <th>ID da Atividade</th>
-                      <th>Descrição</th>
-                      <th>Nota</th>
-                      <th>Revisão da atividade</th>
-                  </tr>
-                  </thead>
-                  <tbody>
+              <div class="card-body">
+                  <table id="tabela" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                          <th>Id da Atividade</th>
+                          <th>Descrição</th>
+                          <th>Nota</th>
+                          <th>Revisão da atividade</th>
+                      </tr>
+                    </thead>
+                    <tbody>
 
-                     <?php echo revisaoAluno();  ?>
-                  
-                  </tbody>
-                  
-                </table>
+                      <?php echo revisaoAluno();  ?>
+                    
+                    </tbody>
+                    
+                  </table>
+              </div>
+              
                
 
             </div>

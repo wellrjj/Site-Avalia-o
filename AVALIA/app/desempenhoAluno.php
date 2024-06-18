@@ -45,22 +45,25 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                 <h4>Desempenho das Atividades</h4>
+                 <h3>Desempenho das Atividades</h3>
               </div>
-              <table id="tabela" class="table table-bordered table-hover">
+              <div class="card-body">
+                <table id="tabela" class="table table-bordered table-hover">
                   <thead>
-                  <tr>
-                      <th>ID Disciplina</th>
-                      <th>Descrição</th>
-                      <th>Resultado da Atividade</th>
-                  </tr>
+                    <tr>
+                        <th>Id da Disciplina</th>
+                        <th>Título da Atividade</th>
+                        <th>Resultado da Atividade</th>
+                    </tr>
                   </thead>
                   <tbody>
 
                      <?php echo desempenhoPorAtividade();  ?>
                   
                   </tbody>                  
-                </table>               
+                </table>     
+              </div>
+                        
 
             </div>
             <!-- /.card -->            

@@ -598,7 +598,7 @@ function lista_escola(){
                         
                         .'<div class="col-6">'
                             .'<a href="#modalDeleteUsuario'.$coluna["idUsuario"].'" data-toggle="modal">'
-                                .'<h6><i class="fas fa-trash text-danger" data-toggle="tooltip" title="Alterar usuário"></i></h6>'
+                                .'<h6><i class="fas fa-trash text-danger" data-toggle="tooltip" title="Excluir usuário"></i></h6>'
                             .'</a>'
                         .'</div>'
                     .'</div>'

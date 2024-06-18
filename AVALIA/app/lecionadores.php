@@ -49,7 +49,7 @@
                 <div class="row">
                   
                   <div class="col-9">
-                    <h3 class="card-title">Lecionador</h3>
+                    <h3>Lecionador</h3>
                   </div>
                   
                   <div class="col-3" align="right">
@@ -68,10 +68,10 @@
                 <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                      <th>ID Disciplina</th>
+                      <th>Id da Disciplina</th>
                       <th>Descrição</th>
-                      <th>ID Professor</th>
-                      <th>Professor</th>
+                      <th>Id do Professor</th>
+                      <th>Nome do Professor</th>
                       <th>Ações</th>                      
                   </tr>
                   </thead>

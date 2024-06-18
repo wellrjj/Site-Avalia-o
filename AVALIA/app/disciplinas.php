@@ -49,7 +49,7 @@
                 <div class="row">
                   
                   <div class="col-9">
-                    <h3 class="card-title">Disciplinas</h3>
+                    <h3>Disciplinas</h3>
                   </div>
                   
                   <div class="col-3" align="right">
@@ -68,7 +68,7 @@
                 <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                      <th>ID Disciplina</th>
+                      <th>Id da Disciplina</th>
                       <th>Descrição</th>
                       <th>Curso</th>
                       <th>Ações</th>                      

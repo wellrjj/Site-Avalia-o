@@ -34,7 +34,7 @@ function listaTurmaProfessor(){
 
                                 . '<div class="col-12">'
 
-                                    . '<h6><a href="./desempenhoAlunoTurma.php?idturma=' . $coluna["idTurma"] . '&codigo=' . $coluna["idAtividade"] . '"><i class="fas fa-book-reader text-info" data-toggle="tooltip" title="Desempenho Turma"></i></a></h6>'
+                                    . '<h6><a href="./desempenhoAlunoTurma.php?idturma=' . $coluna["idTurma"] . '&codigo=' . $coluna["idAtividade"] . '"><i class="fas fa-chart-bar text-info" data-toggle="tooltip" title="Desempenho Turma"></i></a></h6>'
 
                                 . '</div>'
                             . '</div>'
@@ -122,7 +122,7 @@ function desempenhoDoAlunoTurma($idAti, $idTur)
 
                                     . '<div class="col-12">'
                                         . '<a href="#modalDesempenho' . $coluna["idUsuario"] . '" data-toggle="modal">'
-                                        . '<h6><i class="fas fa-chart-pie text-info" data-toggle="tooltip" title="Desempenho"></i></h6>'
+                                        . '<h6><i class="fas fa-chart-pie text-info" data-toggle="tooltip" title="Desempenho do Aluno"></i></h6>'
                                         . '</a>'
                                     . '</div>'
                                 . '</div>'

@@ -49,7 +49,7 @@
                 <div class="row">
                   
                   <div class="col-9">
-                    <h3 class="card-title">Usuários</h3>
+                    <h3>Usuários</h3>
                   </div>
                   
                   <div class="col-3" align="right">
@@ -68,8 +68,8 @@
                 <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                      <th>ID</th>
-                      <th>tipo usuário</th>
+                      <th>Id Usuário</th>
+                      <th>Tipo de Usuário</th>
                       <th>Nome</th>
                       <th>Login</th>
                       <th>Ativo</th>                

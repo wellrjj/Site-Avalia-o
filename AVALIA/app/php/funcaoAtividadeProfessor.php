@@ -59,17 +59,17 @@ function listaAtividadeProfessor(){
                    .'<div class="row" align="center">'
                         .'<div class="col-4">'
                             .'<a href="#EditarQuestao'.$coluna["idAtividade"].'" data-toggle="modal" >'
-                                .'<h6><i class="fas fa-edit text-info" data-toggle="tooltip" title="Alterar Disciplina"></i></h6>'
+                                .'<h6><i class="fas fa-edit text-info" data-toggle="tooltip" title="Alterar atividade"></i></h6>'
                             .'</a>'
                         .'</div>'
                         .'<div class="col-4">'
                             .'<a href="#VisualizarAtividade'.$coluna["idAtividade"].'" data-toggle="modal" >'
-                                .'<h6><i class="fas fa-eye text-warning" data-toggle="tooltip" title="Alterar Disciplina"></i></h6>'
+                                .'<h6><i class="fas fa-eye text-warning" data-toggle="tooltip" title="Visualizar atividade"></i></h6>'
                             .'</a>'
                         .'</div>'
                         .'<div class="col-4">'
                             .'<a href="#VincularQuestao'.$coluna["idAtividade"].'" data-toggle="modal" >'
-                                .'<h6><i class="fas fa-list text-success" data-toggle="tooltip" title="Alterar Disciplina"></i></h6>'
+                                .'<h6><i class="fas fa-list text-success" data-toggle="tooltip" title="Vincular questão"></i></h6>'
                             .'</a>'
                         .'</div>'
                                 
@@ -85,7 +85,7 @@ function listaAtividadeProfessor(){
             .'<div class="modal-dialog modal-lg">'
                 .'<div class="modal-content">'
                     .'<div class="modal-header bg-success ">'
-                        .'<h4 class="modal-title">Adicionar Questões à Atividade  '.$coluna["idAtividade"].' </h4>'
+                        .'<h4 class="modal-title">Adicionar questões à atividade de número '.$coluna["idAtividade"].' </h4>'
                         .'<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">'
                             .'<span aria-hidden="true">&times;</span>'
                         .'</button>'
@@ -97,7 +97,7 @@ function listaAtividadeProfessor(){
                             .'<div class="row">'
                                 .'<div class="col-12">'
                                     .'<div class="form-group">'
-                                        .'<label for=iQuest1> Primeira Questao:</label>'
+                                        .'<label for=iQuest1> Primeira Questão:</label>'
                                         .'<select name="nQuest1" class="form-control" required>'
                                             .'<option value="">Selecione...</option>'
                                                 .MostrarQuestaoVincularQuestoes($coluna["idDisciplina"])
@@ -106,7 +106,7 @@ function listaAtividadeProfessor(){
                                 .'</div>'
                             .'<div class="col-12">'
                                 .'<div class="form-group">'
-                                    .'<label for=iQuest2> Segunda Questao:</label>'
+                                    .'<label for=iQuest2> Segunda Questão:</label>'
                                     .'<select name="nQuest2" class="form-control" required>'
                                         .'<option value="">Selecione...</option>'
                                         .MostrarQuestaoVincularQuestoes($coluna["idDisciplina"])
@@ -115,7 +115,7 @@ function listaAtividadeProfessor(){
                             .'</div>'
                             .'<div class="col-12">'
                                 .'<div class="form-group">'
-                                    .'<label for=iQuest3> Terceira Questao:</label>'
+                                    .'<label for=iQuest3> Terceira Questão:</label>'
                                     .'<select name="nQuest3" class="form-control" required>'
                                         .'<option value="">Selecione...</option>'
                                         .MostrarQuestaoVincularQuestoes($coluna["idDisciplina"])
@@ -124,7 +124,7 @@ function listaAtividadeProfessor(){
                             .'</div>'
                             .'<div class="col-12">'
                                 .'<div class="form-group">'
-                                    .'<label for=iQuest4> Quarta Questao:</label>'
+                                    .'<label for=iQuest4> Quarta Questão:</label>'
                                     .'<select name="nQuest4" class="form-control" required>'
                                         .'<option value="">Selecione...</option>'
                                         .MostrarQuestaoVincularQuestoes($coluna["idDisciplina"])
@@ -133,7 +133,7 @@ function listaAtividadeProfessor(){
                             .'</div>'
                             .'<div class="col-12">'
                                 .'<div class="form-group">'
-                                    .'<label for=iQuest5> Quinta Questao:</label>'
+                                    .'<label for=iQuest5> Quinta Questão:</label>'
                                     .'<select name="nQuest5" class="form-control" required>'
                                         .'<option value="">Selecione...</option>'
                                         .MostrarQuestaoVincularQuestoes($coluna["idDisciplina"])
@@ -142,7 +142,7 @@ function listaAtividadeProfessor(){
                             .'</div>'
                             .'<div class="col-12">'
                                 .'<div class="form-group">'
-                                    .'<label for=iQuest6> Sexta Questao:</label>'
+                                    .'<label for=iQuest6> Sexta Questão:</label>'
                                     .'<select name="nQuest6" class="form-control" required>'
                                         .'<option value="">Selecione...</option>'
                                         .MostrarQuestaoVincularQuestoes($coluna["idDisciplina"])
@@ -151,7 +151,7 @@ function listaAtividadeProfessor(){
                             .'</div>'
                             .'<div class="col-12">'
                                 .'<div class="form-group">'
-                                    .'<label for=iQuest7> Sétima Questao:</label>'
+                                    .'<label for=iQuest7> Sétima Questão:</label>'
                                     .'<select name="nQuest7" class="form-control" required>'
                                         .'<option value="">Selecione...</option>'
                                         .MostrarQuestaoVincularQuestoes($coluna["idDisciplina"])
@@ -160,7 +160,7 @@ function listaAtividadeProfessor(){
                             .'</div>'
                             .'<div class="col-12">'
                                 .'<div class="form-group">'
-                                    .'<label for=iQuest8> Oitava Questao:</label>'
+                                    .'<label for=iQuest8> Oitava Questão:</label>'
                                     .'<select name="nQuest8" class="form-control" required>'
                                         .'<option value="">Selecione...</option>'
                                         .MostrarQuestaoVincularQuestoes($coluna["idDisciplina"])
@@ -169,7 +169,7 @@ function listaAtividadeProfessor(){
                             .'</div>'
                             .'<div class="col-12">'
                                 .'<div class="form-group">'
-                                    .'<label for=iQuest9> Nona Questao:</label>'
+                                    .'<label for=iQuest9> Nona Questão:</label>'
                                     .'<select name="nQuest9" class="form-control" required>'
                                         .'<option value="">Selecione...</option>'
                                         .MostrarQuestaoVincularQuestoes($coluna["idDisciplina"])
@@ -180,7 +180,7 @@ function listaAtividadeProfessor(){
 
                             .'<div class="col-12">'
                                 .'<div class="form-group">'
-                                    .'<label for=iQuest10> Décima Questao:</label>'
+                                    .'<label for=iQuest10> Décima Questão:</label>'
                                     .'<select name="nQuest10" class="form-control" required>'
                                         .'<option value="">Selecione...</option>'
                                         .MostrarQuestaoVincularQuestoes($coluna["idDisciplina"])
@@ -188,8 +188,8 @@ function listaAtividadeProfessor(){
                                 .'</div>'
                             .'</div>'
                             .'<div class="modal-footer">'
-                                .'<button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>'
-                                .'<button type="submit" class="btn btn-success">Sim</button>'
+                                .'<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>'
+                                .'<button type="submit" class="btn btn-success">Inserir</button>'
                             .'</div>'
                         
                         .'</form>'
@@ -203,7 +203,7 @@ function listaAtividadeProfessor(){
             .'<div class="modal-dialog modal-lg">'
                 .'<div class="modal-content">'
                     .'<div class="modal-header bg-info ">'
-                        .'<h4 class="modal-title">Editar Questão '.$coluna["idAtividade"].' </h4>'
+                        .'<h4 class="modal-title">Editar atividade de número '.$coluna["idAtividade"].' </h4>'
                         .'<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">'
                             .'<span aria-hidden="true">&times;</span>'
                         .'</button>'
@@ -235,7 +235,7 @@ function listaAtividadeProfessor(){
 
                                 .'<div class="col-4">'
                                     .'<div class="form-group">'
-                                        .'<label for=iTitulo>Titulo:</label>'
+                                        .'<label for=iTitulo>Título:</label>'
                                         .'<input type="text" value="'.$coluna["Titulo"].'" class="form-control" id="ipergunta" name="nTitulo" maxlength="60" >'
                                     .'</div>'
                                 .'</div>'
@@ -243,7 +243,7 @@ function listaAtividadeProfessor(){
                                 
                                 .'<div class="col-4">'
                                     .'<div class="form-group">'
-                                        .'<label for=iDescricao> Descricao:</label>'
+                                        .'<label for=iDescricao> Descrição:</label>'
                                         .'<input type="text" value="'.$coluna["Descricao"].'" class="form-control" id="iresp1" name="nDescricao" maxlength="50" >'
                                     .'</div>'
                                 .'</div>'
@@ -252,32 +252,32 @@ function listaAtividadeProfessor(){
                                 .'<div class="col-4">'
                                     .'<div class="form-group">'
                                         .'<input type="checkbox" id="iAtivo" name="nAtivo1" '.$ativo.'>'
-                                        .'<label for="iAtivo">Flg Liberada</label>'
+                                        .'<label for="iAtivo">Flag Liberada</label>'
                                     .'</div>'
                                 .'</div>'
                                 .'<div class="col-4">'
                                     .'<div class="form-group">'
                                         .'<input type="checkbox" id="iAtivo" name="nAtivo2" '.$ativo.'>'
-                                        .'<label for="iAtivo">Flg Revisao</label>'
+                                        .'<label for="iAtivo">Flag Revisão</label>'
                                     .'</div>'
                                 .'</div>'
                                 .'<div class="col-4">'
                                     .'<div class="form-group">'
                                         .'<input type="checkbox" id="iAtivo" name="nAtivo3" '.$ativo.'>'
-                                        .'<label for="iAtivo">Mostrar Nota</label>'
+                                        .'<label for="iAtivo">Flag Mostrar Nota</label>'
                                     .'</div>'
                                 .'</div>'
                                 
                                 .'<div class="col-12">'
                                     .'<div class="form-group">'
-                                        .'<label for=idata> Data DataAplicação:</label>'
+                                        .'<label for=idata>Data da Aplicação:</label>'
                                         .'<input type="date"  value="'.$coluna["DataAplicacao"].'" class="form-control" id="idata" name="nDataAp">'
                                     .'</div>'
                                 .'</div>'      
                                 
                                 .'<div class="modal-footer">'
-                                    .'<button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>'
-                                    .'<button type="submit" class="btn btn-success">Sim</button>'
+                                    .'<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>'
+                                    .'<button type="submit" class="btn btn-success">Alterar</button>'
                                 .'</div>'
                                 
                             .'</div>'
@@ -295,7 +295,7 @@ function listaAtividadeProfessor(){
             .'<div class="modal-dialog modal-lg">'
                 .'<div class="modal-content">'
                     .'<div class="modal-header bg-warning ">'
-                        .'<h4 class="modal-title">Visualizar Atividade'.$coluna["idAtividade"].' </h4>'
+                        .'<h4 class="modal-title">Visualizar atividade de número '.$coluna["idAtividade"].' </h4>'
                         .'<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">'
                             .'<span aria-hidden="true">&times;</span>'
                         .'</button>'
@@ -326,7 +326,7 @@ function listaAtividadeProfessor(){
 
                                 .'<div class="col-4">'
                                 .'<div class="form-group">'
-                                    .'<label for=iTitulo>Titulo:</label>'
+                                    .'<label for=iTitulo>Título:</label>'
                                     .'<input type="text" value="'.$coluna["Titulo"].'" class="form-control" id="ipergunta" name="nTitulo" maxlength="60" >'
                                 .'</div>'
                                 .'</div>'
@@ -334,7 +334,7 @@ function listaAtividadeProfessor(){
                                 
                                 .'<div class="col-4">'
                                     .'<div class="form-group">'
-                                        .'<label for=iDescricao> Descricao:</label>'
+                                        .'<label for=iDescricao> Descrição:</label>'
                                         .'<input type="text" value="'.$coluna["Descricao"].'" class="form-control" id="iresp1" name="nDescricao" maxlength="50" >'
                                     .'</div>'
                                 .'</div>'
@@ -345,32 +345,32 @@ function listaAtividadeProfessor(){
                                 .'<div class="col-4">'
                                     .'<div class="form-group">'
                                         .'<input type="checkbox" id="iAtivo" name="nAtivo1" '.$ativo.'>'
-                                        .'<label for="iAtivo">Usuário Ativo</label>'
+                                        .'<label for="iAtivo">Flag Liberada</label>'
                                     .'</div>'
                                 .'</div>'
                                 .'<div class="col-4">'
                                     .'<div class="form-group">'
-                                        .'<input type="checkbox" id="iAtivo" name="nAtivo2" '.$ativo.'>'
-                                        .'<label for="iAtivo">Usuário Ativo</label>'
+                                        .'<input type="checkbox" id="iAtivo" name="nAtivo2" '.$ativo2.'>'
+                                        .'<label for="iAtivo">Flag Revisão</label>'
                                     .'</div>'
                                 .'</div>'
                                 .'<div class="col-4">'
                                     .'<div class="form-group">'
-                                        .'<input type="checkbox" id="iAtivo" name="nAtivo3" '.$ativo.'>'
-                                        .'<label for="iAtivo">Usuário Ativo</label>'
+                                        .'<input type="checkbox" id="iAtivo" name="nAtivo3" '.$ativo3.'>'
+                                        .'<label for="iAtivo">Flag Mostrar nota</label>'
                                     .'</div>'
                                 .'</div>'
                                 
                                 .'<div class="col-12">'
                                     .'<div class="form-group">'
-                                        .'<label for=idata> Data DataAplicação:</label>'
+                                        .'<label for=idata>Data da Aplicação:</label>'
                                         .'<input type="date"  value="'.$coluna["DataAplicacao"].'" class="form-control" id="idata" name="nDataAp">'
                                     .'</div>'
                                 .'</div>'      
                                 
                                 .'<div class="modal-footer">'
-                                    .'<button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>'
-                                    .'<button type="submit" class="btn btn-success">Sim</button>'
+                                    .'<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>'
+                                    .'<button type="submit" class="btn btn-success">Alterar</button>'
                                 .'</div>'
                                 
                             .'</div>'                              
@@ -639,25 +639,25 @@ function mostarMestre($id){
             '<div class="col-12">'
                 .'<div class="form-group">';
                     if( $i == 1){
-                        $resp .= '<label for=iQuest'.$i.'> Primeira Questao:</label>';
+                        $resp .= '<label for=iQuest'.$i.'> Primeira Questão:</label>';
                             }else if($i == 2){
-                        $resp .= '<label for=iQuest'.$i.'> Segunda Questao:</label>';
+                        $resp .= '<label for=iQuest'.$i.'> Segunda Questão:</label>';
                             }else if($i == 3){
-                        $resp .= '<label for=iQuest'.$i.'> Terceira Questao:</label>';
+                        $resp .= '<label for=iQuest'.$i.'> Terceira Questão:</label>';
                             }else if($i == 4){
-                        $resp .= '<label for=iQuest'.$i.'> Quarta Questao:</label>';
+                        $resp .= '<label for=iQuest'.$i.'> Quarta Questão:</label>';
                             }else if($i == 5){
-                        $resp .= '<label for=iQuest'.$i.'> Quinta Questao:</label>';
+                        $resp .= '<label for=iQuest'.$i.'> Quinta Questão:</label>';
                             }else if($i == 6){
-                        $resp .= '<label for=iQuest'.$i.'> Sexta Questao:</label>';
+                        $resp .= '<label for=iQuest'.$i.'> Sexta Questão:</label>';
                             }else if($i == 7){
-                        $resp .= '<label for=iQuest'.$i.'> Sétima Questao:</label>';
+                        $resp .= '<label for=iQuest'.$i.'> Sétima Questão:</label>';
                             }else if($i == 8){
-                        $resp .= '<label for=iQuest'.$i.'> Oitava Questao:</label>';
+                        $resp .= '<label for=iQuest'.$i.'> Oitava Questão:</label>';
                             }else if($i == 9){
-                        $resp .= '<label for=iQuest'.$i.'> Nona Questao:</label>';
+                        $resp .= '<label for=iQuest'.$i.'> Nona Questão:</label>';
                             }else if($i == 10){
-                        $resp .= '<label for=iQuest'.$i.'> Décima Questao:</label>';
+                        $resp .= '<label for=iQuest'.$i.'> Décima Questão:</label>';
                     }
                 $resp .= '<select name="nQuest'.$i.'" class="form-control" required> '
                     .MostrarQuestao($coluna['idQuestao'])

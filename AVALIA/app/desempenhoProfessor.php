@@ -46,14 +46,15 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                 <h4>Desempenho das Atividades</h4>
+                 <h3>Desempenho das Atividades</h3>
               </div>
-              <table id="tabela" class="table table-bordered table-hover">
+              <div class="card-body">
+                <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
                       <th>Turma</th>
-                      <th>Atividade</th>                      
-                      <th>Desempenho</th>
+                      <th>Título da Atividade</th>                      
+                      <th>Desempenho da Turma</th>
                       <th>Ações</th>
                   </tr>
                   </thead>
@@ -64,7 +65,7 @@
                   </tbody>
                   
                 </table>
-               
+              </div>          
 
             </div>
             <!-- /.card -->

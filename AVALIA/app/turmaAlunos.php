@@ -51,7 +51,7 @@
                 <div class="row">
                   
                   <div class="col-9">
-                    <h3 class="card-title"><?php 
+                    <h3><?php 
 
                     $idTurma = isset($_GET["codigo"]) ? $_GET["codigo"] : null;
 

@@ -50,7 +50,7 @@
                 <div class="row">
                   
                   <div class="col-9">
-                    <h3 class="card-title">Curso</h3>
+                    <h3>Curso</h3>
                   </div>
                   
                   <div class="col-3" align="right">
@@ -69,7 +69,7 @@
                 <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                      <th>ID</th>
+                      <th>Id do Curso</th>
                       <th>Nome do Curso</th>
                       <th>Escola</th>
                       <th>Status</th>              
