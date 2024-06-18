@@ -213,17 +213,7 @@ function listaAtividadeProfessor(){
                         .'<form method="POST" action="php/salvarAtivProf.php?funcao=A&codigo='.$coluna["idAtividade"].'" enctype="multipart/form-data">'              
                                 
                             .'<div class="row">'
-                            
-                                .'<div class="col-2">'
-                                    .'<div class="form-group">'
-                                        .'<label for=iTurma>Turma:</label>'
-                                        .'<select name="nTurma" class="form-control">'
-                                            .turmaSelect() 
-                                        .'</select>'
-                                    .'</div>'
-                                .'</div>'
-
-                                .'<div class="col-2">'
+                                .'<div class="col-4">'
                                     .'<div class="form-group">'
                                         .'<label for=iDisciplina>Disciplina:</label>'
                                         .'<select name="nDisciplina" class="form-control">'
@@ -307,73 +297,72 @@ function listaAtividadeProfessor(){
                             .'<div class="row">'
                             
                                 .'<div class="col-2">'
-                                    .'<div class="form-group">'
-                                        .'<label for=iTurma>Turma:</label>'
-                                        .'<select name="nTurma" class="form-control" disable>'
-                                          .turmaSelect() 
-                                        .'</select>'
-                                    .'</div>'
+                                 .'<div class="form-group">'
+                                     .'<label for=iTurma>Turma:</label>'
+                                     .'<select name="nTurma" class="form-control" readonly >'
+                                       .turmaSelect() 
+                                     .'</select>'
+                                 .'</div>'
                                 .'</div>'
 
                                 .'<div class="col-2">'
-                                    .'<div class="form-group">'
-                                        .'<label for=iDisciplina>Disciplina:</label>'
-                                        .'<select name="nDisciplina" class="form-control">'
-                                            .retornaSEtiverDisciplina($coluna['idAtividade'])
-                                        .'</select>'
-                                    .'</div>'
+                                .'<div class="form-group">'
+                                    .'<label for=iDisciplina>Disciplina:</label>'
+                                    .vizualizarDisciplina($coluna["idAtividade"])
                                 .'</div>'
+                               .'</div>'
+   
 
                                 .'<div class="col-4">'
                                 .'<div class="form-group">'
-                                    .'<label for=iTitulo>Título:</label>'
-                                    .'<input type="text" value="'.$coluna["Titulo"].'" class="form-control" id="ipergunta" name="nTitulo" maxlength="60" >'
+                                    .'<label for=iTitulo>Titulo:</label>'
+                                    .'<input type="text" value="'.$coluna["Titulo"].'" class="form-control" id="ipergunta" name="nTitulo" readonly maxlength="60" >'
                                 .'</div>'
+                                .'</div>'
+    
+                                
+                                .'<div class="col-4">'
+                                    .'<div class="form-group">'
+                                        .'<label for=iDescricao> Descricao:</label>'
+                                        .'<input type="text" value="'.$coluna["Descricao"].'" class="form-control" id="iresp1" name="nDescricao" readonly maxlength="50" >'
+                                    .'</div>'
                                 .'</div>'
 
-                                
-                                .'<div class="col-4">'
-                                    .'<div class="form-group">'
-                                        .'<label for=iDescricao> Descrição:</label>'
-                                        .'<input type="text" value="'.$coluna["Descricao"].'" class="form-control" id="iresp1" name="nDescricao" maxlength="50" >'
-                                    .'</div>'
-                                .'</div>'
-
-                                  .mostarMestre($coluna['idAtividade'])
+                                  .mostarMestre2($coluna['idAtividade'])
                                 
 
-                                .'<div class="col-4">'
-                                    .'<div class="form-group">'
-                                        .'<input type="checkbox" id="iAtivo" name="nAtivo1" '.$ativo.'>'
-                                        .'<label for="iAtivo">Flag Liberada</label>'
-                                    .'</div>'
-                                .'</div>'
-                                .'<div class="col-4">'
-                                    .'<div class="form-group">'
-                                        .'<input type="checkbox" id="iAtivo" name="nAtivo2" '.$ativo2.'>'
-                                        .'<label for="iAtivo">Flag Revisão</label>'
-                                    .'</div>'
-                                .'</div>'
-                                .'<div class="col-4">'
-                                    .'<div class="form-group">'
-                                        .'<input type="checkbox" id="iAtivo" name="nAtivo3" '.$ativo3.'>'
-                                        .'<label for="iAtivo">Flag Mostrar nota</label>'
-                                    .'</div>'
-                                .'</div>'
-                                
-                                .'<div class="col-12">'
-                                    .'<div class="form-group">'
-                                        .'<label for=idata>Data da Aplicação:</label>'
-                                        .'<input type="date"  value="'.$coluna["DataAplicacao"].'" class="form-control" id="idata" name="nDataAp">'
-                                    .'</div>'
-                                .'</div>'      
-                                
-                                .'<div class="modal-footer">'
-                                    .'<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>'
-                                    .'<button type="submit" class="btn btn-success">Alterar</button>'
-                                .'</div>'
-                                
-                            .'</div>'                              
+                                  .'<div class="col-4">'
+                                  .'<div class="form-group">'
+                                      .'<input type="checkbox" id="iAtivo" name="nAtivo1" disabled '.$ativo.'>'
+                                      .'<label for="iAtivo">Usuário Ativo</label>'
+                                  .'</div>'
+                                  .'</div>'
+                                  .'<div class="col-4">'
+                                  .'<div class="form-group">'
+                                      .'<input type="checkbox" id="iAtivo" name="nAtivo2" disabled '.$ativo.'>'
+                                      .'<label for="iAtivo">Usuário Ativo</label>'
+                                  .'</div>'
+                                  .'</div>'
+                                  .'<div class="col-4">'
+                                  .'<div class="form-group">'
+                                      .'<input type="checkbox" id="iAtivo" name="nAtivo3" disabled '.$ativo.'>'
+                                      .'<label for="iAtivo">Usuário Ativo</label>'
+                                  .'</div>'
+                                  .'</div>'
+                                  
+                                  .'<div class="col-12">'
+                                  .'<div class="form-group">'
+                                    .'<label for=idata> Data DataAplicação:</label>'
+                                    .'<input type="date"  value="'.$coluna["DataAplicacao"].'" class="form-control" id="idata"  disabled name="nDataAp">'
+                                  .'</div>'
+                                  .'</div>'      
+                                  
+                                  .'<div class="modal-footer">'
+                                      .'<button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>'
+                                      .'<button type="submit" class="btn btn-success">Sim</button>'
+                                   .'</div>'
+                                  
+                              .'</div>'                              
                                         
                         .'</form>'
                     .'</div>'
@@ -411,6 +400,75 @@ function descProfessor2($id){
     return $descricao;
 }
 
+//Função para montar um formulário de atividade
+function mostarMestre2($id){
+    include("conexao.php");
+    $sql = "SELECT quest.Pergunta as per FROM atividade_has_questao atvq JOIN questao quest on atvq.idQuestao = quest.idQuestao where atvq.idAtividade = $id ;";
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+    $resp = '';
+    if (mysqli_num_rows($result) > 0) {
+        $array = array();
+
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        $i = 0;
+        foreach ($array as $coluna) {
+            $i= $i + 1; 
+            $resp .= 
+            '<div class="col-12">'
+            .'<div class="form-group">';
+                if( $i == 1){
+            $resp .= '<label for=iQuest'.$i.'> Primeira Questao:</label>';
+                }else if($i == 2){
+            $resp .= '<label for=iQuest'.$i.'> Segunda Questao:</label>';
+                }else if($i == 3){
+            $resp .= '<label for=iQuest'.$i.'> Terceira Questao:</label>';
+                }else if($i == 4){
+            $resp .= '<label for=iQuest'.$i.'> Quarta Questao:</label>';
+                }else if($i == 5){
+            $resp .= '<label for=iQuest'.$i.'> Quinta Questao:</label>';
+                }else if($i == 6){
+            $resp .= '<label for=iQuest'.$i.'> Sexta Questao:</label>';
+                }else if($i == 7){
+            $resp .= '<label for=iQuest'.$i.'> Sétima Questao:</label>';
+                }else if($i == 8){
+            $resp .= '<label for=iQuest'.$i.'> Oitava Questao:</label>';
+                }else if($i == 9){
+            $resp .= '<label for=iQuest'.$i.'> Nona Questao:</label>';
+                }else if($i == 10){
+            $resp .= '<label for=iQuest'.$i.'> Décima Questao:</label>';
+                }
+              $resp .= 
+              '<input type="text" value="'.$coluna["per"].'" class="form-control" id="iresp1" name="nDescricao" readonly maxlength="50" >' 
+              .'</div>'
+              .'</div>'
+              ;
+        }
+    }
+    return $resp;
+}
+
+function vizualizarDisciplina($id){
+    include("conexao.php");
+    $sql = "SELECT atv.idDisciplina as IdDis, disc.Descricao as DescricaoFin FROM atividade atv 
+    JOIN disciplina disc ON disc.idDisciplina = atv.idDisciplina
+    WHERE atv.idAtividade = $id ;";
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+    if (mysqli_num_rows($result) > 0) {
+        $array = array();
+        $resp = '';
+        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($array,$linha);
+        }
+        foreach ($array as $coluna) {
+            $resp .= '<input type="text"  value="'.$coluna["DescricaoFin"].'"  readonly class="form-control" >';
+
+        }
+    }return $resp;
+}
 function descDisciplina2($id){ // adicionar a DESCRICAO PARA A DISICPLINA MEU XERO da prova realizada 
     include("conexao.php");
     $sql = "SELECT Descricao from disciplina where idDisciplina =$id ;";
@@ -542,35 +600,11 @@ function retornaSEtiverDisciplina($id){
             array_push($array,$linha);
         }
         foreach ($array as $coluna) {
-            $resp .= '<option value="'.$coluna["IdDis"].'">'.$coluna["DescricaoFin"].'</option>';
+            $resp .= '<option value="'.$coluna["IdDis"].'">Disciplina Selecionada: '.$coluna["DescricaoFin"].'</option>';
         }
     }return $resp;
 }
 
-//Função para montar um option das questões liberadas para inserção na atividade
-function MostrarQuestao($id){
-
-    include("conexao.php");
-
-    $filtroDisciplina= filtrarQuest2();
-    $sql = "SELECT * FROM questao where FlgLiberada = 'S' and idDisciplina in ($filtroDisciplina) and idQuestao = $id ;";
-
-    $result = mysqli_query($conn,$sql);
-    mysqli_close($conn);
-    $resp = ''; // Inicialize a variável $resp
-
-    if (mysqli_num_rows($result) > 0) {
-        $array = array();
-        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            array_push($array,$linha);
-        }
-        foreach ($array as $coluna) {
-            $resp .= '<option value="'.$coluna["idQuestao"].'">'.$coluna["Pergunta"].'</option>';
-
-        }
-    }
-    return $resp;
-}
 
 //Função para mostrar outras questões que ainda não foram utilizadas nas atividades
 function MostarAsDEMAISQuestoesEDITAR($id){
@@ -619,56 +653,7 @@ function MostrarQuestaoVincularQuestoes($id){
     return $resp;
 }
 
-//Função para montar um formulário de atividade
-function mostarMestre($id){
-    include("conexao.php");
-    $sql = "SELECT * FROM atividade_has_questao where idAtividade = $id ;";
-    $result = mysqli_query($conn,$sql);
-    mysqli_close($conn);
-    $resp = '';
-    if (mysqli_num_rows($result) > 0) {
-        $array = array();
 
-        while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            array_push($array,$linha);
-        }
-        $i = 0;
-        foreach ($array as $coluna) {
-            $i= $i + 1; 
-            $resp .= 
-            '<div class="col-12">'
-                .'<div class="form-group">';
-                    if( $i == 1){
-                        $resp .= '<label for=iQuest'.$i.'> Primeira Questão:</label>';
-                            }else if($i == 2){
-                        $resp .= '<label for=iQuest'.$i.'> Segunda Questão:</label>';
-                            }else if($i == 3){
-                        $resp .= '<label for=iQuest'.$i.'> Terceira Questão:</label>';
-                            }else if($i == 4){
-                        $resp .= '<label for=iQuest'.$i.'> Quarta Questão:</label>';
-                            }else if($i == 5){
-                        $resp .= '<label for=iQuest'.$i.'> Quinta Questão:</label>';
-                            }else if($i == 6){
-                        $resp .= '<label for=iQuest'.$i.'> Sexta Questão:</label>';
-                            }else if($i == 7){
-                        $resp .= '<label for=iQuest'.$i.'> Sétima Questão:</label>';
-                            }else if($i == 8){
-                        $resp .= '<label for=iQuest'.$i.'> Oitava Questão:</label>';
-                            }else if($i == 9){
-                        $resp .= '<label for=iQuest'.$i.'> Nona Questão:</label>';
-                            }else if($i == 10){
-                        $resp .= '<label for=iQuest'.$i.'> Décima Questão:</label>';
-                    }
-                $resp .= '<select name="nQuest'.$i.'" class="form-control" required> '
-                    .MostrarQuestao($coluna['idQuestao'])
-                    .MostarAsDEMAISQuestoesEDITAR($coluna['idQuestao'])
-                    .'</select>'
-                .'</div>'
-            .'</div>';
-        }
-    }
-    return $resp;
-}
 
 //Função para buscar no banco de dados o próximo id da atividade
 function proxIDAtividade(){
