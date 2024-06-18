@@ -1,4 +1,7 @@
 <?php
+
+//Arquivo criado para cadastrar as questões que podem ser utilizadas em uma prova.
+
 session_start();
 include('funcoes.php');
 
@@ -35,9 +38,9 @@ if($funcao == "I"){
     $idQuestao  = $_GET["codigo"];
     $TESTE = $_GET['teste'];
     if($TESTE =="S"){
-    $sql=" UPDATE questao set FlgLiberada = 'C' WHERE idQuestao= $idQuestao ;";
+        $sql=" UPDATE questao set FlgLiberada = 'C' WHERE idQuestao= $idQuestao ;";
     } elseif($TESTE =="C") {
-    $sql=" UPDATE questao set FlgLiberada = 'S' WHERE idQuestao=$idQuestao ;";
+        $sql=" UPDATE questao set FlgLiberada = 'S' WHERE idQuestao=$idQuestao ;";
     }
 }
 

@@ -1,8 +1,6 @@
 <?php 
   session_start();
-  include('php/funcoes.php');
-  
-  
+  include('php/funcoes.php');  
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Aluno</title>
+  <title>TecAvaliação - Desempenho da Turma</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -48,31 +46,30 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                 <h4> Desempenho das Atividades</h4>
+                 <h4>Desempenho das Atividades</h4>
               </div>
               <table id="tabela" class="table table-bordered table-hover">
                   <thead>
-                  <tr>
-                      <th>Nome Aluno</th>
-                      <th>Atividade</th>
-                      <th>Desempenho</th>
-                  </tr>
+                    <tr>
+                        <th>Nome do Aluno</th>
+                        <th>Atividade</th>
+                        <th>Desempenho</th>
+                    </tr>
                   </thead>
                   <tbody>
 
                      <?php 
 
-                      $idAtividade = isset($_GET["codigo"]) ? $_GET["codigo"] : null;
-                      $idTurma = isset($_GET["idturma"]) ? $_GET["idturma"] : null;
-                      
-                      echo desempenhoDoAlunoTurma($idAtividade,$idTurma);  
+                        $idAtividade = isset($_GET["codigo"]) ? $_GET["codigo"] : null;
+                        $idTurma = isset($_GET["idturma"]) ? $_GET["idturma"] : null;
+                        
+                        echo desempenhoDoAlunoTurma($idAtividade,$idTurma);  
                      
                      ?>
                   
                   </tbody>
                   
-                </table>
-               
+                </table>    
 
             </div>
             <!-- /.card -->
@@ -116,9 +113,6 @@
         <?php echo montaScriptDesempenhoAlunoTurma($idTurma,$idAtividade); ?>          
 
     </script>
-
-
-
 
 </body>
 </html>

@@ -1,4 +1,7 @@
 <?php
+    
+    //Arquivo criado para cadastrar turmas em uma escola (É obrigatório associar um curso à turma).
+    
     session_start();
     include('funcoes.php');
 
@@ -28,12 +31,6 @@
               ." SET Descricao = '$turma',"
               ."idCurso = '$curso'"
               ." WHERE idTurma = $idTurma;";
-
-    }elseif($funcao == "D"){
-   
-        $sql = "UPDATE usuarios "
-                ." SET FlgAtivo = 'N' "
-                ." WHERE idUsuario = $idUsuario;";
 
     }
 

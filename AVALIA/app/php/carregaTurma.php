@@ -1,4 +1,7 @@
 <?php
+    
+    //Função para retornar o option com as turmas ao cadastrar o aluno.
+
     if (session_status() !== PHP_SESSION_ACTIVE) {
         session_start();
     }   
@@ -24,7 +27,6 @@
         $sql = "SELECT DISTINCT tur.idTurma, tur.Descricao FROM turma tur"
              ." WHERE tur.idEscola = '".$_SESSION['idEscola']."'"
              ." ORDER BY tur.Descricao;";
-
 
         //Executar por PDO
         $stm = $pdo->prepare($sql);

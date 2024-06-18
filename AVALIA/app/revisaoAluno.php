@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Aluno</title>
+  <title>TecAvaliação - Revisão do Aluno</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -51,7 +51,7 @@
               <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                      <th>Id Atividade</th>
+                      <th>ID da Atividade</th>
                       <th>Descrição</th>
                       <th>Nota</th>
                       <th>Revisão da atividade</th>

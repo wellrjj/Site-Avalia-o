@@ -1,7 +1,6 @@
 <?php 
   session_start();
-  include('php/funcoes.php');
-  
+  include('php/funcoes.php');  
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Aluno</title>
+  <title>TecAvaliação - Desempenho do Aluno</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -46,28 +45,25 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                 <h4> Desempenho das Atividades</h4>
+                 <h4>Desempenho das Atividades</h4>
               </div>
               <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                      <th>Id disciplina</th>
+                      <th>ID Disciplina</th>
                       <th>Descrição</th>
-                      <th>Resultado da atividade</th>
+                      <th>Resultado da Atividade</th>
                   </tr>
                   </thead>
                   <tbody>
 
                      <?php echo desempenhoPorAtividade();  ?>
                   
-                  </tbody>
-                  
-                </table>
-               
+                  </tbody>                  
+                </table>               
 
             </div>
-            <!-- /.card -->
-            
+            <!-- /.card -->            
           </div>
           <!-- /.col -->
         </div>
@@ -107,9 +103,6 @@
        <?php echo montaScriptDesempenho();?>               
 
     </script>
-
-
-
 
 </body>
 </html>

@@ -15,7 +15,7 @@
           <img src="<?php echo fotoUsuario($_SESSION['idUsuario']); ?>"  class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo nomeUsuario($_SESSION['idUsuario']); ?></a>
+          <a href="./painel.php" class="d-block"><?php echo nomeUsuario($_SESSION['idUsuario']); ?></a>
         </div>
 
         

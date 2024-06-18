@@ -1,4 +1,7 @@
 <?php
+    
+    //Arquivo criado para cadastrar as provas.
+    
     session_start();
     include('funcoes.php');
    
@@ -31,7 +34,7 @@
     //UPDATE
     $sql = "UPDATE atividade_has_aluno"
     ." SET idAtividadeQuestao = '$idAtividadeQuestao1'"
-    .", Resposta = '$Resposta1'"
+   .", Resposta = '$Resposta1'"
     ." WHERE idAluno = '".$_SESSION['idUsuario']."' and idAtividade = '$idAtividade';";
 
     $result = mysqli_query($conn,$sql);
@@ -39,17 +42,16 @@
         //INSERT
     $sql = "INSERT INTO atividade_has_aluno (idAluno, idAtividade, idAtividadeQuestao, Resposta) "
             ."VALUES ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao2', '$Resposta2'),
-                        ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao3', '$Resposta3'),
-                        ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao4', '$Resposta4'),
-                        ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao5', '$Resposta5'),
-                        ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao6', '$Resposta6'),
-                        ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao7', '$Resposta7'),
-                        ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao8', '$Resposta8'),
-                        ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao9', '$Resposta9'),
-                        ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao10', '$Resposta10');";
-    
+                     ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao3', '$Resposta3'),
+                     ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao4', '$Resposta4'),
+                     ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao5', '$Resposta5'),
+                     ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao6', '$Resposta6'),
+                     ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao7', '$Resposta7'),
+                     ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao8', '$Resposta8'),
+                     ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao9', '$Resposta9'),
+                     ('".$_SESSION['idUsuario']."','$idAtividade','$idAtividadeQuestao10', '$Resposta10');";
+
     //Função de correção de atividade                    
-                       
     
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);

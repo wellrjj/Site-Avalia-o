@@ -1,12 +1,12 @@
 
 <?php
 
+//Função para consultar uma tabela com os alunos da turma.
 function listaAlunos($id){
 
     include("conexao.php");
    
-   
-    //SELECT para consultar uma tabela com os alunos da turma.
+    //SELECT para consultar os alunos da turma.
     $sql = "SELECT Nome, Email, FlgAtivo, idUsuario
             FROM usuarios 
             WHERE idTipoUsuario = '4'"
@@ -20,7 +20,6 @@ function listaAlunos($id){
     $ativo = '';
     $icone = '';
 
-
     if (mysqli_num_rows($result) > 0) {
         
         $array = array();
@@ -30,7 +29,6 @@ function listaAlunos($id){
         }
         
         foreach ($array as $coluna) {
-
 
             if($coluna["FlgAtivo"] == 'S'){  
                 $ativo = 'checked';
@@ -73,7 +71,6 @@ function listaTurmas(){
     $ativo = '';
     $icone = '';
 
-
     if (mysqli_num_rows($result) > 0) {
         
         $array = array();
@@ -90,6 +87,7 @@ function listaTurmas(){
 
             $lista .= 
 
+            //Criando uma tabela com as informações de nome de turma, nome do curso e matrícula de turma.
             '<tr>'
                 .'<td align="center">'.$coluna["turmaDescr"].'</td>'
                 .'<td align="center">'.$coluna["cursoDescr"].'</td>'
@@ -97,13 +95,15 @@ function listaTurmas(){
 
                 .'<td>'
                     .'<div class="row" align="center">'
-
+                        
+                        //Botão para editar a turma.
                         .'<div class="col-6">'
                             .'<a href="#modalEditTurma'.$coluna["idTurma"].'" data-toggle="modal">'
                                 .'<h6><i class="fas fa-edit" data-toggle="tooltip" title="Editar Turma"></i></h6>'
                             .'</a>'
                         .'</div>'
 
+                        //Botão para consultar os alunos da turma.
                         .'<div class="col-6">'
                             .'<a href="turmaAlunos.php?codigo='.$coluna["idTurma"].'">'
                                 .'<h6><i class="fas fa-eye" data-toggle="tooltip" title="Consultar Turma"></i></h6>'
@@ -114,6 +114,7 @@ function listaTurmas(){
                 .'</td>'
             ."</tr>"
             
+            //Início do modal para editar as turmas.
             .'<div class="modal fade" id="modalEditTurma'.$coluna["idTurma"].'">'
                 .'<div class="modal-dialog modal-lg">'
                     .'<div class="modal-content">'
@@ -141,7 +142,7 @@ function listaTurmas(){
                                         .'<div class="form-group">'
                                             .'<label for="iNome">Curso:</label>'
                                             .'<select name="nCurso" class="form-control" required>'
-                                            .optionCurso($coluna["idTurma"])
+                                                .optionCurso($coluna["idTurma"])
                                             .'</select>'
                                         .'</div>'
                                     .'</div>'
@@ -165,6 +166,8 @@ function listaTurmas(){
 
 }
 
+
+//Função criada para usar o option e selecionar a turma.
 function optionTurmas(){
 
     include("conexao.php");
@@ -218,6 +221,7 @@ function proxIdTurma(){
     return $id;
 }
 
+//
 function alunoTurma($idUsuario){
    
     include("conexao.php");
@@ -236,6 +240,25 @@ function alunoTurma($idUsuario){
 
     return $resp; 
 
+}
+
+function nomeTurma($id){
+
+    include("conexao.php");
+    $sql = "select tur.Descricao from turma tur where tur.idTurma = $id;";
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+    $resp = "";
+
+    //Validar se tem retorno do BD
+    if (mysqli_num_rows($result) > 0) {
+        
+        foreach ($result as $coluna) {            
+            $resp = $coluna['Descricao'];
+        } 
+    }
+
+    return $resp;
 }
 
 ?>

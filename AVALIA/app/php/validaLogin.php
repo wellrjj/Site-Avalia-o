@@ -1,16 +1,18 @@
 <?php
+    
+    //Arquivo para validar o login do usuário.
+
     if(session_status() !== PHP_SESSION_ACTIVE){
         session_start();
     }
 
-  
    $email = $_POST['nEmail'];
    $senha = $_POST['nSenha'];
     
-   //o include chama a referência da outra página (na pagina de conexao.php)
+   //O include chama a referência da outra página (na página de conexao.php)
    include('conexao.php');
    
-   //comando sql para jogar lá no banco
+   //Comando SQL para jogar no banco
    $sql = "SELECT * "
           ." FROM `usuarios` "
           ." WHERE Email = '".$email."' ";
@@ -22,7 +24,7 @@
     //TROUXE RESULTADO? (RESULTADO DESSE TIPO RETORNA UM VALOR MAIOR QUE ZERO)
     if(mysqli_num_rows($result) > 0){
         
-        //SE ENTROU É PQ TEM USUÁRIO, VERIFICA A SENHA
+        //SE ENTROU É PORQUE TEM USUÁRIO, VERIFICA A SENHA
         $sql = "SELECT * "
         ." FROM `usuarios` "
         ." WHERE Email = '".$email."' "
@@ -64,32 +66,24 @@
                         
                     case 4:
                         header('location: ../painel.php');
-                        break;
-                            
+                        break; 
                                             
                     default:
                         # code...
                         break;
                 }
-                
-                
             }    
 
         }else{
             
             $_SESSION['alerta'] = "alert('Senha incorreta, tente novamente')";  
-            header('location: ../index.php');  
-           
-           
-                     
+            header('location: ../index.php');           
         }
 
     }else{
         
         $_SESSION['alerta'] = "alert('Usuário não encontrado ou não existe')";  
         header('location: ../index.php');   
-        
-
     }
 
 ?>

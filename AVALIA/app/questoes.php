@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Curso</title>
+  <title>TecAvaliação - Questões</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -68,11 +68,11 @@
                 <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                      <th>IdQuestões</th>
-                      <th>IdDisciplina</th>
-                      <th>idProfessor</th>
+                      <th>ID Questões</th>
+                      <th>ID Disciplina</th>
+                      <th>ID Professor</th>
                       <th>Assunto</th>
-                      <th>FlgLiberada</th>
+                      <th>Status</th>
                       <th>Ações</th>            
                   </tr>
                   </thead>
@@ -130,25 +130,25 @@
                 </div>
                 <div class="col-12">
                     <div class="form-group">
-                        <label for=iresp1> Primeira Aleternativa:</label>
+                        <label for=iresp1> Primeira Alternativa:</label>
                         <input type="text"  class="form-control" id="iresp1" name="nresposta1" maxlength="50" >
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="form-group">
-                      <label for=iresp1> Segunda Aleternativa:</label>
+                      <label for=iresp1> Segunda Alternativa:</label>
                      <input type="text"  class="form-control" id="iresp2" name="nresposta2" maxlength="50" >
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="form-group">
-                        <label for=iresp1> Terceira Aleternativa:</label>
+                        <label for=iresp1> Terceira Alternativa:</label>
                         <input type="text" class="form-control" id="iresp3" name="nresposta3" maxlength="50" >
                     </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group">
-                    <label for=iresp1> Quarta Aleternativa:</label>
+                    <label for=iresp1> Quarta Alternativa:</label>
                     <input type="text"  class="form-control" id="iresp4" name="nresposta4" maxlength="50" >
                   </div>
                 </div>

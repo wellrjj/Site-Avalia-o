@@ -3,6 +3,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
+//Função criada para montar os menus de cada tela.
+
 function montaMenu($n1,$n2){
     
     $menuAdmin = '';
@@ -28,7 +30,6 @@ function montaMenu($n1,$n2){
     $questoes = '';
     $desempenhoTurma = '';
     $atividadeProfessor = '';
-    
 
     switch ($n1) {
         case 'administrador':
@@ -142,11 +143,11 @@ function montaMenu($n1,$n2){
 
                       if($_SESSION["idTipoUsuario"] == 2 ){
                          
-                        $html .= '<ul class="nav nav-treeview">
+                        $html .=   '<ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="./usuarios.php" class="nav-link '.$usuarios.'">
-                                            <i class="fas fa-user-alt nav-icon"></i>
-                                            <p>Usuários</p>
+                                                <i class="fas fa-user-alt nav-icon"></i>
+                                                <p>Usuários</p>
                                             </a>
                                         </li>              
                                     </ul>
@@ -154,8 +155,8 @@ function montaMenu($n1,$n2){
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="./turmas.php" class="nav-link '.$turmas.'">
-                                            <i class="fas fa-users nav-icon"></i>
-                                            <p>Turmas</p>
+                                                <i class="fas fa-users nav-icon"></i>
+                                                <p>Turmas</p>
                                             </a>
                                         </li>              
                                     </ul>
@@ -163,8 +164,8 @@ function montaMenu($n1,$n2){
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="./curso.php" class="nav-link '.$cursos.'">
-                                            <i class="fas fa-book nav-icon"></i>
-                                            <p>Cursos</p>
+                                                <i class="fas fa-book nav-icon"></i>
+                                                <p>Cursos</p>
                                             </a>
                                         </li>              
                                     </ul>
@@ -172,48 +173,46 @@ function montaMenu($n1,$n2){
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="./disciplinas.php" class="nav-link '.$disciplinas.'">
-                                            <i class="fas fa-graduation-cap nav-icon"></i>
-                                            <p>Disciplinas</p>
+                                                <i class="fas fa-graduation-cap nav-icon"></i>
+                                                <p>Disciplinas</p>
                                             </a>
                                         </li>              
                                     </ul>
                                     <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                    <a href="./lecionadores.php" class="nav-link '.$lecionadores.'">
-                                    <i class="fas fa-chalkboard-teacher nav-icon"></i>
-                                    <p>Lecionadores</p>
-                                    </a>
-                                    </li>              
+                                        <li class="nav-item">
+                                            <a href="./lecionadores.php" class="nav-link '.$lecionadores.'">
+                                                <i class="fas fa-chalkboard-teacher nav-icon"></i>
+                                                <p>Lecionadores</p>
+                                            </a>
+                                        </li>              
                                     </ul>
-
-                                    
                                     ';
 
                       }elseif ($_SESSION["idTipoUsuario"] == 3 ) {
                        
                         $html .= 
-                        '<ul class="nav nav-treeview">
+                            '<ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="./atividadeProfessor.php" class="nav-link '.$atividadeProfessor.'">
-                                    <i class="fas fa-pen nav-icon"></i>
-                                    <p>Atividades</p>
+                                        <i class="fas fa-pen nav-icon"></i>
+                                        <p>Atividades</p>
                                     </a>
                                 </li>              
-                            </ul>
+                             </ul>
 
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="./desempenhoProfessor.php" class="nav-link '.$desempenhoTurma.'">
-                                    <i class="fas fa-chart-bar nav-icon"></i>
-                                    <p>Desempenho</p>
+                                        <i class="fas fa-chart-bar nav-icon"></i>
+                                        <p>Desempenho</p>
                                     </a>
                                 </li>              
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="./questoes.php" class="nav-link '.$questoes.'">
-                                    <i class="fas fa-edit nav-icon"></i>
-                                    <p>Questões</p>
+                                        <i class="fas fa-edit nav-icon"></i>
+                                        <p>Questões</p>
                                     </a>
                                 </li>              
                             </ul>
@@ -222,47 +221,46 @@ function montaMenu($n1,$n2){
                         
                             $html .= 
                             '<ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./atividadeAluno.php" class="nav-link '.$atividade.'" >
-                                    <i class="nav-icon fas fa-th"></i>
-                                    <p>
-                                        Atividades
-                                        <span class="right badge badge-danger">'.temAtividade().'</span>
-                                    </p>
-                                </a>
-                            </li>              
-                        </ul>
+                                <li class="nav-item">
+                                    <a href="./atividadeAluno.php" class="nav-link '.$atividade.'" >
+                                        <i class="nav-icon fas fa-th"></i>
+                                        <p>
+                                            Atividades
+                                            <span class="right badge badge-danger">'.temAtividade().'</span>
+                                        </p>
+                                    </a>
+                                </li>              
+                             </ul>
                     
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./desempenhoAluno.php" class="nav-link '.$desempenho.'" >
-                                    <i class="fas fa-chart-pie nav-icon"></i>
-                                    Desempenho
-                                </a>
-                            </li>              
-                        </ul>
+                             <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./desempenhoAluno.php" class="nav-link '.$desempenho.'" >
+                                        <i class="fas fa-chart-pie nav-icon"></i>
+                                        Desempenho
+                                    </a>
+                                </li>              
+                             </ul>
 
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./revisaoAluno.php" class="nav-link '.$revisao.'" >
-                                    <i class="fas fa-sync nav-icon"></i>
-                                    Revisão
-                                </a>
-                            </li>              
-                        </ul>'
+                             <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./revisaoAluno.php" class="nav-link '.$revisao.'" >
+                                        <i class="fas fa-sync nav-icon"></i>
+                                        Revisão
+                                    </a>
+                                </li>              
+                             </ul>'
                         
                         ;
                         }elseif($_SESSION["idTipoUsuario"] == 1 ){
                          
                             $html .= '<ul class="nav nav-treeview">
-                                            <li class="nav-item">
-                                                <a href="./admin.php" class="nav-link '.$usuarios.'">
+                                        <li class="nav-item">
+                                            <a href="./admin.php" class="nav-link '.$usuarios.'">
                                                 <i class="fas fa-user-alt nav-icon"></i>
                                                 <p>Usuários</p>
-                                                </a>
-                                            </li>              
-                                        </ul>';
-
+                                            </a>
+                                        </li>              
+                                      </ul>';
                         }
                 
            $html .= '           
@@ -273,10 +271,10 @@ function montaMenu($n1,$n2){
                                     Painel
                                 </a>
                             </li>              
-                       </ul>
-                    </li>
-                </ul>  
-            </nav>';
+                        </ul>
+                     </li>
+                 </ul>  
+             </nav>';
           
     return $html;
 }

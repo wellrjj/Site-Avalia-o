@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Curso</title>
+  <title>TecAvaliação - Curso</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -70,7 +70,7 @@
                   <thead>
                   <tr>
                       <th>ID</th>
-                      <th>Nome Curso</th>
+                      <th>Nome do Curso</th>
                       <th>Escola</th>
                       <th>Status</th>              
                       <th>Ações</th>
@@ -105,7 +105,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="php/salvarcurso.php?funcao=I" enctype="multipart/form-data">              
+              <form method="POST" action="php/salvarCurso.php?funcao=I" enctype="multipart/form-data">              
                 
                 <div class="row">
                   <div class="col-8">

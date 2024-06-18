@@ -1,4 +1,7 @@
 <?php
+    
+    //Arquivo criado para cadastrar as discplinas do curso.
+    
     session_start();
     include('funcoes.php');
 

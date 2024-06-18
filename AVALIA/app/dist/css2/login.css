@@ -1,7 +1,50 @@
-.tela-login{
-    
-    background-image: url('/app/dist/img/high1.png');
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Evita o scroll */
+}
 
+#tela-login {
+    position: relative; /* Necessário para que o ::before se posicione corretamente */
+    z-index: 0;
+    height: 100vh; /* Garante que a altura do corpo cubra toda a altura da tela */
+    overflow: hidden; /* Evita o scroll */
+}
+
+#tela-login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../img/high1.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.5; /* Ajuste este valor conforme necessário (0.0 - totalmente transparente, 1.0 - totalmente opaco) */
+    z-index: -1;
+    height: 100%; /* Garante que o pseudo-elemento cubra 100% da altura do elemento pai */
+    min-height: 100vh; /* Garante que o pseudo-elemento cubra pelo menos 100% da altura da viewport */
+}
+.title-container {
+    position: absolute; /* Posicionamento absoluto dentro do corpo */
+    top: 2%; /* Ajuste a distância do topo conforme necessário */
+    left: 50%; /* Move para o centro horizontalmente */
+    transform: translateX(-50%); /* Ajuste para centralizar */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com opacidade */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px; /* Reduz o padding para diminuir o espaço ao redor do título */
+    text-align: center;
+    max-width: 600px; /* Limita a largura máxima */
+    width: 90%; /* Faz com que ocupe 90% da largura disponível até o limite */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+.lobster {
+    font-family: 'Lobster', cursive;
+    color: #2c3e50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 .form-container {
 
@@ -9,54 +52,49 @@
     justify-content: center;
     align-items: center;
     height: 85vh;
+    position: relative; /* Para que o conteúdo da form-container fique acima do pseudo-elemento */
+    z-index: 1;
+    width: 100%; /* Garante que o container ocupe 100% da largura disponível */
 }
 #iH101{
 
     font-family: Arial, Helvetica, sans-serif;
 
 }
-#iNome{
-
+#iNome, #iSenha {
     width: 100%;
     font-size: 97%;
-
     border-radius: 3px;
-
-    padding-top: 3%;
-    padding-bottom: 3%;
-    padding-left: 3%;
-    
+    padding: 10px; /* Ajuste o padding conforme necessário */
+    padding-right: 87px; /* Reduz o padding direito */
     border: 1px solid #ccc; 
-    border-width: 1px; 
-
-}
-#iSenha{
-
-    width: 100%;
-    font-size: 97%;
-
-    border-radius: 3px;
-
-    padding-top: 3%;
-    padding-bottom: 3%;
-    padding-left: 3%;
-    
-    border: 1px solid #ccc; 
-    border-width: 1px;
-
+    box-sizing: border-box; /* Inclui o padding e a borda no tamanho total do elemento */
 }
 #iCampo{
 
-    margin-top: 1%;
+    /*margin-top: 1%;
     margin-left: 1%;
     margin-right: 1%;
 
     padding-right: 10%;
 
-    border-radius: 10px;
+    border-radius: 10px; 
     background-color: white;
-    border-color: black;
+    border: 1px solid #ccc; /* Borda fina e suave 
+
     
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar o contêiner */
+    
+
+    margin-top: 1%;
+    padding: 2% 5%; /* Ajuste do padding conforme necessário */
+    border-radius: 10px; /* Ajuste para um arredondamento suave */
+    background-color: white;
+    border: 1px solid #ccc; /* Borda fina e suave */
+    width: 80%; /* Ajuste a largura conforme necessário */
+    max-width: 800px; /* Ajuste o valor máximo conforme necessário */
+    min-width: 300px; /* Ajuste o valor mínimo conforme necessário */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar o contêiner */
 }
 #iBotao{
 
@@ -71,5 +109,7 @@
     padding-right: 5%;
 
     border: none;
+    
+    cursor: pointer; /* Adiciona um cursor pointer para o botão */
 
 }

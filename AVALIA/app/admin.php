@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Usuários</title>
+  <title>TecAvaliação - Admin</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -69,7 +69,7 @@
                   <thead>
                   <tr>
                       <th>ID</th>
-                      <th>tipo usuario</th>
+                      <th>tipo usuário</th>
                       <th>Nome</th>
                       <th>Login</th>
                       <th>Ativo</th>                
@@ -118,7 +118,7 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label for="iNome">Tipo de Usuário:</label>
-                      <select name="nTipoUsuario" class="form-control" required>
+                      <select name="nTipUsu" class="form-control" required>
                         <option value="">Selecione...</option>                        
                         <option value="1">Admin</option> 
                         <option value="2">Escola</option>                         
@@ -136,84 +136,6 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label for="iSenha">Senha:</label>
-                      <input type="text" class="form-control" id="iSenha" name="nSenha" maxlength="6">
-                    </div>
-                  </div>
-                
-                  <div class="col-12">
-                    <div class="form-group">
-                      <input type="checkbox" id="iAtivo" name="nAtivo">
-                      <label for="iAtivo">Usuário Ativo</label>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                  <button type="submit" class="btn btn-success">Salvar</button>
-                </div>
-                
-              </form>
-
-            </div>
-            
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-
-      <div class="modal fade" id="testeAjaxModal">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header bg-primary">
-              <h4 class="modal-title">Teste Ajax</h4>
-              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form method="POST" action="php/salvarUsuario.php?funcao=I" enctype="multipart/form-data">              
-                
-              <div class="row">
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label for="iNome">Nome:</label>
-                      <input type="text" class="form-control" id="iNome" name="nNome" maxlength="50">
-                    </div>
-                  </div>
-
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="iTipUsu">Tipo de Usuário:</label>
-                      <select name="nTipUsu" id="iTipUsu" class="form-control" required>
-                        <option value="">Selecione...</option>
-                        <?php echo optionTipoUsu();?>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="iTurma">Turma:</label>
-                      <select name="nTurma" id="iTurma" class="form-control" required>
-                        <option value="">Selecione...</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="col-7">
-                    <div class="form-group">
-                      <label for="iLogin">Login:</label>
-                      <input type="email" class="form-control" id="iLogin" name="nEmail" maxlength="50">
-                    </div>
-                  </div>
-
-                  <div class="col-5">
-                    <div class="form-group">
-                      <label for="iSenha">Senha:</label>
                       <input type="password" class="form-control" id="iSenha" name="nSenha" maxlength="6">
                     </div>
                   </div>
@@ -224,14 +146,14 @@
                       <input type="file" class="form-control" id="iFoto" name="Foto" accept="image/*">
                     </div>
                   </div>
-
+                
                   <div class="col-12">
                     <div class="form-group">
                       <input type="checkbox" id="iAtivo" name="nAtivo">
                       <label for="iAtivo">Usuário Ativo</label>
                     </div>
                   </div>
-  
+
                 </div>
 
                 <div class="modal-footer">
@@ -249,6 +171,8 @@
         <!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
+
+      
 
     </section>
     <!-- /.content -->
@@ -267,55 +191,7 @@
 <!-- Fim JS -->
 
 <script>
-
-  //== Inicialização
-  $(document).ready(function() {
-
-//Lista dinâmica com Ajax
-$('#iTipUsu').on('change',function(){
-  //Pega o valor selecionado na lista 1
-  var tipoUsu  = $('#iTipUsu').val();
   
-  //Prepara a lista 2 filtrada
-  var optionTurma = '';
-            
-  //Valida se teve seleção na lista 1
-  if(tipoUsu != "" && tipoUsu != "0"){
-    
-    //Vai no PHP consultar dados para a lista 2
-    $.getJSON('php/carregaProdutoCategoria.php?codigo='+tipoUsu,
-    function (dados){  
-      
-      //Carrega a primeira option
-      optionTurma = '<option value="">Selecione uma turma</option>';                  
-      
-      //Valida o retorno do PHP para montar a lista 2
-      if (dados.length > 0){                        
-        
-        //Se tem dados, monta a lista 2
-        $.each(dados, function(i, obj){
-          optionTurma += '<option value="'+obj./*!!!!!!!! VERIFICAR VARIÁVEL À DIREITA*/idTurma+'">'+obj.Descricao+'</option>';	                            
-        })
-
-        //Marca a lista 2 como required e mostra os dados filtrados
-        $('#iTurma').attr("required", "req");						
-        $('#iTurma').html(optionTurma).show();
-      }else{
-        
-        //Não encontrou itens para a lista 2
-        optionTurma += '<option value="">Selecione uma turma</option>';
-        $('#iTurma').html(optionTurma).show();
-      }
-    })                
-  }else{
-    //Sem seleção na lista 1 não consulta
-    optionTurma += '<option value="">Selecione um tipo</option>';
-    $('#iTurma').html(optionTurma).show();
-  }			
-});
-
-});
-
   $(function () {
     $('#tabela').DataTable({
       "paging": true,

@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Prova</title>
+  <title>TecAvaliação - Revisão da Prova</title>
    
   <!-- CSS -->
   <?php include('partes/css.php'); ?>

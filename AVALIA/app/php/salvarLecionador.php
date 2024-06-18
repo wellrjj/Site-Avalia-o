@@ -1,4 +1,7 @@
 <?php
+    
+    //Arquivo criado para salvar cadastrar o lecionador;
+    
     session_start();
     include('funcoes.php');
 

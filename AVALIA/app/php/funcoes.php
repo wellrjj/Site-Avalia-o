@@ -1,5 +1,7 @@
 <?PHP
 
+//Arquivo para incluir as funções criadas.
+
 include("funcaoMenu.php");
 include("funcaoUsuario.php");
 include("funcaoCurso.php");
@@ -10,7 +12,7 @@ include("funcaoAtividadeAluno.php");
 include("funcaoQuestao.php");
 include("funcaoDesempenhoTurma.php");
 include("funcaoTurma.php");
-include("funcaoOptionTurma.php");
+include("funcaoOptionUsuario.php");
 include("funcaoAtividadeProfessor.php");
 
 ?>

@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Aluno</title>
+  <title>TecAvaliação - Desempenho Geral</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -46,13 +46,13 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                 <h4> Desempenho das Atividades</h4>
+                 <h4>Desempenho das Atividades</h4>
               </div>
               <table id="tabela" class="table table-bordered table-hover">
                   <thead>
                   <tr>
                       <th>Turma</th>
-                      <th>atividade</th>                      
+                      <th>Atividade</th>                      
                       <th>Desempenho</th>
                       <th>Ações</th>
                   </tr>
@@ -106,9 +106,6 @@
         });            
 
     </script>
-
-
-
 
 </body>
 </html>

@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Usuários</title>
+  <title>TecAvaliação - Usuários</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -99,7 +99,7 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header bg-success">
-              <h4 class="modal-title">Teste Ajax</h4>
+              <h4 class="modal-title">Novo Usuário</h4>
               <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

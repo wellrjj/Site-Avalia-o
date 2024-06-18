@@ -1,4 +1,7 @@
 <?php
+    
+    //Arquivo criado para cadastrar os usuários no sistema.
+    
     session_start();
     include('funcoes.php');
 
@@ -19,16 +22,14 @@
 
         //Busca o próximo ID na tabela
         $idUsuario = proxIdUsuario();
-        
+         
         if($idTurma == ''){
             $idTurma = NULL;
         } 
 
         //INSERT
         $sql = "INSERT INTO usuarios (idUsuario, idTipoUsuario, idTurma, Nome, Email, Senha, FlgAtivo, idEscola) "
-        ."VALUES ('$idUsuario', '$idtipoUsuario', '$idTurma', '$nome', '$Email', MD5('$senha'), '$ativo', ".$_SESSION['idEscola'].");";
-
-        
+        ."VALUES ('$idUsuario', '$idtipoUsuario', '$idTurma', '$nome', '$Email', MD5('$senha'), '$ativo', ".$_SESSION['idEscola'].");"; 
 
     }elseif($funcao == "A"){
 
@@ -90,6 +91,12 @@
         mysqli_close($conn);
     }
 
-    header("location: ../usuarios.php");
+    if ($_SESSION['idTipoUsuario'] == 1 ) {
+        header("location: ../admin.php");
+    }else{
+        header("location: ../usuarios.php");
+    }
+
+    
 
 ?>

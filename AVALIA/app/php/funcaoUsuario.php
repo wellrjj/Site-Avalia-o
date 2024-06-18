@@ -1,8 +1,11 @@
 <?php
 
-//função para listar todos os usuários
+//Função para listar todos os usuários
 function lista_usuario(){   
+    
     include("conexao.php");
+
+    //SELECT para a consulta de todos os dados dos usuários da escola que o SESSION escolher (utilizando o "idEscola")
     $sql = "SELECT * FROM usuarios where idEscola = ".$_SESSION['idEscola'].";";
             
     $result = mysqli_query($conn,$sql);
@@ -16,14 +19,12 @@ function lista_usuario(){
     if (mysqli_num_rows($result) > 0) {
         
         $array = array();
-        
 
         while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             array_push($array,$linha);
         }
         
         foreach ($array as $coluna) {
-
              
             if($coluna["FlgAtivo"] == 'S'){  
                 $ativo = 'checked';
@@ -38,6 +39,7 @@ function lista_usuario(){
             
             $lista .= 
 
+            //Criando as tabelas com as informações de: idUsuário, Tipo de Usuário, Nome e E-mail. 
             "<tr>"
                 ."<td align='center'>".$coluna["idUsuario"]."</td>"
                 ."<td align='center'>".tipoAcessoUsuario($coluna["idTipoUsuario"])."</td>"                
@@ -45,6 +47,7 @@ function lista_usuario(){
                 ."<td>".$coluna["Email"]."</td>"
                 .'<td align="center">'.$icone.'</td>'
             
+                //Botão de editar usuário.
                 .'<td>'
                     .'<div class="row" align="center">'
                         .'<div class="col-6">'
@@ -53,16 +56,17 @@ function lista_usuario(){
                             .'</a>'
                         .'</div>'
                         
+                        //Botão de deletar o usuário.
                         .'<div class="col-6">'
                             .'<a href="#modalDeleteUsuario'.$coluna["idUsuario"].'" data-toggle="modal">'
-                                .'<h6><i class="fas fa-trash text-danger" data-toggle="tooltip" title="Alterar usuário"></i></h6>'
+                                .'<h6><i class="fas fa-trash text-danger" data-toggle="tooltip" title="Deletar usuário"></i></h6>'
                             .'</a>'
                         .'</div>'
                     .'</div>'
                 .'</td>'
-            
             .'</tr>'
             
+            //Início do modal de editar usuário.
             .'<div class="modal fade" id="modalEditUsuario'.$coluna["idUsuario"].'">'
                 .'<div class="modal-dialog modal-lg">'
                     .'<div class="modal-content">'
@@ -107,8 +111,6 @@ function lista_usuario(){
                                         .'</div>';
                                     }
                                     
-
-                    
                                     $lista .= 
                                     '<div class="col-8">'
                                         .'<div class="form-group">'
@@ -146,12 +148,12 @@ function lista_usuario(){
                                 .'</div>'
                                 
                             .'</form>'
-                            
                         .'</div>'
                     .'</div>'
                 .'</div>'
             .'</div>'
             
+            //Início do modal de deletar o usuário.
             .'<div class="modal fade" id="modalDeleteUsuario'.$coluna["idUsuario"].'">'
                 .'<div class="modal-dialog modal-sm">'
                     .'<div class="modal-content">'
@@ -187,6 +189,7 @@ function lista_usuario(){
     return $lista;
 }
 
+//Função para determinar qual é o tipo de usuário acessando o sistema (Provavelmente não está sendo usada).
 function tipoDeAcesso($id){
 
     include("conexao.php");
@@ -215,19 +218,18 @@ function tipoDeAcesso($id){
     return $resp;
 }
 
-//função para trazer os dados faltantes do tipo de usuário.
+//Função para trazer os dados faltantes do tipo de usuário (Complementa um option de tipoUsuário).
 function faltantes($id){
 
     include("conexao.php");
     if($id == 2){
 
-       $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1;"; 
+        $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1;"; 
 
-    }elseif ($id == 3) {
-        $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1 and idTipoUsuario != 2;"; 
-    }else{
-
-        $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1 and idTipoUsuario != 2;"; 
+        }elseif ($id == 3) {
+            $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1 and idTipoUsuario != 2;"; 
+        }else{
+            $sql = "SELECT * FROM tipousuario where idTipoUsuario != $id and idTipoUsuario != 1 and idTipoUsuario != 2;"; 
     }
            
     $result = mysqli_query($conn,$sql);
@@ -309,6 +311,7 @@ function tipoAcessoUsuario($id){
     return $resp;
 }
 
+//Função que retorna um option com os tipos de usuário dependendo da regra de negócio da tela.
 function optionAcessoUsuario(){
 
     include("conexao.php");
@@ -334,7 +337,7 @@ function optionAcessoUsuario(){
     return $resp;
 }
 
-
+//Função que retorna professores cadastrados no banco de dados para associar à disciplina.
 function optionProfessor(){
 
     include("conexao.php");
@@ -503,6 +506,7 @@ function ativoUsuario($id){
     return $resp;
 }
 
+//Função que retorna as informações do painel do usuário.
 function mensagemSobre($id){
  
   $resp = '';
@@ -521,6 +525,7 @@ function mensagemSobre($id){
     return $resp;
 }
 
+//Função que retorna o painel com as informações do usuário.
 function montaPainel($id,$idUsuario){
 
  $resp = '';
@@ -538,6 +543,7 @@ function montaPainel($id,$idUsuario){
  return $resp;
 }
 
+//Função para retornar a tabela da tela do administrador.
 function lista_escola(){   
     include("conexao.php");
     $sql = "SELECT * FROM usuarios where idTipoUsuario = 2 OR idTipoUsuario = 1;";
@@ -626,7 +632,7 @@ function lista_escola(){
                                         '<div class="col-4">'
                                             .'<div class="form-group">'
                                                 .'<label for="iNome">Tipo de Usuário:</label>'
-                                                .'<select name="nTipoUsuario" class="form-control" required>'
+                                                .'<select name="nTipUsu" class="form-control" required>'
                                                        
                                                      .'<option value ="">Selecione...</option>'                                             
                                                      .'<option value ="1">Admin</option>'

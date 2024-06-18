@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projeto Modelo - Curso</title>
+  <title>TecAvaliação - Cadastro de Atividades</title>
 
   <!-- CSS -->
   <?php include('partes/css.php'); ?>
@@ -51,42 +51,32 @@
                   <div class="col-9">
                     <h3 class="card-title">Atividade</h3>
                   </div>
-                  
-                  <!--<div class="col-3" align="right">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novaQuestao">
-                      Nova Atividade
-                    </button>
-                  </div>-->
-                
+
                   <div class="col-3" align="right">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novaQuestao2">
-                      Nova Atividade2
+                      Nova Atividade 
                     </button>
                   </div>
                 </div>
               </div>
 
-              
-
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="tabela" class="table table-bordered table-hover">
                   <thead>
-                  <tr>
-                      <th>idAtividade</th>
-                      <th>idProfessor</th>
-                      <th>idDisciplina</th>
-                      <th>Titulo</th>
-                      <th>Descricao</th>
-                      <th>DataAplicacao</th>
-                      <th>FlgLiberada</th>    
-                      <th>FlgRevisao</th>
-                      <th>Mostrar Nota</th>   
-                      <th>Ações</th>       
-    
-        
-            
-                  </tr>
+                    <tr>
+                        <th>Id Atividade</th>
+                        <th>Id Professor</th>
+                        <th>Id Disciplina</th>
+                        <th>Título</th>
+                        <th>Descrição</th>
+                        <th>Data de Aplicação</th>
+                        <th>FlgLiberada</th>    
+                        <th>FlgRevisao</th>
+                        <th>Mostrar Nota</th>   
+                        <th>Ações</th>       
+      
+                    </tr>
                   </thead>
                   <tbody>
 
@@ -113,7 +103,7 @@
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header bg-success">
-              <h4 class="modal-title">Nova Avaliação2</h4>
+              <h4 class="modal-title">Nova Avaliação </h4>
               <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -143,20 +133,20 @@
               
                 <div class="col-4">
                     <div class="form-group">
-                        <label for=iTitulo >Titulo:</label>
+                        <label for=iTitulo >Título:</label>
                         <input type="text"  class="form-control" id="ipergunta" name="nTitulo" maxlength="60"  required>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        <label for=iDescricao> Descricao:</label>
+                        <label for=iDescricao>Descrição:</label>
                         <input type="text"  class="form-control" id="iresp1" name="nDescricao" maxlength="50" required >
                     </div>
                 </div>
 
                 <div class="col-12">
                   <div class="form-group">
-                    <label for=idata> Data DataAplicação:</label>
+                    <label for=idata>Data de Aplicação:</label>
                     <input type="date"  class="form-control" id="idata" name="nDataAp">
                   </div>
                 </div>
